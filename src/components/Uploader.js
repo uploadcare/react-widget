@@ -1,10 +1,21 @@
-import React from "react";
-import "uploadcare-widget";
+import React, {Component} from "react";
+import uploadcare from "uploadcare-widget";
 
-const Uploader = () => (
-  <div>
-    <input type="text" role="uploadcare-uploader" />
-  </div>
-);
+class Uploader extends Component {
+
+  componentDidMount() {
+    uploadcare.start({
+      publicKey: "demopublickey"
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" role="uploadcare-uploader"/>
+      </div>
+    )
+  }
+}
 
 export default Uploader;
