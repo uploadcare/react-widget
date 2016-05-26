@@ -1,32 +1,22 @@
 const path = require("path");
 const webpack = require("webpack");
+const config = require("./webpack.base.config");
 
-let config = {
-  devtool: "eval",
-  entry: [
-    "webpack-hot-middleware/client",
-    "./client/index.js"
-  ],
-  output: {
-    path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: "/static/"
-  },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: "babel",
-      exclude: /(node_modules)/,
-      query: {
-        presets: ["react", "react-hmre"]
-      }
-    }]
-  }
+config.devtool = "eval";
+
+config.entry.push("webpack-hot-middleware/client");
+
+config.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+config.module = {
+  loaders: [{
+    test: /\.js$/,
+    loader: "babel",
+    exclude: /(node_modules|_Uploadcare)/,
+    query: {
+      presets: ["react", "react-hmre"]
+    }
+  }]
 };
 
 module.exports = config;
