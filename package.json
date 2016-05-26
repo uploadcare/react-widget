@@ -1,0 +1,17 @@
+{
+  "name": "try-uploadcare-widget",
+  "version": "1.0.0",
+  "description": "App to use uploadcare-widget in different ways.",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zmoki/try-uploadcare-widget.git"
+  },
+  "author": "Zarema Khalilova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zmoki/try-uploadcare-widget/issues"
+  },
+  "homepage": "https://github.com/Zmoki/try-uploadcare-widget#readme"
+}
