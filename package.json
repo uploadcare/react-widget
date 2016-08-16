@@ -19,19 +19,19 @@
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "babel-preset-react-hmre": "^1.1.1",
-    "eslint": "^2.10.2",
+    "eslint": "^3.3.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
-    "babel-core": "^6.9.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-register": "^6.9.0",
-    "ejs": "^2.4.2",
-    "express": "^4.13.4",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "babel-core": "^6.13.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.11.6",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
   }
 }
