@@ -23,6 +23,7 @@ if(NODE_ENV == "development") {
   app.use("/static", Express.static(path.join(__dirname, "..", "dist")));
 }
 
+app.use("/public", Express.static(path.join(__dirname, "..", "public")));
 
 app.listen(PORT, (error) => {
   if (error) {
