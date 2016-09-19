@@ -32,6 +32,7 @@
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
+    "uploadcare-widget": "^2.10.0"
   }
 }
