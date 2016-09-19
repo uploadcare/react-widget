@@ -5,7 +5,8 @@ class Uploader extends Component {
 
   componentDidMount() {
     uploadcare.start({
-      publicKey: "demopublickey"
+      publicKey: "demopublickey",
+      tabs: "all"
     });
   }
 
