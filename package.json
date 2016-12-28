@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Demo App with React and Uploadcare Widget",
   "scripts": {
-    "start": "set NODE_ENV=production&& webpack && node server",
-    "start:dev": "set NODE_ENV=development&& node server"
+    "start": "NODE_ENV=production webpack && node server",
+    "start:dev": "NODE_ENV=development node server"
+    "windows:start": "set NODE_ENV=production&& webpack && node server",
+    "windows:start:dev": "set NODE_ENV=development&& node server"
   },
   "repository": {
     "type": "git",
