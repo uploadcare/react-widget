@@ -1,2 +1,2 @@
-# try-uploadcare-widget
-App to use uploadcare-widget in different ways.
+# Demo App with React and Uploadcare Widget
+How to use uploadcare-widget in React app.
