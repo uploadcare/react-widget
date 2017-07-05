@@ -4,18 +4,27 @@ import uploadcare from "uploadcare-widget";
 class Uploader extends Component {
 
   componentDidMount() {
-    uploadcare.start({
-      publicKey: "demopublickey",
-      tabs: "all"
-    });
+    const {id, onChange} = this.props;
+    const widget = uploadcare.Widget(`#${id}`);
+
+    if (onChange && typeof onChange === 'function') {
+      widget.onChange((file) => {
+        if (file) {
+          file
+            .done(info => onChange(info.cdnUrl))
+            .fail(() => onChange(null))
+        }
+        else {
+          onChange(null)
+        }
+      })
+    }
   }
 
   render() {
-    return (
-      <div>
-        <input type="text" role="uploadcare-uploader"/>
-      </div>
-    )
+    const {id, name, ...attrs} = this.props;
+
+    return (<input type="hidden" id={id} name={name} {...attrs} />)
   }
 }
 
