@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "Demo App with React and Uploadcare Widget",
   "scripts": {
-    "start": "NODE_ENV=production webpack && node server",
-    "start:dev": "NODE_ENV=development node server",
-    "windows:start": "set NODE_ENV=production&& webpack && node server",
-    "windows:start:dev": "set NODE_ENV=development&& node server"
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "npm run build && cross-env NODE_ENV=production node server",
+    "start:dev": "node server"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,8 @@
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.0.1",
     "eslint": "^3.3.1",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",

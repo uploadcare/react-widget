@@ -8,7 +8,7 @@ config.module = {
     loader: "babel",
     exclude: /(node_modules)/,
     query: {
-      presets: ["react"]
+      presets: ["stage-0", "react"]
     }
   }]
 };

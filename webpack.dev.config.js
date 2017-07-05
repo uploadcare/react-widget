@@ -14,7 +14,7 @@ config.module = {
     loader: "babel",
     exclude: /(node_modules|_Uploadcare)/,
     query: {
-      presets: ["react", "react-hmre"]
+      presets: ["stage-0", "react", "react-hmre"]
     }
   }]
 };
