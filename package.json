@@ -1,11 +1,11 @@
 {
   "name": "uploadcare-widget-react-demo",
   "version": "1.0.0",
-  "description": "Demo App with React and Uploadcare Widget",
+  "description": "Demo of Uploadcare Widget in React app",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "npm run build && cross-env NODE_ENV=production node server",
-    "start:dev": "node server"
+    "lint": "eslint .",
+    "build": "webpack --config webpack.prod.config.js",
+    "start": "webpack-dev-server --open --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,24 +18,22 @@
   },
   "homepage": "https://github.com/uploadcare/uploadcare-widget-react-demo#readme",
   "devDependencies": {
-    "babel-loader": "^6.2.4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-react-hmre": "^1.1.1",
-    "cross-env": "^5.0.1",
-    "eslint": "^3.3.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.2"
-  },
-  "dependencies": {
-    "babel-core": "^6.13.2",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
     "babel-preset-react": "^6.11.1",
-    "babel-register": "^6.11.6",
-    "ejs": "^2.5.1",
-    "express": "^4.14.0",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "uploadcare-widget": "^3.0.1"
+    "clean-webpack-plugin": "^0.1.18",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.17.0",
+    "eslint-config-uploadcare": "^1.1.0",
+    "eslint-plugin-react": "^7.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "uploadcare-widget": "^3.2.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.1"
   }
 }

@@ -1,18 +1,37 @@
-import React from "react";
-import Uploader from "./components/Uploader";
+import React from 'react'
+import Uploader from './components/Uploader'
 
 const App = () => (
-  <div>
-    <h1>Try Uploadcare</h1>
+  <React.Fragment>
+    <h1>Demo of Uploadcare Widget in React app</h1>
     <p>
-      <label htmlFor="file">Your file:</label>
-      <Uploader id="file" name="file" onChange={(value) => console.log("value: ", value)} />
-    </p>
-    <p>
-      <label htmlFor="images">Your images:</label>
-      <Uploader id="images" name="file" data-images-only data-multiple />
-    </p>
-  </div>
-);
+      <label htmlFor='file'>Your file:</label>{' '}
+      <Uploader
+        id='file'
+        name='file'
+        onChange={(file) => {
+          console.log('File changed: ', file)
 
-export default App;
+          if (file) {
+            file.progress(info => console.log('File progress: ', info.progress))
+            file.done(info => console.log('File uploaded: ', info))
+          }
+        }}
+        onUploadComplete={info => console.log('Upload completed:', info)}/>
+    </p>
+    <p>
+      <label htmlFor='images'>Your images:</label>{' '}
+      <Uploader id='images' name='images' data-images-only data-multiple />
+    </p>
+    <p>
+      <label htmlFor='images'>Predefined image:</label>{' '}
+      <Uploader
+        id='image'
+        name='image'
+        value='https://ucarecdn.com/e7e46bb5-685b-45bf-abc6-1dfbcfb10fec/example.jpg'
+        data-images-only />
+    </p>
+  </React.Fragment>
+)
+
+export default App
