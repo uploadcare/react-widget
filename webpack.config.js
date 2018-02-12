@@ -1,16 +1,14 @@
-const path = require("path");
-const webpack = require("webpack");
 const config = require("./webpack.base.config");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 config.module = {
   loaders: [{
     test: /\.js$/,
-    loader: "babel",
+    loader: "babel-loader",
     exclude: /(node_modules)/,
-    query: {
-      presets: ["stage-0", "react"]
-    }
   }]
 };
+
+config.plugins.push(new UglifyJsPlugin())
 
 module.exports = config;

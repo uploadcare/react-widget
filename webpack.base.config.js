@@ -12,10 +12,7 @@ let config = {
     filename: "bundle.js",
     publicPath: "/static/"
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+  plugins: []
 };
 
 if(USE_SOURCE) {

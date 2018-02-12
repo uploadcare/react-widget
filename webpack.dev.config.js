@@ -11,10 +11,10 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.module = {
   loaders: [{
     test: /\.js$/,
-    loader: "babel",
+    loader: "babel-loader",
     exclude: /(node_modules|_Uploadcare)/,
     query: {
-      presets: ["stage-0", "react", "react-hmre"]
+      presets: ["env", "react", "react-hmre"]
     }
   }]
 };
