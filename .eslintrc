@@ -1,13 +1,16 @@
 {
+  "extends": ["uploadcare", "plugin:react/recommended"],
+  "plugins": ["react"],
   "parserOptions": {
-    "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
-    "quotes": [2, "double"],
-    "no-var": 2
+    "new-cap": "off",
+    "no-console": "off",
+    "require-jsdoc": "off",
+    "react/prop-types": "off"
   }
 }

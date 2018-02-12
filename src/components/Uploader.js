@@ -1,11 +1,10 @@
-import React, {Component} from "react";
-import uploadcare from "uploadcare-widget";
+import React, {Component} from 'react'
+import uploadcare from 'uploadcare-widget'
 
 class Uploader extends Component {
-
   componentDidMount() {
-    const {onChange} = this.props;
-    const widget = uploadcare.Widget(this.uploader);
+    const {onChange} = this.props
+    const widget = uploadcare.Widget(this.uploader)
 
     if (onChange && typeof onChange === 'function') {
       widget.onChange((file) => {
@@ -22,8 +21,8 @@ class Uploader extends Component {
   }
 
   render() {
-    return (<input type="hidden" ref={input => this.uploader = input} {...this.props} />)
+    return (<input type='hidden' ref={input => this.uploader = input} {...this.props} />)
   }
 }
 
-export default Uploader;
+export default Uploader
