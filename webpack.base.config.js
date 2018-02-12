@@ -1,30 +1,24 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const USE_SOURCE = process.argv.includes('--source')
-
-let config = {
-  entry: [
-    './client/index.js',
+module.exports = {
+  entry: {app: './client/index.js'},
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({template: './src/template.html'}),
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
-  plugins: [],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {loader: 'babel-loader'},
+      },
+    ],
+  },
 }
-
-if (USE_SOURCE) {
-  const PATH_TO_UPLOADCARE_WIDGET = process.env.PATH_TO_UPLOADCARE_WIDGET || '..'
-
-  config.resolve = {
-    alias: {
-      'uploadcare-widget': path.join(
-        PATH_TO_UPLOADCARE_WIDGET, 'uploadcare-widget', 'pkg', 'latest', 'uploadcare.min.js'
-      ),
-      'jquery': path.join(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.min.js'),
-    },
-  }
-}
-
-module.exports = config

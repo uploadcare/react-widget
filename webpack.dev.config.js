@@ -1,19 +1,7 @@
-const webpack = require('webpack')
-const config = require('./webpack.base.config')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.base.config')
 
-config.devtool = 'eval'
-
-config.entry.push('webpack-hot-middleware/client')
-
-config.plugins.push(new webpack.HotModuleReplacementPlugin())
-
-config.module = {
-  loaders: [{
-    test: /\.js$/,
-    loader: 'babel-loader',
-    exclude: /(node_modules|_Uploadcare)/,
-    query: {presets: ['env', 'react', 'react-hmre']},
-  }],
-}
-
-module.exports = config
+module.exports = merge(baseConfig, {
+  devtool: 'inline-source-map',
+  devServer: {contentBase: './dist'},
+})
