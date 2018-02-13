@@ -1,4 +1,4 @@
-# Demo of Uploadcare Widget in React app
+# Demo: Uploadcare Widget in a React app
 
 <a href="https://uploadcare.com/?utm_source=github&utm_campaign=uploadcare-widget-react-demo">
   <img align="right" width="64" height="64"
@@ -6,44 +6,47 @@
        alt="">
 </a>
 
-This repo is an example of how you can use [Uploadcare Widget][widget] in React app.
+This repo is an example of how you can use [Uploadcare Widget][widget] in a
+React app.
 
 [![Uploadcare stack on StackShare][stack-img]][stack]
 
 [stack-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
 [stack]: https://stackshare.io/uploadcare/stacks/
 
-Uploadcare Widget is an HTML5 file uploader
-which itself is a part of [Uploadcare][uploadcare] ecosystem.
+Uploadcare Widget is an HTML5 file uploader, a part of the
+[Uploadcare][uploadcare] ecosystem.
 
-## How to use Demo
+## Using the Demo
 
-Copy the repo into your disk,
+### Step 1. Clone the repo
 
 ```
 git clone git@github.com:uploadcare/uploadcare-widget-react-demo.git
 cd uploadcare-widget-react-demo
 ```
 
-Install dependencies,
+### Step 2. Install the dependencies
 
 ```
 npm install
 ```
 
-Run app in development mode,
+### Step 3. Run the app in development mode
 
 ```
 npm start
 ```
 
-Build static files of app in production mode,
+### Step 4. Build static files of the app in production mode
 
 ```
 npm run build
 ```
 
-See result in `dist` folder.
+### Step 5. Check out results
+
+You will find the results in the `dist` directory.
 
 [widget]: https://github.com/uploadcare/uploadcare-widget
 [uploadcare]: https://uploadcare.com/?utm_source=github&utm_campaign=uploadcare-widget-react-demo
