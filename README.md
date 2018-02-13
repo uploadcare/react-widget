@@ -1,4 +1,4 @@
-# Demo: Uploadcare Widget in your React app
+# Demo: Uploadcare Widget in a React app
 
 <a href="https://uploadcare.com/?utm_source=github&utm_campaign=uploadcare-widget-react-demo">
   <img align="right" width="64" height="64"
@@ -32,21 +32,21 @@ cd uploadcare-widget-react-demo
 npm install
 ```
 
-### Step 3. Run your app in development mode
+### Step 3. Run the app in development mode
 
 ```
 npm start
 ```
 
-### Step 4. Build static files of your app in production mode
+### Step 4. Build static files of the app in production mode
 
 ```
 npm run build
 ```
 
-### Step 5. Check out your results
+### Step 5. Check out results
 
-You will find your results in the `dist` directory.
+You will find the results in the `dist` directory.
 
 [widget]: https://github.com/uploadcare/uploadcare-widget
 [uploadcare]: https://uploadcare.com/?utm_source=github&utm_campaign=uploadcare-widget-react-demo
