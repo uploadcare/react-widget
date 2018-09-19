@@ -19,8 +19,10 @@ class ToggleMounting extends Component {
     return (
       <React.Fragment>
         {mounted ? children : null}
-        <hr/>
-        <button type='button' onClick={this.handleMountClick}>
+        <hr />
+        <button
+          type='button'
+          onClick={this.handleMountClick}>
           {mounted ? 'Unmount' : 'Mount'} {title}
         </button>
       </React.Fragment>

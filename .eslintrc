@@ -7,6 +7,10 @@
       "jsx": true
     }
   },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "rules": {
     "new-cap": "off",
     "no-console": "off",

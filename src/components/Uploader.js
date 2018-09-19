@@ -56,7 +56,12 @@ class Uploader extends Component {
   render() {
     const attributes = this.getInputAttributes()
 
-    return (<input type='hidden' ref={input => this.uploader = input} {...attributes} />)
+    return (
+      <input
+        type='hidden'
+        ref={input => this.uploader = input}
+        {...attributes} />
+    )
   }
 }
 

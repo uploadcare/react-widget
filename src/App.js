@@ -20,11 +20,15 @@ const App = () => (
               file.done(info => console.log('File uploaded: ', info))
             }
           }}
-          onUploadComplete={info => console.log('Upload completed:', info)}/>
+          onUploadComplete={info => console.log('Upload completed:', info)} />
       </p>
       <p>
         <label htmlFor='images'>Your images:</label>{' '}
-        <Uploader id='images' name='images' data-images-only data-multiple />
+        <Uploader
+          id='images'
+          name='images'
+          data-images-only
+          data-multiple />
       </p>
       <p>
         <label htmlFor='images'>Predefined image:</label>{' '}
@@ -34,7 +38,7 @@ const App = () => (
           value='https://ucarecdn.com/e7e46bb5-685b-45bf-abc6-1dfbcfb10fec/example.jpg'
           data-images-only />
       </p>
-      <hr/>
+      <hr />
       <div>
         <h2>Embedded panel</h2>
         <p>
