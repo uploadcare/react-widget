@@ -12,7 +12,7 @@ class Uploader extends Component {
     if (typeof onChange === 'function') {
       widget.onChange(files => {
         if (files) {
-          this.files = this.files.files ? this.files.files() : [this.files]
+          this.files = (this.files && this.files.files) ? this.files.files() : [this.files]
         }
         else {
           this.files = null
