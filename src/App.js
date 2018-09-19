@@ -1,6 +1,7 @@
 import React from 'react'
 import ToggleMounting from './components/ToggleMounting'
 import Uploader from './components/Uploader'
+import UploaderPanel from './components/UploaderPanel'
 
 const App = () => (
   <React.Fragment>
@@ -33,6 +34,32 @@ const App = () => (
           value='https://ucarecdn.com/e7e46bb5-685b-45bf-abc6-1dfbcfb10fec/example.jpg'
           data-images-only />
       </p>
+      <hr/>
+      <div>
+        <h2>Embedded panel</h2>
+        <p>
+          Learn more about panel
+          in our <a href='https://uploadcare.com/docs/api_reference/javascript/dialog_panel/#open-panel'>docs</a>
+        </p>
+        <div style={{maxWidth: '800px'}}>
+          <UploaderPanel
+            tab='url'
+            settings={{multiple: true}}
+            onOpen={panel => console.log('Panel opened', panel)}
+            onDone={files => {
+              console.log('Files choosed', files)
+
+              files.map(file => {
+                console.log('File changed: ', file)
+
+                if (file) {
+                  file.progress(info => console.log('File progress: ', info.progress))
+                  file.done(info => console.log('File uploaded: ', info))
+                }
+              })
+            }} />
+        </div>
+      </div>
     </ToggleMounting>
   </React.Fragment>
 )
