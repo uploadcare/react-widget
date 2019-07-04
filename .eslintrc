@@ -1,20 +1,9 @@
 {
-  "extends": ["uploadcare", "plugin:react/recommended"],
-  "plugins": ["react"],
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "browser": true,
-    "node": true
-  },
+  "extends": ["standard", "eslint-config-standard-jsx"],
+  "parser": "babel-eslint",
+  "plugins": ["react-hooks"],
   "rules": {
-    "new-cap": "off",
-    "no-console": "off",
-    "require-jsdoc": "off",
-    "react/prop-types": "off"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
