@@ -1,50 +1,55 @@
-import React, {Component} from 'react'
+import React, {useEffect, useRef} from 'react'
+import PropTypes from 'prop-types'
 import uploadcare from 'uploadcare-widget'
 
-class Uploader extends Component {
-  componentDidMount() {
-    const widget = uploadcare.Widget(this.uploader)
-    const {value, onChange, onUploadComplete} = this.props
+const Uploader = (...props) => {
+  const uploader = useRef()
+
+  useEffect(() => {
+    const widget = uploadcare.SingleWidget(uploader.current)
 
     if (typeof value !== 'undefined') {
-      widget.value(value)
+      widget.value(props.value)
     }
     if (typeof onChange === 'function') {
       widget.onChange(files => {
         if (files) {
-          this.files = (this.files && this.files.files) ? this.files.files() : [this.files]
+          let files = files && files.files ? files.files() : [files]
         }
         else {
-          this.files = null
+          return null
         }
 
-        onChange(files)
+        props.onChange(files)
       })
     }
     if (typeof onUploadComplete === 'function') {
-      widget.onUploadComplete(onUploadComplete)
+      widget.onUploadComplete(props.onUploadComplete)
     }
-    widget.onDialogOpen(dialog => this.dialog = dialog)
-  }
-
-  componentWillUnmount() {
-    if (this.dialog) {
-      this.dialog.reject()
+    if (props.clearImage) {
+      widget.value(null)
     }
-    if (this.files) {
-      uploadcare.jQuery.when.apply(null, this.files).cancel()
+    widget.onDialogOpen(dialog => dialog)
+
+    return () => {
+      if (widget.dialog) {
+        widget.dialog.reject()
+      }
+      if (widget.files) {
+        uploadcare.jQuery.when.apply(null, widget.files).cancel()
+      }
+
+      const widgetElement = uploadcare.jQuery(uploader).next('.uploadcare--widget')
+      const widget = widgetElement.data('uploadcareWidget')
+
+      if (widget && widget.inputElement === uploader) {
+        widgetElement.remove()
+      }
     }
+  }, [])
 
-    const widgetElement = uploadcare.jQuery(this.uploader).next('.uploadcare--widget')
-    const widget = widgetElement.data('uploadcareWidget')
-
-    if (widget && widget.inputElement === this.uploader) {
-      widgetElement.remove()
-    }
-  }
-
-  getInputAttributes() {
-    const attributes = Object.assign({}, this.props)
+  const getInputAttributes = () => {
+    const attributes = Object.assign({}, props)
 
     delete attributes.value
     delete attributes.onChange
@@ -52,17 +57,21 @@ class Uploader extends Component {
 
     return attributes
   }
+  const attributes = getInputAttributes()
 
-  render() {
-    const attributes = this.getInputAttributes()
+  return (
+    <input
+      type='hidden'
+      ref={uploader}
+      {...attributes} />
+  )
+}
 
-    return (
-      <input
-        type='hidden'
-        ref={input => this.uploader = input}
-        {...attributes} />
-    )
-  }
+Uploader.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onUploadComplete: PropTypes.func,
+  clearImage: PropTypes.bool,
 }
 
 export default Uploader
