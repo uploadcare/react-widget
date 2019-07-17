@@ -27,6 +27,7 @@
     "eslint-config-uploadcare": "^1.3.0",
     "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.4.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "uglifyjs-webpack-plugin": "^1.2.5",

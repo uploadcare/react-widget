@@ -1,10 +1,31 @@
 import React, {Component} from 'react'
+import $ from 'jquery';
 import uploadcare from 'uploadcare-widget'
 
+const DEFAULT_GALLERY = [
+  "12358898-f192-435d-9bad-d3602b1d4357"
+]
+
 class Uploader extends Component {
+  favoriteTab(container, button, dialogApi, settings) {
+    button[0].title = 'Favorites'
+    $.each(DEFAULT_GALLERY, function(i, uuid) {
+      container.append($('<img>', {
+          'class': 'favorite-files-image',
+          'src': 'https://ucarecdn.com/' + uuid + '/-/scale_crop/280x280/center/',
+        })
+        .on('click', function(e) {
+          dialogApi.addFiles([uploadcare.fileFrom('uploaded', uuid, settings)])
+        })
+      );
+    });
+  }
+
   componentDidMount() {
     const widget = uploadcare.Widget(this.uploader)
     const {value, onChange, onUploadComplete} = this.props
+
+    uploadcare.registerTab('favorite', this.favoriteTab)
 
     if (typeof value !== 'undefined') {
       widget.value(value)

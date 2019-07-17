@@ -23,6 +23,22 @@ const App = () => (
           onUploadComplete={info => console.log('Upload completed:', info)} />
       </p>
       <p>
+        <label htmlFor='file'>With a custom tab:</label>{' '}
+        <Uploader
+          id='file'
+          name='file'
+          data-tabs='file url favorite'
+          onChange={(file) => {
+            console.log('File changed: ', file)
+
+            if (file) {
+              file.progress(info => console.log('File progress: ', info.progress))
+              file.done(info => console.log('File uploaded: ', info))
+            }
+          }}
+          onUploadComplete={info => console.log('Upload completed:', info)} />
+      </p>
+      <p>
         <label htmlFor='images'>Your images:</label>{' '}
         <Uploader
           id='images'

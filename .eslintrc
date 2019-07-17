@@ -16,5 +16,6 @@
     "no-console": "off",
     "require-jsdoc": "off",
     "react/prop-types": "off"
+    "react/sort-comp": "off"
   }
 }
