@@ -21,32 +21,37 @@ module.exports = function (config) {
     ],
 
     preprocessors: { 'test/*.js': ['rollup'] },
-    rollupPreprocessor: {
-      plugins: [
-        replace({ 'process.env.NODE_ENV': process.env.NODE_ENV }),
-        commonjs({
-          include: 'node_modules/**',
-          namedExports: {
-            react: [
-              'useState',
-              'useEffect',
-              'useLayoutEffect',
-              'useCallback',
-              'useMemo',
-              'useRef',
-              'Suspense',
-              'lazy'
-            ]
-          }
-        }),
-        resolve({ preferBuiltins: false }),
-        babel()
-      ],
-      output: {
-        format: 'iife',
-        name: 'uploadcare',
-        sourcemap: false
-      }
-    }
+    rollupPreprocessor: rollupConfig()
   })
 }
+
+const rollupConfig = () => ({
+  output: {
+    format: 'iife',
+    name: 'uploadcare',
+    sourcemap: false
+  },
+  plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env': '({})'
+    }),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        react: [
+          'useState',
+          'useEffect',
+          'useLayoutEffect',
+          'useCallback',
+          'useMemo',
+          'useRef',
+          'Suspense',
+          'lazy'
+        ]
+      }
+    }),
+    resolve({ preferBuiltins: false }),
+    babel()
+  ]
+})
