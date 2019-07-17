@@ -12,6 +12,7 @@ class Uploader extends Component {
     $.each(DEFAULT_GALLERY, function(i, uuid) {
       container.append($('<img>', {
           'class': 'favorite-files-image',
+          'style': 'width: 300px; height: 300px',
           'src': 'https://ucarecdn.com/' + uuid + '/-/scale_crop/280x280/center/',
         })
         .on('click', function(e) {
