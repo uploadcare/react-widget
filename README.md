@@ -17,6 +17,9 @@ React app.
 Uploadcare Widget is an HTML5 file uploader, a part of the
 [Uploadcare][uploadcare] ecosystem.
 
+## We did widget component for react‼‼️
+[try it](https://github.com/uploadcare/uploadcare-widget-react-demo/tree/react-widget)
+
 ## Using the Demo
 
 ### Step 1. Clone the repo
