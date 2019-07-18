@@ -39,7 +39,7 @@
   "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
     "@uploadcare/client-suspense": "^0.1.2",
-    "uploadcare-widget": "^3.7.5"
+    "uploadcare-widget": "^3.7.6"
   },
   "peerDependencies": {
     "react": "^16.8.0",
