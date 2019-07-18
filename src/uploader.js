@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useMemo, useCallback } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useDestructuring } from './hooks/use-destructuring'
+import { useDestructuring, useEventCallback } from './hooks'
 
 function camelCaseToDash (str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
@@ -19,36 +19,28 @@ const propsToAttr = props =>
 const useWidget = (props, uploadcare) => {
   const [
     value,
+    onFileSelect,
     onChange,
-    onUploadComplete,
     customTabs,
     validator,
     options
   ] = useDestructuring(
     ({
       value,
+      onFileSelect,
       onChange,
-      onUploadComplete,
       customTabs,
       validator,
       ...options
-    }) => [value, onChange, onUploadComplete, customTabs, validator, options],
+    }) => [value, onFileSelect, onChange, customTabs, validator, options],
     props
   )
 
   const input = useRef(null)
   const widget = useRef(null)
 
-  const onChangeCallback = useRef(onChange)
-  const onUploadCompleteCallback = useRef(onUploadComplete)
-
-  useEffect(() => {
-    onChangeCallback.current = onChange
-  }, [onChange])
-
-  useEffect(() => {
-    onUploadCompleteCallback.current = onUploadComplete
-  }, [onUploadComplete])
+  const fileSelectedCallback = useEventCallback(onFileSelect)
+  const changeCallback = useEventCallback(onChange)
 
   useEffect(() => {
     Object.entries(customTabs || []).forEach(([name, implementation]) => {
@@ -72,26 +64,14 @@ const useWidget = (props, uploadcare) => {
   }, [validator])
 
   useEffect(() => {
-    const compliteHandler = (...args) => {
-      if (typeof onUploadCompleteCallback.current === 'function') {
-        onUploadCompleteCallback.current(...args)
-      }
-    }
-
-    const changeHandler = (...args) => {
-      if (typeof onChangeCallback.current === 'function') {
-        onChangeCallback.current(...args)
-      }
-    }
-
-    widget.current.onUploadComplete.add(compliteHandler)
-    widget.current.onChange.add(changeHandler)
+    widget.current.onUploadComplete.add(changeCallback)
+    widget.current.onChange.add(fileSelectedCallback)
 
     return () => {
-      widget.current.onUploadComplete.remove(compliteHandler)
-      widget.current.onChange.remove(changeHandler)
+      widget.current.onUploadComplete.remove(changeCallback)
+      widget.current.onChange.remove(fileSelectedCallback)
     }
-  }, [uploadcare, attributes])
+  }, [uploadcare, attributes, changeCallback, fileSelectedCallback])
 
   useEffect(() => {
     let dialog
