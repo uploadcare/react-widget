@@ -3,6 +3,8 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const replace = require('rollup-plugin-replace')
 
+const react = require('react')
+
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
 module.exports = function (config) {
@@ -39,16 +41,7 @@ const rollupConfig = () => ({
     commonjs({
       include: 'node_modules/**',
       namedExports: {
-        react: [
-          'useState',
-          'useEffect',
-          'useLayoutEffect',
-          'useCallback',
-          'useMemo',
-          'useRef',
-          'Suspense',
-          'lazy'
-        ]
+        react: Object.keys(react)
       }
     }),
     resolve({ preferBuiltins: false }),
