@@ -20,4 +20,6 @@ import { Widget } from '@uploadcare/widget'
 <Widget publicKey='demopublickey' />
 ```
 
-Thats all 🙌🏻
+## Examples
+
+- [Sandbox Demo](https://codesandbox.io/s/uploadcarereact-widget-7xpqp)
