@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useMemo, useCallback } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useDestructuring, useEventCallback } from './hooks'
+import { useDestructuring, useEventCallback, useCustomTabs } from './hooks'
 
 function camelCaseToDash (str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
@@ -42,11 +42,7 @@ const useWidget = (props, uploadcare) => {
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
 
-  useEffect(() => {
-    Object.entries(customTabs || []).forEach(([name, implementation]) => {
-      uploadcare.registerTab(name, implementation)
-    })
-  }, [customTabs, uploadcare])
+  useCustomTabs(customTabs, uploadcare)
 
   const attributes = useMemo(() => propsToAttr(options), [options])
 
