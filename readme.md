@@ -34,7 +34,7 @@ Set a file/group UUID or a [CDN link](https://uploadcare.com/docs/delivery/) as 
 <Widget value={null} />
 ```
 
-### `onFileSelect`: `() => void`
+### `onFileSelect`: `(fileInfo: FileInfo) => void`
 ### `onChange`: `(fileInfo: FileInfo) => void`
   
 `FileInfo` object is described [here](https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties)
