@@ -20,7 +20,9 @@ import { Widget } from '@uploadcare/widget'
 <Widget publicKey='demopublickey' />
 ```
 
-## API
+## Available props
+
+All the props except for the listed below are passed down to the widget. See [widget documentation](https://uploadcare.com/docs/file_uploads/widget/options/#options) for the details.
 
 * `value`
 
@@ -38,7 +40,7 @@ Set a file/group UUID or a [CDN link](https://uploadcare.com/docs/delivery/) as 
 
 Set a [custom tabs](https://uploadcare.com/docs/api_reference/javascript/custom_tabs/) for a widget.
 
-Note that we're added fifth argument to the custom tab constructor - `uploadcare` object. 
+Note that we're added fifth argument to the custom tab constructor - `uploadcare` object. Widget is loaded lazily so you shouldn't import `uploadcare-widget` directly.
 
 ```
 function myTab(container, button, dialogApi, settings, name, uploadcare) {
@@ -49,8 +51,6 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 ```
 
 * `validator`
-
-All the other props are passed down to the widget. See [widget documentation](https://uploadcare.com/docs/file_uploads/widget/options/#options) for the details.
 
 ## Examples
 
