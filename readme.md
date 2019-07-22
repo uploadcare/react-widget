@@ -35,7 +35,10 @@ Set a file/group UUID or a [CDN link](https://uploadcare.com/docs/delivery/) as 
 ```
 
 ### `onFileSelect`: `() => void`
-### `onChange`: `() => void`
+### `onChange`: `(fileInfo: FileInfo) => void`
+  
+`FileInfo` object is described [here](https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties)
+  
 ### `customTabs`: `{[string]: CustomTabConstructor}`
 
 Set a [custom tabs](https://uploadcare.com/docs/api_reference/javascript/custom_tabs/) for a widget.
