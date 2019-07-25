@@ -15,7 +15,7 @@ npm i @uploadcare/react-widget
 ## Usage
 
 ```jsx
-import { Widget } from '@uploadcare/widget'
+import { Widget } from '@uploadcare/react-widget'
 
 <Widget publicKey='demopublickey' />
 ```
