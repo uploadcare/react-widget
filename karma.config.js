@@ -4,6 +4,7 @@ const commonjs = require('rollup-plugin-commonjs')
 const replace = require('rollup-plugin-replace')
 
 const react = require('react')
+const testUtils = require('react-dom/test-utils')
 
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
@@ -41,7 +42,8 @@ const rollupConfig = () => ({
     commonjs({
       include: 'node_modules/**',
       namedExports: {
-        react: Object.keys(react)
+        react: Object.keys(react),
+        'react-dom/test-utils': Object.keys(testUtils)
       }
     }),
     resolve({ preferBuiltins: false }),
