@@ -10,6 +10,7 @@
     "test:dev": "karma start karma.config.js",
     "test": "karma start karma.config.js --single-run --nocache"
   },
+  "files": ["dist/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uploadcare/uploadcare-widget-react-demo.git"
