@@ -1,5 +1,8 @@
 # React Widget
 
+[![Build Status][build-img]][build-link]
+[![NPM version][npm-img]][npm-link]
+
 React component for [uploadcare widget](https://uploadcare.com/docs/file_uploads/widget/)
 
 **This library comes untranspiled**
@@ -15,9 +18,9 @@ npm i @uploadcare/react-widget
 ## Usage
 
 ```jsx
-import { Widget } from '@uploadcare/react-widget'
+import { Widget } from "@uploadcare/react-widget";
 
-<Widget publicKey='demopublickey' />
+<Widget publicKey="demopublickey" />;
 ```
 
 ## Available props
@@ -35,10 +38,11 @@ Set a file/group UUID or a [CDN link](https://uploadcare.com/docs/delivery/) as 
 ```
 
 ### `onFileSelect`: `(fileInfo: FileInfo) => void`
+
 ### `onChange`: `(fileInfo: FileInfo) => void`
-  
+
 `FileInfo` object is described [here](https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties)
-  
+
 ### `customTabs`: `{[string]: CustomTabConstructor}`
 
 Set a [custom tabs](https://uploadcare.com/docs/api_reference/javascript/custom_tabs/) for a widget.
@@ -61,3 +65,8 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 - [Props](https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v)
 - [onChange](https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j)
 - [Gatsby](https://codesandbox.io/s/gatsby-starter-default-jr6nq)
+
+[build-img]: https://api.travis-ci.com/uploadcare/react-widget.svg?branch=master
+[build-link]: https://travis-ci.com/uploadcare/react-widget
+[npm-img]: https://img.shields.io/npm/v/@uploadcare/react-widget.svg
+[npm-link]: https://www.npmjs.com/package/@uploadcare/react-widget
