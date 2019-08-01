@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "rollup -c",
     "prepublish": "npm run build",
     "test:dev": "karma start karma.config.js",
     "test": "karma start karma.config.js --single-run --nocache"
