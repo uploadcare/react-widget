@@ -68,4 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# builded code
 dist
+en

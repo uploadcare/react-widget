@@ -1,4 +1,4 @@
-var locales = [
+export default [
   'en',
   'ar',
   'az',
@@ -30,5 +30,3 @@ var locales = [
   'zhTW',
   'zh'
 ]
-
-module.exports = locales
