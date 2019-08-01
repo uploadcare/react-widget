@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useDestructuring } from './hooks/use-destructuring'
-import { useState } from './hooks/use-state'
+import { useDestructuring, useState, useCustomTabs } from './hooks'
 
 const containerStyles = {
   height: '500px',
@@ -39,13 +38,7 @@ const useDialog = (props, uploadcare) => {
     progress: null
   })
 
-  useEffect(() => {
-    Object.entries(customTabs || []).forEach(([name, implementation]) => {
-      uploadcare.registerTab(name, (...args) =>
-        implementation(...args, uploadcare)
-      )
-    })
-  }, [customTabs, uploadcare])
+  useCustomTabs(customTabs, uploadcare)
 
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
