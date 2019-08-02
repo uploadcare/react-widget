@@ -6,16 +6,16 @@
     alt="">
 </a>
 
-This is a React component made to easily integrate
-[Uploadcare Widget][uc-feature-widget] into your React app; convenient props
-management and lazy loading are bundled.
+This is a React component made to integrate
+[Uploadcare Widget][uc-feature-widget] into your React app easily;
+convenient props management and lazy loading are bundled.
 
-The component allows users to upload media from their devices, social media,
+The component allows users to upload files from their devices, social media,
 cloud storage, and more. All that without any backend code that's usually
 required to handle uploads.
 
-**Note: This library comes untranspiled**. It means, if you want to support
-IE11, make sure you transpile `node_modules`. → [Read More][es6-debate] ←
+**Note**, this library comes untranspiled. It means, if you want to support
+IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 
 [![Build Status][build-img]][build-link]
 [![NPM version][npm-img]][npm-link]
@@ -31,10 +31,10 @@ IE11, make sure you transpile `node_modules`. → [Read More][es6-debate] ←
 
 ## Demo and Examples
 
-- [Sandbox Demo](https://codesandbox.io/s/uploadcarereact-widget-7xpqp)
-- [Props](https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v)
-- [onChange](https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j)
-- [Gatsby](https://codesandbox.io/s/gatsby-starter-default-jr6nq)
+- [Sandbox Demo](https://codesandbox.io/s/uploadcarereact-widget-7xpqp): Basic usage example
+- [Props](https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v): How to set options (properties)
+- [onChange](https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j): How to handle events
+- [Gatsby](https://codesandbox.io/s/gatsby-starter-default-jr6nq): Basic usage example with Gatsby
 
 ## Install
 
@@ -47,8 +47,16 @@ npm i @uploadcare/react-widget
 ```jsx
 import { Widget } from "@uploadcare/react-widget";
 
-<Widget publicKey="demopublickey" />;
+<Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
+
+To use the component, you should have an API key from Uploadcare.
+Uploadcare account is free and gives access to serverless
+file uploads, transformations, CDN delivery, and APIs.
+After [sign up][uc-sign-up], you land on the Dashboard
+where you manage projects. Projects are identified by their
+*public keys*: replace `YOUR_PUBLIC_KEY` with your project’s
+Public API Key and you are all set.
 
 ## Configuration
 
@@ -56,24 +64,29 @@ import { Widget } from "@uploadcare/react-widget";
 
 #### `value`: `string`
 
-Set a file/group UUID or a [CDN URL][delivery-docs] as a value.
+Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]
+or a [CDN URL][delivery-docs] as a value.
 
 ```jsx
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1' />
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1~12' />
-<Widget value={null} />
 ```
 
 #### `onFileSelect`: `(fileInfo: FileInfo) => void`
 
 #### `onChange`: `(fileInfo: FileInfo) => void`
 
-Set callbacks for the respective events. The `FileInfo` object is 
+Set callbacks for the respective events:
+
+  * **onFileSelect** provides you with the ability to do something after a new file is selected.
+  * **onChange** provides you with the ability to do something after a file is uploaded and ready.
+
+The `FileInfo` object is
 described [here][api-refs-props].
 
 #### `customTabs`: `{[string]: CustomTabConstructor}`
 
-Set [custom tabs][custom-tabs-docs] for a widget.
+Add [custom tabs][custom-tabs-docs] to a widget.
 
 Note that we added fifth argument to the custom tab constructor -
 `uploadcare` object. Widget is loaded lazily so you shouldn't import
@@ -97,11 +110,12 @@ Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
 allowed upload sources, implement file validation, and more.
 
 All the options defined in the [widget options docs][widget-options-docs] are
-also supported in the component as props.
+also supported in the component as props
+(use the camelCase notation, you can find it under “Object key”
+in the referenced article).
 
-Use our live [widget sandbox][uc-widget-configure] as a starting point and consider
-checking out the docs on [widget configuration][uc-docs-widget-config] and its
-[JavaScript API][uc-docs-widget-js-api].
+Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting point and consider
+checking out the docs on [widget configuration][uc-docs-widget-config].
 
 ## Security issues
 
@@ -133,3 +147,6 @@ request at [hello@uploadcare.com][uc-email-hello].
 [uc-feature-widget]: https://uploadcare.com/features/widget/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-config]: https://uploadcare.com/docs/uploads/widget/config/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-js-api]: https://uploadcare.com/docs/api_reference/javascript/?utm_source=github&utm_campaign=react-widget
+[uc-sign-up]: https://uploadcare.com/accounts/signup/
+[uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
+[uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads
