@@ -27,6 +27,7 @@ export const Widget = ({
   locale,
   localeTranslations,
   localePluralize,
+  preloader = 'Loading...',
   ...props
 }) => (
   <>
@@ -36,7 +37,7 @@ export const Widget = ({
       localePluralize={localeTranslations}
     />
 
-    <ClientSuspense fallback='loading...'>
+    <ClientSuspense fallback={preloader}>
       <Uploader {...props} />
     </ClientSuspense>
   </>
@@ -46,6 +47,7 @@ export const Panel = ({
   locale,
   localeTranslations,
   localePluralize,
+  preloader = 'Loading...',
   ...props
 }) => (
   <>
@@ -55,7 +57,7 @@ export const Panel = ({
       localePluralize={localeTranslations}
     />
 
-    <ClientSuspense fallback='loading...'>
+    <ClientSuspense fallback={preloader}>
       <Dialog {...props} />
     </ClientSuspense>
   </>
