@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uploadcare/uploadcare-widget-react-demo.git"
+    "url": "git+https://github.com/uploadcare/react-widget.git"
   },
   "keywords": [
     "react",
@@ -39,9 +39,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/uploadcare/uploadcare-widget-react-demo/issues"
+    "url": "https://github.com/uploadcare/react-widget/issues"
   },
-  "homepage": "https://github.com/uploadcare/uploadcare-widget-react-demo",
+  "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
     "@uploadcare/client-suspense": "^0.1.3",
     "uploadcare-widget": "^3.7.6"
