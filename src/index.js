@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react'
-import { lazy, ClientSuspense } from '@uploadcare/client-suspense'
+import { lazy, Suspense } from '@uploadcare/client-suspense'
 
 const Uploader = lazy(() => import('./uploader'))
 const Dialog = lazy(() => import('./dialog'))
@@ -37,9 +37,9 @@ export const Widget = ({
       localePluralize={localeTranslations}
     />
 
-    <ClientSuspense fallback={preloader}>
+    <Suspense fallback={preloader}>
       <Uploader {...props} />
-    </ClientSuspense>
+    </Suspense>
   </>
 )
 
@@ -57,8 +57,8 @@ export const Panel = ({
       localePluralize={localeTranslations}
     />
 
-    <ClientSuspense fallback={preloader}>
+    <Suspense fallback={preloader}>
       <Dialog {...props} />
-    </ClientSuspense>
+    </Suspense>
   </>
 )
