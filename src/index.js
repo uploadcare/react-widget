@@ -2,11 +2,11 @@ import React, { useLayoutEffect } from 'react'
 import { lazy, Suspense } from '@uploadcare/client-suspense'
 
 const Uploader = lazy(() =>
-  import(/* webpackChunkName: "uploadcare-react-widget" */ './uploader')
+  import(/* webpackChunkName: "ucare-widget-chunk" */ './uploader')
 )
 
 const Dialog = lazy(() =>
-  import(/* webpackChunkName: "uploadcare-panel" */ './dialog')
+  import(/* webpackChunkName: "ucare-panel-chunk" */ './dialog')
 )
 
 const Config = ({ locale, localeTranslations, localePluralize }) => {
