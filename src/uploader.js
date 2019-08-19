@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useMemo, useCallback } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useDestructuring, useEventCallback, useCustomTabs } from './hooks'
+import {
+  useDestructuring,
+  useEventCallback,
+  useCustomTabs,
+  useValidators
+} from './hooks'
 
 function camelCaseToDash (str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
@@ -22,17 +27,17 @@ const useWidget = (props, uploadcare) => {
     onFileSelect,
     onChange,
     customTabs,
-    validator,
+    validators,
     options
   ] = useDestructuring(
-    ({
+    ({ value, onFileSelect, onChange, customTabs, validator, ...options }) => [
       value,
       onFileSelect,
       onChange,
       customTabs,
       validator,
-      ...options
-    }) => [value, onFileSelect, onChange, customTabs, validator, options],
+      options
+    ],
     props
   )
 
@@ -53,11 +58,7 @@ const useWidget = (props, uploadcare) => {
     return () => widgetElement && widgetElement.remove()
   }, [uploadcare, attributes])
 
-  useEffect(() => {
-    if (validator != null) {
-      widget.current.validators.push(validator)
-    }
-  }, [validator])
+  useValidators(widget, validators)
 
   useEffect(() => {
     widget.current.onUploadComplete.add(changeCallback)
