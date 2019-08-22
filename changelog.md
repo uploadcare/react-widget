@@ -1,3 +1,17 @@
+# [1.0.0-0](https://github.com/uploadcare/react-widget/compare/0.2.1...1.0.0-0) (2019-08-22)
+
+
+### Features
+
+* rename validator → validators ([#31](https://github.com/uploadcare/react-widget/issues/31)) ([bdfa29a](https://github.com/uploadcare/react-widget/commit/bdfa29a))
+
+
+### BREAKING CHANGES
+
+* * validator → validators
+
+Co-Authored-By: Aleksandr Grenishin <nd0ut.me@gmail.com>
+
 ## [0.2.1](https://github.com/uploadcare/react-widget/compare/0.2.0...0.2.1) (2019-08-14)
 
 
