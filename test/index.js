@@ -8,7 +8,7 @@ import Dialog from '../src/dialog'
 
 afterEach(cleanup)
 
-describe('Widget', function () {
+describe('Uploader', function () {
   it('should renders without errors', function () {
     const { container } = render(<Uploader />)
     const status = container
