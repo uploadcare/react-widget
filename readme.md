@@ -31,13 +31,6 @@ IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 * [Security issues](#security-issues)
 * [Feedback](#feedback)
 
-## Demo and Examples
-
-- [Sandbox Demo](https://codesandbox.io/s/uploadcarereact-widget-7xpqp): Basic usage example
-- [Props](https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v): How to set options (properties)
-- [onChange](https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j): How to handle events
-- [Gatsby](https://codesandbox.io/s/gatsby-starter-default-jr6nq): Basic usage example with Gatsby
-
 ## Install
 
 ```
@@ -51,6 +44,8 @@ import { Widget } from "@uploadcare/react-widget";
 
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
+
+Basic usage example: [Sandbox][sandbox-props]
 
 To use the component, you should have an **API key** from Uploadcare.
 
@@ -66,7 +61,7 @@ You can refer to our [integration guide][react-guide] for more details.
 
 ### Component configuration
 
-#### `value`: `string`
+#### `value: string`
 
 Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]
 or a [CDN URL][delivery-docs] as a value.
@@ -76,18 +71,21 @@ or a [CDN URL][delivery-docs] as a value.
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1~12' />
 ```
 
-#### `onFileSelect`: `(fileInfo: FileInfo) => void`
+#### `onChange: (fileInfo: FileInfo) => void`
 
-#### `onChange`: `(fileInfo: FileInfo) => void`
+Provides you with the ability to do something after a file is uploaded and ready.
 
-Set callbacks for the respective events:
+[Example][sandbox-on-change]
 
-  * **onFileSelect** provides you with the ability to do something after a new file is selected.
-  * **onChange** provides you with the ability to do something after a file is uploaded and ready.
+#### `onFileSelect: (fileInfo: FileInfo) => void`
+
+Provides you with the ability to do something after a new file is selected.
 
 The `FileInfo` object is described [here][api-refs-props].
 
-#### `customTabs`: `{[string]: CustomTabConstructor}`
+[Example][sandbox-on-file-select]
+
+#### `customTabs: {[string]: CustomTabConstructor}`
 
 Add [custom tabs][custom-tabs-docs] to a widget.
 
@@ -110,6 +108,8 @@ it work, using the `tabs` prop:
 <Widget customTabs={{ tabname: myTab }} tabs='tabname' />
 ```
 
+[Example][sandbox-custom-tab]
+
 #### `validator`
 
 *The section is W.I.P.*
@@ -126,6 +126,10 @@ can find it under “Object key” in the referenced article).
 Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting
 point and consider checking out the docs on
 [widget configuration][uc-docs-widget-config].
+
+## Demos
+
+- [Gatsby][sandbox-gatsby]: Basic usage example with Gatsby
 
 ## Security issues
 
@@ -161,3 +165,10 @@ request at [hello@uploadcare.com][uc-email-hello].
 [uc-sign-up]: https://uploadcare.com/accounts/signup/
 [uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads
+
+[sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
+[sandbox-props]: https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v
+[sandbox-on-change]: https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j
+[sandbox-on-file-select]: https://codesandbox.io/s/uploadcarereact-widget-onfileselect-example-4kwyx
+[sandbox-custom-tab]: https://codesandbox.io/s/4xz0k
+[sandbox-gatsby]: https://codesandbox.io/s/23pqs
