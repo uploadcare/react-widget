@@ -22,12 +22,12 @@ IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 [![Build Status][build-img]][build-link]
 [![NPM version][npm-img]][npm-link]
 
-* [Demo & Examples](#demo-and-examples)
 * [Install](#install)
 * [Usage](#usage)
 * [Configuration](#configuration)
   * [Component configuration](#component-configuration)
   * [Widget configuration](#widget-configuration)
+* [Demos](#demos)
 * [Security issues](#security-issues)
 * [Feedback](#feedback)
 
