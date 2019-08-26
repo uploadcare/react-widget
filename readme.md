@@ -110,9 +110,31 @@ it work, using the `tabs` prop:
 
 [Example][sandbox-custom-tab]
 
-#### `validator`
+#### `validators: Validator[]`
 
-*The section is W.I.P.*
+```jsx
+const fileTypeLimit = (tps) => {
+  cosnt types = tps.split(' ')
+  return function(fileInfo) {
+    if (fileInfo.name === null) {
+      return
+    }
+    const extension = fileInfo.name.split('.').pop()
+
+    if (!types.include(extension)) {
+      throw new Error('fileType')
+    }
+  }
+}
+
+const validators = [fileTypeLimit('mp3 avi mp4')];
+
+<Widget validators={validators} />
+```
+
+The `Validator` type is described [here][api-refs-validation].
+
+[Example][sandbox-validators]
 
 ## Widget configuration
 
@@ -155,7 +177,10 @@ request at [hello@uploadcare.com][uc-email-hello].
 [delivery-docs]: https://uploadcare.com/docs/delivery/?utm_source=github&utm_campaign=react-widget
 [react-guide]: https://uploadcare.com/docs/guides/react/?utm_source=github&utm_campaign=react-widget
 [custom-tabs-docs]: https://uploadcare.com/docs/api_reference/javascript/custom_tabs/?utm_source=github&utm_campaign=react-widget
+
 [api-refs-props]: https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties?utm_source=github&utm_campaign=react-widget
+[api-refs-validation]: https://uploadcare.com/docs/file_uploads/widget/moderation/
+
 [uc-email-bounty]: mailto:bugbounty@uploadcare.com
 [uc-email-hello]: mailto:hello@uploadcare.com
 [uc-widget-configure]: https://uploadcare.com/widget/configure/?utm_source=github&utm_campaign=react-widget
@@ -171,4 +196,5 @@ request at [hello@uploadcare.com][uc-email-hello].
 [sandbox-on-change]: https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j
 [sandbox-on-file-select]: https://codesandbox.io/s/uploadcarereact-widget-onfileselect-example-4kwyx
 [sandbox-custom-tab]: https://codesandbox.io/s/4xz0k
+[sandbox-validators]: https://codesandbox.io/s/vxnjb
 [sandbox-gatsby]: https://codesandbox.io/s/23pqs
