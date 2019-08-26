@@ -71,3 +71,4 @@ yarn-error.log
 # builded code
 dist
 en
+e2e_test
