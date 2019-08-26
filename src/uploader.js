@@ -30,12 +30,12 @@ const useWidget = (props, uploadcare) => {
     validators,
     options
   ] = useDestructuring(
-    ({ value, onFileSelect, onChange, customTabs, validator, ...options }) => [
+    ({ value, onFileSelect, onChange, customTabs, validators, ...options }) => [
       value,
       onFileSelect,
       onChange,
       customTabs,
-      validator,
+      validators,
       options
     ],
     props
