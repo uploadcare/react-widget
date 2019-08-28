@@ -1,3 +1,10 @@
+# [1.0.0-2](https://github.com/uploadcare/react-widget/compare/1.0.0-1...1.0.0-2) (2019-08-28)
+
+
+### Features
+
+* provide widget api with react refs ([#41](https://github.com/uploadcare/react-widget/issues/41)) ([311b6e4](https://github.com/uploadcare/react-widget/commit/311b6e4))
+
 # [1.0.0-1](https://github.com/uploadcare/react-widget/compare/0.2.1...1.0.0-1) (2019-08-26)
 
 
