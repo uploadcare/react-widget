@@ -27,7 +27,6 @@ IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 * [Configuration](#configuration)
   * [Component configuration](#component-configuration)
   * [Widget configuration](#widget-configuration)
-* [Demos](#demos)
 * [Security issues](#security-issues)
 * [Feedback](#feedback)
 
