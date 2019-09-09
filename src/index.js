@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, forwardRef } from 'react'
 import { lazy, Suspense } from '@uploadcare/client-suspense'
 
 const Uploader = lazy(() =>
@@ -28,24 +28,29 @@ const Config = ({ locale, localeTranslations, localePluralize }) => {
   return null
 }
 
-export const Widget = ({
-  locale,
-  localeTranslations,
-  localePluralize,
-  preloader = 'Loading...',
-  ...props
-}) => (
-  <>
-    <Config
-      locale={locale}
-      localeTranslations={localeTranslations}
-      localePluralize={localeTranslations}
-    />
+export const Widget = forwardRef(
+  (
+    {
+      locale,
+      localeTranslations,
+      localePluralize,
+      preloader = 'Loading...',
+      ...props
+    },
+    ref
+  ) => (
+    <>
+      <Config
+        locale={locale}
+        localeTranslations={localeTranslations}
+        localePluralize={localeTranslations}
+      />
 
-    <Suspense fallback={preloader}>
-      <Uploader {...props} />
-    </Suspense>
-  </>
+      <Suspense fallback={preloader}>
+        <Uploader {...props} apiRef={ref} />
+      </Suspense>
+    </>
+  )
 )
 
 export const Panel = ({

@@ -1,6 +1,6 @@
 {
   "name": "@uploadcare/react-widget",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "description": "React component for Uploadcare Widget",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -106,7 +106,7 @@
     "plugins": {
       "@release-it/conventional-changelog": {
         "preset": "angular",
-        "infile": "changelog.md"
+        "infile": "CHANGELOG.md"
       }
     }
   }

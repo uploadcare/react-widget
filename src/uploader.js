@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useMemo, useCallback } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+  useImperativeHandle
+} from 'react'
 import uploadcare from 'uploadcare-widget'
 
 import {
@@ -26,14 +32,24 @@ const useWidget = (props, uploadcare) => {
     value,
     onFileSelect,
     onChange,
+    apiRef,
     customTabs,
     validators,
     options
   ] = useDestructuring(
-    ({ value, onFileSelect, onChange, customTabs, validators, ...options }) => [
+    ({
       value,
       onFileSelect,
       onChange,
+      apiRef,
+      customTabs,
+      validators,
+      ...options
+    }) => [
+      value,
+      onFileSelect,
+      onChange,
+      apiRef,
       customTabs,
       validators,
       options
@@ -103,6 +119,16 @@ const useWidget = (props, uploadcare) => {
   useEffect(() => {
     widget.current.value(value)
   }, [value])
+
+  useImperativeHandle(
+    apiRef,
+    () => ({
+      openDialog: () => widget.current.openDialog(),
+      reloadInfo: () => widget.current.reloadInfo(),
+      getInput: () => widget.current.inputElement
+    }),
+    []
+  )
 
   return useCallback(
     () => <input type='hidden' ref={input} {...attributes} />,
