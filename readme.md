@@ -6,7 +6,7 @@
     alt="">
 </a>
 
-This is a React component made to integrate [Uploadcare Widget][uc-feature-widget]
+This is a component made to integrate [Uploadcare Widget][uc-feature-widget]
 into your React app easily; convenient props management and lazy loading
 are bundled.
 
@@ -14,7 +14,7 @@ The component allows users to upload files from their devices, social media,
 cloud storage, and more. All that without any backend code that’s usually
 required to handle uploads.
 
-**[Read Uploadcare + React Integration Guide][react-guide]**
+#### [Read Uploadcare + React Integration Guide][react-guide]
 
 **Note**, this library comes untranspiled. It means that if you want to support
 IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
@@ -41,6 +41,9 @@ npm i @uploadcare/react-widget
 ```jsx
 import { Widget } from "@uploadcare/react-widget";
 
+{/* Also, you can save 30% in bundle size by using English-only version: */}
+import { Widget } from "@uploadcare/react-widget/en";
+
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
 
@@ -63,8 +66,8 @@ You can refer to our [integration guide][react-guide] for more details.
 
 #### `value: string`
 
-Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]
-or a [CDN URL][delivery-docs] as a value.
+Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups] or a [CDN URL][delivery-docs]
+as a value.
 
 ```jsx
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1' />
@@ -75,7 +78,7 @@ or a [CDN URL][delivery-docs] as a value.
 
 #### `onChange: (fileInfo: FileInfo) => void`
 
-Set a function to be called after a file is uploaded and ready.
+Set a function to be called after **a file is uploaded and ready**.
 
 * [FileInfo object description][api-refs-props]
 * [Example][sandbox-on-change]
@@ -84,7 +87,7 @@ Set a function to be called after a file is uploaded and ready.
 
 #### `onFileSelect: (fileInfo: FileInfo) => void`
 
-Set a function to be called after a new file is selected.
+Set a function to be called after **a new file is selected**.
 
 * [FileInfo object description][api-refs-props]
 * [Example][sandbox-on-file-select]
@@ -93,7 +96,7 @@ Set a function to be called after a new file is selected.
 
 #### `customTabs: {[string]: CustomTabConstructor}`
 
-Add custom tabs for the widget.
+Add **custom tabs** for a widget.
 
 ```jsx
 function myTab(container, button, dialogApi, settings, name, uploadcare) {
@@ -103,12 +106,12 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 <Widget customTabs={{ tabname: myTab }} />
 ```
 
-Note that we added the fifth argument to the custom tab constructor —
+Note that we added the fifth argument to the custom tab constructor — an
 `uploadcare` object. The widget is lazily-loaded, so you don’t have to import
 `uploadcare-widget` separately for your custom tab.
 
-Remember that you have to also include your custom tab in `tabs` prop to make
-it work:
+Remember that you have to also include your custom tab in the `tabs` prop to
+make it work:
 
 ```jsx
 <Widget customTabs={{ tabname: myTab }} tabs='tabname' />
@@ -121,9 +124,9 @@ it work:
 
 #### `validators: Validator[]`
 
-Set validators for the widget. Validator is a JavaScript function that receives
-a `fileInfo` object for each uploaded file and throws an exception if that file
-does not meet validation requirements.
+Set **validators** for a widget. Validator is a JavaScript function that
+receives a `fileInfo` object for each uploaded file and throws an exception if
+that file does not meet validation requirements.
 
 ```jsx
 const fileTypeLimit = (tps) => {
@@ -153,11 +156,15 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 
 #### `preloader: Component`
 
-Provide custom preloader for Widget
+Set a custom **preloader**. Preloader is a Component to be shown while a widget
+is loading.
+
+<br>
 
 #### `ref: widgetApiRef`
 
-For access to widget api use refs
+Define a reference object to hold the Widget API wrapper. Use it to access
+methods: `openDialog`, `reloadInfo`, and `getInput`.
 
 ```jsx
 const Example = () => {
@@ -173,9 +180,10 @@ const Example = () => {
 };
 ```
 
-* [Widget reference][uc-docs-widget-js-api]
+* [Widget API reference][uc-docs-widget-js-api]
 * [Example][sandbox-ref]
 
+<br>
 
 ### Widget configuration
 
@@ -187,19 +195,7 @@ also supported in the component as props (use the **camelCase** notation, you
 can find it under “Object key” in the referenced article).
 
 Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting
-point and consider checking out the docs on
-[widget configuration][uc-docs-widget-config].
-
-## Prebuilded eng locale
-
-you don't need all locales? use different entry for 30% smaller bundle with
-just english language
-
-```jsx
-import { Widget } from '@uploadcare/react-widget/en'
-
-<Widget />
-```
+point and consider checking out the docs on [widget configuration][uc-docs-widget-config].
 
 ## Security issues
 
