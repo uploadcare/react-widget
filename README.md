@@ -6,7 +6,7 @@
     alt="">
 </a>
 
-This is a React component made to integrate [Uploadcare Widget][uc-feature-widget]
+This is a component made to integrate [Uploadcare Widget][uc-feature-widget]
 into your React app easily; convenient props management and lazy loading
 are bundled.
 
@@ -14,15 +14,14 @@ The component allows users to upload files from their devices, social media,
 cloud storage, and more. All that without any backend code that’s usually
 required to handle uploads.
 
-**[Read Uploadcare + React Integration Guide][react-guide]**
+#### [Read Uploadcare + React Integration Guide][react-guide]
 
-**Note**, this library comes untranspiled. It means, if you want to support
+**Note**, this library comes untranspiled. It means that if you want to support
 IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 
 [![Build Status][build-img]][build-link]
 [![NPM version][npm-img]][npm-link]
 
-* [Demo & Examples](#demo-and-examples)
 * [Install](#install)
 * [Usage](#usage)
 * [Configuration](#configuration)
@@ -30,13 +29,6 @@ IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
   * [Widget configuration](#widget-configuration)
 * [Security issues](#security-issues)
 * [Feedback](#feedback)
-
-## Demo and Examples
-
-- [Sandbox Demo](https://codesandbox.io/s/uploadcarereact-widget-7xpqp): Basic usage example
-- [Props](https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v): How to set options (properties)
-- [onChange](https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j): How to handle events
-- [Gatsby](https://codesandbox.io/s/gatsby-starter-default-jr6nq): Basic usage example with Gatsby
 
 ## Install
 
@@ -49,8 +41,14 @@ npm i @uploadcare/react-widget
 ```jsx
 import { Widget } from "@uploadcare/react-widget";
 
+{/* Also, you can save 30% in bundle size by using English-only version: */}
+import { Widget } from "@uploadcare/react-widget/en";
+
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
+
+* [Basic usage example on CodeSandbox][sandbox-props]
+* [Gatsby basic usage example on CodeSandbox][sandbox-gatsby]
 
 To use the component, you should have an **API key** from Uploadcare.
 
@@ -66,34 +64,39 @@ You can refer to our [integration guide][react-guide] for more details.
 
 ### Component configuration
 
-#### `value`: `string`
+#### `value: string`
 
-Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]
-or a [CDN URL][delivery-docs] as a value.
+Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups] or a [CDN URL][delivery-docs]
+as a value.
 
 ```jsx
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1' />
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1~12' />
 ```
 
-#### `onFileSelect`: `(fileInfo: FileInfo) => void`
+<br>
 
-#### `onChange`: `(fileInfo: FileInfo) => void`
+#### `onChange: (fileInfo: FileInfo) => void`
 
-Set callbacks for the respective events:
+Set a function to be called after **a file is uploaded and ready**.
 
-  * **onFileSelect** provides you with the ability to do something after a new file is selected.
-  * **onChange** provides you with the ability to do something after a file is uploaded and ready.
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-on-change]
 
-The `FileInfo` object is described [here][api-refs-props].
+<br>
 
-#### `customTabs`: `{[string]: CustomTabConstructor}`
+#### `onFileSelect: (fileInfo: FileInfo) => void`
 
-Add [custom tabs][custom-tabs-docs] to a widget.
+Set a function to be called after **a new file is selected**.
 
-Note that we added fifth argument to the custom tab constructor - `uploadcare`
-object. Widget is loaded lazily so you shouldn’t import `uploadcare-widget`
-directly:
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-on-file-select]
+
+<br>
+
+#### `customTabs: {[string]: CustomTabConstructor}`
+
+Add **custom tabs** for a widget.
 
 ```jsx
 function myTab(container, button, dialogApi, settings, name, uploadcare) {
@@ -103,18 +106,86 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 <Widget customTabs={{ tabname: myTab }} />
 ```
 
-Remember that you have to enable custom tab the same way as default ones to make
-it work, using the `tabs` prop:
+Note that we added the fifth argument to the custom tab constructor — an
+`uploadcare` object. The widget is lazily-loaded, so you don’t have to import
+`uploadcare-widget` separately for your custom tab.
+
+Remember that you have to also include your custom tab in the `tabs` prop to
+make it work:
 
 ```jsx
 <Widget customTabs={{ tabname: myTab }} tabs='tabname' />
 ```
 
-#### `validator`
+* [Custom tabs docs][custom-tabs-docs]
+* [Example][sandbox-custom-tab]
 
-*The section is W.I.P.*
+<br>
 
-## Widget configuration
+#### `validators: Validator[]`
+
+Set **validators** for a widget. Validator is a JavaScript function that
+receives a `fileInfo` object for each uploaded file and throws an exception if
+that file does not meet validation requirements.
+
+```jsx
+const fileTypeLimit = (tps) => {
+  cosnt types = tps.split(' ')
+  return function(fileInfo) {
+    if (fileInfo.name === null) {
+      return
+    }
+    const extension = fileInfo.name.split('.').pop()
+
+    if (!types.include(extension)) {
+      throw new Error('fileType')
+    }
+  }
+}
+
+const validators = [fileTypeLimit('mp3 avi mp4')];
+
+<Widget validators={validators} />
+```
+
+* [Validator object description][api-refs-validation]
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-validators]
+
+<br>
+
+#### `preloader: Component`
+
+Set a custom **preloader**. Preloader is a Component to be shown while a widget
+is loading.
+
+<br>
+
+#### `ref: widgetApiRef`
+
+Define a reference object to hold the Widget API wrapper. Use it to access
+methods: `openDialog`, `reloadInfo`, and `getInput`.
+
+```jsx
+const Example = () => {
+ const widgetApi = useRef();
+ return (
+   <>
+     <button onClick={() => widgetApi.current.openDialog()}>
+       Click me
+     </button>
+     <Widget ref={widgetApi} publicKey=“demopublickey” />
+   </>
+ );
+};
+```
+
+* [Widget API reference][uc-docs-widget-js-api]
+* [Example][sandbox-ref]
+
+<br>
+
+### Widget configuration
 
 Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
 allowed upload sources, implement file validation, and more.
@@ -124,8 +195,7 @@ also supported in the component as props (use the **camelCase** notation, you
 can find it under “Object key” in the referenced article).
 
 Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting
-point and consider checking out the docs on
-[widget configuration][uc-docs-widget-config].
+point and consider checking out the docs on [widget configuration][uc-docs-widget-config].
 
 ## Security issues
 
@@ -151,7 +221,10 @@ request at [hello@uploadcare.com][uc-email-hello].
 [delivery-docs]: https://uploadcare.com/docs/delivery/?utm_source=github&utm_campaign=react-widget
 [react-guide]: https://uploadcare.com/docs/guides/react/?utm_source=github&utm_campaign=react-widget
 [custom-tabs-docs]: https://uploadcare.com/docs/api_reference/javascript/custom_tabs/?utm_source=github&utm_campaign=react-widget
+
 [api-refs-props]: https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties?utm_source=github&utm_campaign=react-widget
+[api-refs-validation]: https://uploadcare.com/docs/file_uploads/widget/moderation/
+
 [uc-email-bounty]: mailto:bugbounty@uploadcare.com
 [uc-email-hello]: mailto:hello@uploadcare.com
 [uc-widget-configure]: https://uploadcare.com/widget/configure/?utm_source=github&utm_campaign=react-widget
@@ -161,3 +234,12 @@ request at [hello@uploadcare.com][uc-email-hello].
 [uc-sign-up]: https://uploadcare.com/accounts/signup/
 [uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads
+
+[sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
+[sandbox-props]: https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v
+[sandbox-on-change]: https://codesandbox.io/s/uploadcarereact-widget-onchange-example-o376j
+[sandbox-on-file-select]: https://codesandbox.io/s/uploadcarereact-widget-onfileselect-example-4kwyx
+[sandbox-custom-tab]: https://codesandbox.io/s/4xz0k
+[sandbox-validators]: https://codesandbox.io/s/vxnjb
+[sandbox-ref]: https://codesandbox.io/s/keu2y
+[sandbox-gatsby]: https://codesandbox.io/s/23pqs
