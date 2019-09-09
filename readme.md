@@ -151,6 +151,32 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 
 <br>
 
+#### `preloader: Component`
+
+Provide custom preloader for Widget
+
+#### `ref: widgetApiRef`
+
+For access to widget api use refs
+
+```jsx
+const Example = () => {
+ const widgetApi = useRef();
+ return (
+   <>
+     <button onClick={() => widgetApi.current.openDialog()}>
+       Click me
+     </button>
+     <Widget ref={widgetApi} publicKey=“demopublickey” />
+   </>
+ );
+};
+```
+
+* [Widget reference][uc-docs-widget-js-api]
+* [Example][sandbox-ref]
+
+
 ### Widget configuration
 
 Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
@@ -163,6 +189,17 @@ can find it under “Object key” in the referenced article).
 Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting
 point and consider checking out the docs on
 [widget configuration][uc-docs-widget-config].
+
+## Prebuilded eng locale
+
+you don't need all locales? use different entry for 30% smaller bundle with
+just english language
+
+```jsx
+import { Widget } from '@uploadcare/react-widget/en'
+
+<Widget />
+```
 
 ## Security issues
 
@@ -208,4 +245,5 @@ request at [hello@uploadcare.com][uc-email-hello].
 [sandbox-on-file-select]: https://codesandbox.io/s/uploadcarereact-widget-onfileselect-example-4kwyx
 [sandbox-custom-tab]: https://codesandbox.io/s/4xz0k
 [sandbox-validators]: https://codesandbox.io/s/vxnjb
+[sandbox-ref]: https://codesandbox.io/s/keu2y
 [sandbox-gatsby]: https://codesandbox.io/s/23pqs
