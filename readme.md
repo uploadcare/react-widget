@@ -16,7 +16,7 @@ required to handle uploads.
 
 **[Read Uploadcare + React Integration Guide][react-guide]**
 
-**Note**, this library comes untranspiled. It means, if you want to support
+**Note**, this library comes untranspiled. It means that if you want to support
 IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
 
 [![Build Status][build-img]][build-link]
@@ -45,7 +45,8 @@ import { Widget } from "@uploadcare/react-widget";
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
 
-Basic usage example: [Sandbox][sandbox-props]
+* [Basic usage example on CodeSandbox][sandbox-props]
+* [Gatsby basic usage example on CodeSandbox][sandbox-gatsby]
 
 To use the component, you should have an **API key** from Uploadcare.
 
@@ -71,27 +72,29 @@ or a [CDN URL][delivery-docs] as a value.
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1~12' />
 ```
 
+<br>
+
 #### `onChange: (fileInfo: FileInfo) => void`
 
-Provides you with the ability to do something after a file is uploaded and ready.
+Set a function to be called after a file is uploaded and ready.
 
-[Example][sandbox-on-change]
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-on-change]
+
+<br>
 
 #### `onFileSelect: (fileInfo: FileInfo) => void`
 
-Provides you with the ability to do something after a new file is selected.
+Set a function to be called after a new file is selected.
 
-The `FileInfo` object is described [here][api-refs-props].
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-on-file-select]
 
-[Example][sandbox-on-file-select]
+<br>
 
 #### `customTabs: {[string]: CustomTabConstructor}`
 
-Add [custom tabs][custom-tabs-docs] to a widget.
-
-Note that we added fifth argument to the custom tab constructor - `uploadcare`
-object. Widget is loaded lazily so you shouldn’t import `uploadcare-widget`
-directly:
+Add custom tabs for the widget.
 
 ```jsx
 function myTab(container, button, dialogApi, settings, name, uploadcare) {
@@ -101,16 +104,27 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 <Widget customTabs={{ tabname: myTab }} />
 ```
 
-Remember that you have to enable custom tab the same way as default ones to make
-it work, using the `tabs` prop:
+Note that we added the fifth argument to the custom tab constructor —
+`uploadcare` object. The widget is lazily-loaded, so you don’t have to import
+`uploadcare-widget` separately for your custom tab.
+
+Remember that you have to also include your custom tab in `tabs` prop to make
+it work:
 
 ```jsx
 <Widget customTabs={{ tabname: myTab }} tabs='tabname' />
 ```
 
-[Example][sandbox-custom-tab]
+* [Custom tabs docs][custom-tabs-docs]
+* [Example][sandbox-custom-tab]
+
+<br>
 
 #### `validators: Validator[]`
+
+Set validators for the widget. Validator is a JavaScript function that receives
+a `fileInfo` object for each uploaded file and throws an exception if that file
+does not meet validation requirements.
 
 ```jsx
 const fileTypeLimit = (tps) => {
@@ -132,11 +146,13 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 <Widget validators={validators} />
 ```
 
-The `Validator` type is described [here][api-refs-validation].
+* [Validator object description][api-refs-validation]
+* [FileInfo object description][api-refs-props]
+* [Example][sandbox-validators]
 
-[Example][sandbox-validators]
+<br>
 
-## Widget configuration
+### Widget configuration
 
 Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
 allowed upload sources, implement file validation, and more.
@@ -148,10 +164,6 @@ can find it under “Object key” in the referenced article).
 Use the live [Uploadcare Widget Configurator][uc-widget-configure] as a starting
 point and consider checking out the docs on
 [widget configuration][uc-docs-widget-config].
-
-## Demos
-
-- [Gatsby][sandbox-gatsby]: Basic usage example with Gatsby
 
 ## Security issues
 
