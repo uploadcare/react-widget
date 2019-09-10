@@ -1,3 +1,5 @@
+# [1.0.0](https://github.com/uploadcare/react-widget/compare/1.0.0-2...1.0.0) (2019-09-10)
+
 # [1.0.0-2](https://github.com/uploadcare/react-widget/compare/1.0.0-1...1.0.0-2) (2019-08-28)
 
 
