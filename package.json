@@ -46,6 +46,7 @@
   "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
     "@uploadcare/client-suspense": "^1.0.0",
+    "react-fast-compare": "^2.0.4",
     "uploadcare-widget": "^3.7.7"
   },
   "peerDependencies": {

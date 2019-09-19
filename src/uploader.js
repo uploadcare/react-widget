@@ -1,18 +1,16 @@
 import React, {
-  memo,
   useEffect,
   useRef,
-  useMemo,
   useCallback,
   useImperativeHandle
 } from 'react'
 import uploadcare from 'uploadcare-widget'
 
 import {
-  useDestructuring,
   useEventCallback,
   useCustomTabs,
-  useValidators
+  useValidators,
+  useDeepMemo
 } from './hooks'
 
 function camelCaseToDash (str) {
@@ -28,36 +26,15 @@ const propsToAttr = props =>
     {}
   )
 
-const useWidget = (props, uploadcare) => {
-  const [
-    value,
-    onFileSelect,
-    onChange,
-    apiRef,
-    customTabs,
-    validators,
-    options
-  ] = useDestructuring(
-    ({
-      value,
-      onFileSelect,
-      onChange,
-      apiRef,
-      customTabs,
-      validators,
-      ...options
-    }) => [
-      value,
-      onFileSelect,
-      onChange,
-      apiRef,
-      customTabs,
-      validators,
-      options
-    ],
-    props
-  )
-
+const useWidget = ({
+  value,
+  onFileSelect,
+  onChange,
+  apiRef,
+  customTabs,
+  validators,
+  ...options
+}, uploadcare) => {
   const input = useRef(null)
   const widget = useRef(null)
 
@@ -66,7 +43,7 @@ const useWidget = (props, uploadcare) => {
 
   useCustomTabs(customTabs, uploadcare)
 
-  const attributes = useMemo(() => propsToAttr(options), [options])
+  const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
   useEffect(() => {
     widget.current = uploadcare.Widget(input.current)
@@ -85,7 +62,7 @@ const useWidget = (props, uploadcare) => {
       widget.current.onUploadComplete.remove(changeCallback)
       widget.current.onChange.remove(fileSelectedCallback)
     }
-  }, [uploadcare, attributes, changeCallback, fileSelectedCallback])
+  }, [changeCallback, fileSelectedCallback])
 
   useEffect(() => {
     let dialog
@@ -97,7 +74,7 @@ const useWidget = (props, uploadcare) => {
       dialog && dialog.reject()
       widget.current.onDialogOpen.remove(saveDialog)
     }
-  }, [uploadcare, attributes])
+  }, [attributes])
 
   useEffect(() => {
     let files = []
@@ -115,7 +92,7 @@ const useWidget = (props, uploadcare) => {
       files.forEach(file => file.cancel())
       widget.current.onChange.remove(saveFiles)
     }
-  }, [uploadcare, attributes])
+  }, [attributes])
 
   useEffect(() => {
     widget.current.value(value)
@@ -137,10 +114,10 @@ const useWidget = (props, uploadcare) => {
   )
 }
 
-const Uploader = memo(props => {
+const Uploader = props => {
   const Input = useWidget(props, uploadcare)
 
   return <Input />
-})
+}
 
 export default Uploader
