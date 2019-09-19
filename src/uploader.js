@@ -1,4 +1,5 @@
 import React, {
+  memo,
   useEffect,
   useRef,
   useMemo,
@@ -136,10 +137,10 @@ const useWidget = (props, uploadcare) => {
   )
 }
 
-const Uploader = props => {
+const Uploader = memo(props => {
   const Input = useWidget(props, uploadcare)
 
   return <Input />
-}
+})
 
 export default Uploader
