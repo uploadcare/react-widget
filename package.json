@@ -6,6 +6,7 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
+    "dummy": "parcel dummy/index.html",
     "prepublishOnly": "npm run build",
     "test:dev": "karma start karma.config.js",
     "test": "karma start karma.config.js --single-run --nocache",
