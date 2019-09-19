@@ -1,12 +1,10 @@
 /* eslint-env mocha */
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import assert from 'assert'
 
 import Uploader from '../src/uploader'
 import Dialog from '../src/dialog'
-
-afterEach(cleanup)
 
 describe('Uploader', function () {
   it('should renders without errors', function () {
