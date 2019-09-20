@@ -1,13 +1,34 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { Widget } from '../src'
 
-const Example = () => {
-  const [, rerender] = useReducer(state => !state, false)
+import File from './file-select-callback'
+import Panel from './default-panel'
 
-  const newFn = () => rerender()
+const Example = ({ text, component: Component }) => (
+  <div>
+    <h2>{text}</h2>
 
-  return <Widget publicKey='demopublickey' onFileSelect={newFn} />
-}
+    <br />
+    <br />
 
-ReactDOM.render(<Example />, document.getElementById('root'))
+    <Component />
+
+    <hr />
+  </div>
+)
+
+const examples = [
+  {
+    text: 'rerendering on file select callback fire',
+    component: File
+  },
+  {
+    text: 'default panel example',
+    component: Panel
+  }
+]
+
+ReactDOM.render(
+  examples.map((props, key) => <Example key={key} {...props} />),
+  document.getElementById('root')
+)
