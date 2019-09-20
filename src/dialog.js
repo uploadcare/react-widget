@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useDestructuring, useState, useCustomTabs } from './hooks'
+import { useState, useCustomTabs } from './hooks'
 
 const containerStyles = {
   height: '500px',
@@ -27,16 +27,13 @@ const Progress = ({ hidden, value }) => {
 }
 
 const useDialog = (props, uploadcare) => {
-  const [customTabs, options] = useDestructuring(
-    ({ customTabs, ...options }) => [customTabs, options],
-    props
-  )
-
   const [state, setState] = useState({
     opened: true,
     file: null,
     progress: null
   })
+
+  const { customTabs } = props
 
   useCustomTabs(customTabs, uploadcare)
 
@@ -49,9 +46,9 @@ const useDialog = (props, uploadcare) => {
       panelInstance.current = uploadcare.openPanel(
         panelContainer.current,
         state.file
-          ? uploadcare.fileFrom('uploaded', state.file.uuid, options)
+          ? uploadcare.fileFrom('uploaded', state.file.uuid, props)
           : null,
-        options
+        props
       )
 
       setState({ file: null })
@@ -64,8 +61,8 @@ const useDialog = (props, uploadcare) => {
     } else {
       // do nothing
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uploadcare, options, setState, state.opened])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uploadcare, props, setState, state.opened])
 
   useEffect(
     () => () => panelInstance.current && panelInstance.current.reject(),
