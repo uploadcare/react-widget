@@ -6,7 +6,12 @@ export default [
   // esm build width all locales
   {
     input: 'src/index.js',
-    external: ['react', 'uploadcare-widget', '@uploadcare/client-suspense'],
+    external: [
+      'react',
+      'react-fast-compare',
+      'uploadcare-widget',
+      '@uploadcare/client-suspense'
+    ],
     output: {
       format: 'esm',
       dir: 'dist/esm',
@@ -24,7 +29,12 @@ export default [
   // cjs build width all locales
   {
     input: 'src/index.js',
-    external: ['react', 'uploadcare-widget', '@uploadcare/client-suspense'],
+    external: [
+      'react',
+      'react-fast-compare',
+      'uploadcare-widget',
+      '@uploadcare/client-suspense'
+    ],
     output: {
       format: 'cjs',
       dir: 'dist/cjs',
@@ -42,7 +52,12 @@ export default [
   // esm build width en locale (30% smaller)
   {
     input: 'src/index.js',
-    external: ['react', 'uploadcare-widget/uploadcare.lang.en', '@uploadcare/client-suspense'],
+    external: [
+      'react',
+      'react-fast-compare',
+      'uploadcare-widget/uploadcare.lang.en',
+      '@uploadcare/client-suspense'
+    ],
     output: {
       format: 'esm',
       dir: 'en',
