@@ -6,6 +6,7 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
+    "dummy": "parcel dummy/index.html",
     "prepublishOnly": "npm run build",
     "test:dev": "karma start karma.config.js",
     "test": "karma start karma.config.js --single-run --nocache",
@@ -45,6 +46,7 @@
   "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
     "@uploadcare/client-suspense": "^1.0.0",
+    "react-fast-compare": "^2.0.4",
     "uploadcare-widget": "^3.7.7"
   },
   "peerDependencies": {
