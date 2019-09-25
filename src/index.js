@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { lazy, Suspense } from '@uploadcare/client-suspense'
+import { useIsomorphicEffect } from './hooks'
 
 const Uploader = lazy(() =>
   import(/* webpackChunkName: "ucare-widget-chunk" */ './uploader')
@@ -10,13 +11,13 @@ const Dialog = lazy(() =>
 )
 
 const Config = ({ locale, localeTranslations, localePluralize }) => {
-  useLayoutEffect(() => {
+  useIsomorphicEffect(() => {
     window.UPLOADCARE_LIVE = false
     window.UPLOADCARE_MANUAL_START = true
   }, [])
 
   // configurate translations
-  useLayoutEffect(() => {
+  useIsomorphicEffect(() => {
     window.UPLOADCARE_LOCALE = window.UPLOADCARE_LOCALE || locale
     window.UPLOADCARE_LOCALE_TRANSLATIONS =
       window.UPLOADCARE_LOCALE_TRANSLATIONS || localeTranslations
