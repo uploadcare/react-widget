@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/uploadcare/react-widget/compare/1.0.1...1.0.2) (2019-09-25)
+
+
+### Bug Fixes
+
+* hide ssr warning about useLayoutEffect ([#46](https://github.com/uploadcare/react-widget/issues/46)) ([cfa48f9](https://github.com/uploadcare/react-widget/commit/cfa48f9))
+
 ## [1.0.1](https://github.com/uploadcare/react-widget/compare/1.0.0...1.0.1) (2019-09-20)
 
 
