@@ -41,8 +41,11 @@ npm i @uploadcare/react-widget
 ```jsx
 import { Widget } from "@uploadcare/react-widget";
 
-{/* Also, you can save 30% in bundle size by using English-only version: */}
-import { Widget } from "@uploadcare/react-widget/en";
+/*
+ * Also, you can save 30% in bundle size by using English-only version:
+ *
+ * import { Widget } from "@uploadcare/react-widget/en";
+ */
 
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
