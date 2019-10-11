@@ -1,13 +1,14 @@
 {
   "name": "@uploadcare/react-widget",
-  "version": "1.0.2",
+  "version": "1.0.3-beta.1",
   "description": "React component for Uploadcare Widget",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
+    "clean": "rimraf dist en",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run clean && npm run build",
     "test:dev": "karma start karma.config.js",
     "test": "karma start karma.config.js --single-run --nocache",
     "release": "release-it"
@@ -82,6 +83,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "release-it": "^12.4.3",
+    "rimraf": "^3.0.0",
     "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
