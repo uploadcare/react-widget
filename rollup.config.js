@@ -22,7 +22,10 @@ export default [
         include: /node_modules/,
         sourceMap: false
       }),
-      babel()
+      babel({
+        exclude: 'node_modules/**',
+        presets: [['@babel/env', { modules: false }]]
+      })
     ]
   },
 
@@ -45,7 +48,10 @@ export default [
         include: /node_modules/,
         sourceMap: false
       }),
-      babel()
+      babel({
+        exclude: 'node_modules/**',
+        presets: [['@babel/env', { modules: false }]]
+      })
     ]
   },
 
@@ -69,7 +75,10 @@ export default [
         include: /node_modules/,
         sourceMap: false
       }),
-      babel()
+      babel({
+        exclude: 'node_modules/**',
+        presets: [['@babel/env', { modules: false }]]
+      })
     ]
   }
 ]
