@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
+import uploadcare from 'uploadcare-widget'
 
 export default [
   // esm build width all locales
@@ -70,6 +71,18 @@ export default [
         sourceMap: false
       }),
       babel()
+    ]
+  },
+
+  {
+    input: 'src/langs.js',
+    output: {
+      format: 'esm',
+      file: 'locales.js',
+      sourcemap: false
+    },
+    plugins: [
+      replace({ __LANGS__: JSON.stringify(uploadcare.locales) })
     ]
   }
 ]

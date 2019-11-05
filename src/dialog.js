@@ -92,8 +92,7 @@ const Dialog = props => {
             setState({
               opened: true,
               sourse: 'natural'
-            })
-          }
+            })}
         >
           Open panel
         </button>
