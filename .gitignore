@@ -72,3 +72,4 @@ yarn-error.log
 dist
 en
 e2e_test
+locales.js
