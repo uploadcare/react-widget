@@ -48,7 +48,7 @@
   "dependencies": {
     "@uploadcare/client-suspense": "^1.0.1",
     "react-fast-compare": "^2.0.4",
-    "uploadcare-widget": "^3.8.0-beta.2"
+    "uploadcare-widget": "^3.8.0"
   },
   "peerDependencies": {
     "react": "^16.10.2",
