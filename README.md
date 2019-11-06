@@ -16,9 +16,6 @@ required to handle uploads.
 
 #### [Read Uploadcare + React Integration Guide][react-guide]
 
-**Note**, this library comes untranspiled. It means that if you want to support
-IE11, make sure you transpile `node_modules`. [Learn more][es6-debate]
-
 [![Build Status][build-img]][build-link]
 [![NPM version][npm-img]][npm-link]
 
