@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/uploadcare/react-widget/compare/1.0.2...1.0.3) (2019-11-07)
+
+
+### Features
+
+* build locales from uploadcare-widget ([#52](https://github.com/uploadcare/react-widget/issues/52)) ([284c7a9](https://github.com/uploadcare/react-widget/commit/284c7a9dfc0febf8467b79bd3fc4c8525dadbecb))
+
 ## [1.0.2](https://github.com/uploadcare/react-widget/compare/1.0.1...1.0.2) (2019-09-25)
 
 
