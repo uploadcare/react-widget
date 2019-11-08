@@ -259,7 +259,7 @@ export interface FileInfo extends Progress {
 
 export type CustomTabConstructor = () => void
 
-export type Validator = (...params: any) => (fileInfo: FileInfo);
+export type Validator = (...params: any) => (fileInfo: FileInfo) => void;
 
 export const Widget: RefForwardingComponent<{
   locale?: Locale;
