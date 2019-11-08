@@ -1,4 +1,4 @@
-import {FunctionComponent, ReactElement, RefForwardingComponent} from 'react'
+import { FunctionComponent, ReactElement, RefForwardingComponent } from 'react';
 
 export type Locale =
   'en' |
@@ -194,13 +194,9 @@ export const Panel: FunctionComponent<{
   localeTranslations: LocaleTranslations;
   localePluralize: (n: number) => string;
   preloader?: string;
-}>
+}>;
 
-interface Status {
-  status: string;
-}
-
-interface Progress {
+export interface Progress {
   size: number;
   done: number;
   total: number;
@@ -211,7 +207,7 @@ export interface GeoLocation {
   longitude: number;
 }
 
-interface ImageInfo {
+export interface ImageInfo {
   height: number;
   width: number;
   geo_location: null | GeoLocation;
@@ -223,14 +219,14 @@ interface ImageInfo {
   sequence?: boolean;
 }
 
-interface Audio {
+export interface Audio {
   bitrate: number | null;
   codec: string | null;
   sample_rate: number | null;
   channels: string | null;
 }
 
-interface Video {
+export interface Video {
   height: number;
   width: number;
   frame_rate: number;
@@ -238,7 +234,7 @@ interface Video {
   codec: string;
 }
 
-interface VideoInfo {
+export interface VideoInfo {
   duration: number;
   format: string;
   bitrate: number;
@@ -246,7 +242,7 @@ interface VideoInfo {
   video: Video;
 }
 
-export type Uuid = string
+export type Uuid = string;
 
 export interface FileInfo extends Progress {
   uuid: Uuid;
@@ -278,4 +274,4 @@ export const Widget: RefForwardingComponent<{
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
   preloader?: ReactElement;
-}>
+}>;
