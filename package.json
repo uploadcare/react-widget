@@ -6,7 +6,7 @@
   "module": "dist/esm/index.js",
   "types": "types",
   "scripts": {
-    "lint-types": "dtslint types --onlyTestTsNext && dtslint types/preact --onlyTestTsNext",
+    "lint-types": "dtslint types --onlyTestTsNext",
     "clean": "rimraf dist en",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
