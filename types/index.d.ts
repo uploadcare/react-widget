@@ -257,9 +257,9 @@ export interface FileInfo extends Progress {
   video_info: null | VideoInfo;
 }
 
-export interface CustomTabConstructor {}
+export type CustomTabConstructor = () => void
 
-export interface Validator {}
+export type Validator = (...params: any) => (fileInfo: FileInfo);
 
 export const Widget: RefForwardingComponent<{
   locale?: Locale;
