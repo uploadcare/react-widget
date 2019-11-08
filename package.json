@@ -4,7 +4,9 @@
   "description": "React component for Uploadcare Widget",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "types",
   "scripts": {
+    "lint-types": "dtslint types --onlyTestTsNext && dtslint types/preact --onlyTestTsNext",
     "clean": "rimraf dist en",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
@@ -16,7 +18,8 @@
   "files": [
     "dist/*",
     "en/*",
-    "locales.js"
+    "locales.js",
+    "*.d.ts"
   ],
   "repository": {
     "type": "git",
@@ -62,8 +65,10 @@
     "@babel/preset-react": "^7.6.3",
     "@release-it/conventional-changelog": "^1.1.0",
     "@testing-library/react": "^9.3.0",
+    "@types/react": "^16.9.11",
     "assert": "^2.0.0",
     "babel-eslint": "^10.0.3",
+    "dtslint": "^2.0.0",
     "eslint": "^6.4.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-jsx": "^8.1.0",
