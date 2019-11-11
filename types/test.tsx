@@ -1,23 +1,22 @@
 import * as React from 'react';
-import {FileInfo, Widget, WidgetAPI} from '@uploadcare/react-widget'
-import {useRef} from 'react';
+import { FileInfo, Widget, WidgetAPI } from '@uploadcare/react-widget';
 
 <Widget publicKey='demopublickey' />;
 
 const fileTypeLimit = (allowedFileTypes: string) => {
-  const types = allowedFileTypes.split(' ')
+  const types = allowedFileTypes.split(' ');
 
-  return function(fileInfo: FileInfo) {
+  return (fileInfo: FileInfo) => {
     if (fileInfo.filename === null) {
-      return
+      return;
     }
-    const extension = fileInfo.filename.split('.').pop()
+    const extension = fileInfo.filename.split('.').pop();
 
     if (extension && !types.includes(extension)) {
-      throw new Error(`${extension} is not allowed to upload`)
+      throw new Error(`${extension} is not allowed to upload`);
     }
-  }
-}
+  };
+};
 
 const validators = [fileTypeLimit('mp3 avi mp4')];
 
@@ -42,6 +41,6 @@ const Preloader = () => <div />;
   publicKey='demopublickey'
   preloader={Preloader}/>;
 
-const widgetApi = useRef<WidgetAPI>(null);
+const widgetApi = React.useRef<WidgetAPI>(null);
 
-<Widget ref={widgetApi} publicKey='demopublickey' />
+<Widget ref={widgetApi} publicKey='demopublickey' />;

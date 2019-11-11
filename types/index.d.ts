@@ -1,4 +1,4 @@
-import {ComponentType, FunctionComponent, Ref, RefForwardingComponent} from 'react'
+import { ComponentType, FunctionComponent, Ref, RefForwardingComponent } from 'react';
 
 export type Locale =
   'en' |
@@ -271,7 +271,7 @@ export interface Settings {
   manualStart?: boolean;
   locale?: Locale;
   localePluralize?: (n: number) => string;
-  localeTranslations?: LocaleTranslations,
+  localeTranslations?: LocaleTranslations;
   // widget & dialog settings
   systemDialog?: boolean;
   crop?: boolean;
@@ -281,9 +281,9 @@ export interface Settings {
   multiple?: boolean;
   multipleMax?: number;
   multipleMin?: number;
-  multipleMaxStrict?: boolean,
-  imageShrink?: boolean,
-  pathValue?: boolean,
+  multipleMaxStrict?: boolean;
+  imageShrink?: boolean;
+  pathValue?: boolean;
   tabs?: string;
   preferredTypes?: string;
   inputAcceptTypes?: string; // '' means default, null means "disable accept"
@@ -341,7 +341,7 @@ export type CustomTabConstructor = (
   settings: Settings,
   name: string,
   uploadcare: Uploadcare
-) => void
+) => void;
 
 export type Validator = ((fileInfo: FileInfo) => void);
 
