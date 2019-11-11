@@ -1,4 +1,5 @@
-import { ComponentType, FunctionComponent, Ref, RefForwardingComponent } from 'react';
+import { ComponentType, Ref, RefForwardingComponent } from 'react';
+import JQuery = require('jquery');
 
 export type Locale =
   'en' |
@@ -191,25 +192,12 @@ export interface LocaleTranslations {
   };
 }
 
-export const Panel: FunctionComponent<{
-  locale: Locale;
-  localeTranslations: LocaleTranslations;
-  localePluralize: (n: number) => string;
-  preloader?: string;
-}>;
-
-export interface Progress {
-  size: number;
-  done: number;
-  total: number;
-}
-
 export interface GeoLocation {
   latitude: number;
   longitude: number;
 }
 
-export interface ImageInfo {
+export interface OriginalImageInfo {
   height: number;
   width: number;
   geo_location: null | GeoLocation;
@@ -221,49 +209,38 @@ export interface ImageInfo {
   sequence?: boolean;
 }
 
-export interface Audio {
-  bitrate: number | null;
-  codec: string | null;
-  sample_rate: number | null;
-  channels: string | null;
-}
-
-export interface Video {
-  height: number;
-  width: number;
-  frame_rate: number;
-  bitrate: number;
-  codec: string;
-}
-
-export interface VideoInfo {
-  duration: number;
-  format: string;
-  bitrate: number;
-  audio: Audio | null;
-  video: Video;
-}
-
 export type Uuid = string;
 
-export interface FileInfo extends Progress {
-  uuid: Uuid;
-  file_id: Uuid;
-  original_filename: string;
-  filename: string;
-  mime_type: string;
-  is_image: string;
-  is_store: string;
-  is_ready: string;
-  image_info: null | ImageInfo;
-  video_info: null | VideoInfo;
+export interface SourceInfo {
+  source: string;
+  file: any;
 }
 
-export interface Container {}
+export interface FileInfo {
+  uuid: Uuid;
+  name: null | string;
+  size: null | number;
+  isStored: null | boolean;
+  isImage: null | boolean;
+  originalImageInfo: null | OriginalImageInfo;
+  mimeType: string;
+  originalUrl: null | string;
+  cdnUrl: null | string;
+  cdnUrlModifiers: null | string;
+  sourceInfo: null | SourceInfo;
+}
 
-export interface Button {}
+export type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
 
-export interface DialogApi {}
+export interface DialogApi {
+  addFiles(files: FileInfo[]): void;
+  switchTab(tab: string): void;
+  fileColl: FileInfo[];
+  hideTab(tab: string): void;
+  showTab(tab: string): void;
+  isTabVisible(tab: string): boolean;
+  onTabVisibility(callback: OnTabVisibilityCallback): void;
+}
 
 export interface Settings {
   // developer hooks
@@ -332,15 +309,13 @@ export interface WidgetProps extends Settings {
   ref?: Ref<WidgetAPI>;
 }
 
-export interface Uploadcare {}
-
 export type CustomTabConstructor = (
-  container: Container,
-  button: Button,
+  container: JQuery,
+  button: JQuery,
   dialogApi: DialogApi,
   settings: Settings,
   name: string,
-  uploadcare: Uploadcare
+  uploadcare: any
 ) => void;
 
 export type Validator = ((fileInfo: FileInfo) => void);

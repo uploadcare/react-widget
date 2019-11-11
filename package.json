@@ -6,13 +6,13 @@
   "module": "dist/esm/index.js",
   "types": "types",
   "scripts": {
-    "lint-types": "dtslint types --onlyTestTsNext",
+    "lint:types": "dtslint types --onlyTestTsNext",
     "clean": "rimraf dist en",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
     "prepublishOnly": "npm run clean && npm run build",
-    "test:dev": "karma start karma.config.js",
-    "test": "karma start karma.config.js --single-run --nocache",
+    "test:dev": "npm run lint:types && karma start karma.config.js",
+    "test": "npm run lint:types && karma start karma.config.js --single-run --nocache",
     "release": "release-it"
   },
   "files": [
@@ -65,6 +65,7 @@
     "@babel/preset-react": "^7.6.3",
     "@release-it/conventional-changelog": "^1.1.0",
     "@testing-library/react": "^9.3.0",
+    "@types/jquery": "^3.3.31",
     "@types/react": "^16.9.11",
     "assert": "^2.0.0",
     "babel-eslint": "^10.0.3",
