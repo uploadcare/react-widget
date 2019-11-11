@@ -94,7 +94,7 @@ Set a function to be called after **a new file is selected**.
 
 <br>
 
-#### `customTabs: {[string]: CustomTabConstructor}`
+#### `customTabs: {[key: string]: CustomTabConstructor}`
 
 Add **custom tabs** for a widget.
 
@@ -129,15 +129,16 @@ receives a `fileInfo` object for each uploaded file and throws an exception if
 that file does not meet validation requirements.
 
 ```jsx
-const fileTypeLimit = (tps) => {
-  cosnt types = tps.split(' ')
-  return function(fileInfo) {
-    if (fileInfo.name === null) {
+const fileTypeLimit = (allowedFileTypes: string) => {
+  const types = allowedFileTypes.split(' ')
+
+  return function(fileInfo: FileInfo) {
+    if (fileInfo.filename === null) {
       return
     }
-    const extension = fileInfo.name.split('.').pop()
+    const extension = fileInfo.filename.split('.').pop()
 
-    if (!types.include(extension)) {
+    if (extension && !types.includes(extension)) {
       throw new Error('fileType')
     }
   }
@@ -154,7 +155,7 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 
 <br>
 
-#### `preloader: Component`
+#### `preloader: ComponentType`
 
 Set a custom **preloader**. Preloader is a Component to be shown while a widget
 is loading.

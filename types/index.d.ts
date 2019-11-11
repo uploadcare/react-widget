@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactElement, RefForwardingComponent } from 'react';
+import {ComponentType, FunctionComponent, Ref, RefForwardingComponent} from 'react'
 
 export type Locale =
   'en' |
@@ -31,6 +31,8 @@ export type Locale =
   'vi' |
   'zhTW' |
   'zh';
+
+export type LocalePluralize = (n: number) => string;
 
 export interface LocaleTranslations {
   uploading?: string;
@@ -257,21 +259,95 @@ export interface FileInfo extends Progress {
   video_info: null | VideoInfo;
 }
 
-export type CustomTabConstructor = () => void
+export interface Container {}
 
-export type Validator = (...params: any) => (fileInfo: FileInfo) => void;
+export interface Button {}
 
-export const Widget: RefForwardingComponent<{
+export interface DialogApi {}
+
+export interface Settings {
+  // developer hooks
+  live?: boolean;
+  manualStart?: boolean;
   locale?: Locale;
-  localeTranslations?: LocaleTranslations;
   localePluralize?: (n: number) => string;
-  preloader?: string;
-}, {
-  publicKey: string;
+  localeTranslations?: LocaleTranslations,
+  // widget & dialog settings
+  systemDialog?: boolean;
+  crop?: boolean;
+  previewStep?: boolean;
+  imagesOnly?: boolean;
+  clearable?: boolean;
+  multiple?: boolean;
+  multipleMax?: number;
+  multipleMin?: number;
+  multipleMaxStrict?: boolean,
+  imageShrink?: boolean,
+  pathValue?: boolean,
+  tabs?: string;
+  preferredTypes?: string;
+  inputAcceptTypes?: string; // '' means default, null means "disable accept"
+  // upload settings
+  doNotStore?: boolean;
+  publicKey: string | null;
+  secureSignature?: string;
+  secureExpire?: number;
+  pusherKey?: string;
+  cdnBase?: string;
+  urlBase?: string;
+  socialBase?: string;
+  previewProxy?: string | null;
+  previewUrlCallback?: ((originalUrl: string, fileInfo: FileInfo) => string) | null;
+  // fine tuning
+  imagePreviewMaxSize?: number;
+  multipartMinSize?: number;
+  multipartPartSize?: number;
+  multipartMinLastPartSize?: number;
+  multipartConcurrency?: number;
+  multipartMaxAttempts?: number;
+  parallelDirectUploads?: number;
+  passWindowOpen?: boolean;
+  // camera recording
+  audioBitsPerSecond?: number | null;
+  videoBitsPerSecond?: number | null;
+  // maintain settings
+  scriptBase?: string;
+  debugUploads?: boolean;
+  integration?: string;
+}
+
+export interface WidgetAPI {
+  openDialog: (tab: string) => void;
+  reloadInfo: () => void;
+  getInput: () => HTMLInputElement;
+}
+
+export interface WidgetProps extends Settings {
   value?: string;
   onChange?: (fileInfo: FileInfo) => void;
   onFileSelect?: (fileInfo: FileInfo) => void;
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
-  preloader?: ReactElement;
-}>;
+  preloader?: ComponentType;
+  ref?: Ref<WidgetAPI>;
+}
+
+export interface Uploadcare {}
+
+export type CustomTabConstructor = (
+  container: Container,
+  button: Button,
+  dialogApi: DialogApi,
+  settings: Settings,
+  name: string,
+  uploadcare: Uploadcare
+) => void
+
+export type Validator = ((fileInfo: FileInfo) => void);
+
+export const Widget: RefForwardingComponent<{
+  locale?: Locale;
+  localeTranslations?: LocaleTranslations;
+  localePluralize?: LocalePluralize;
+  preloader?: string;
+}, WidgetProps>;
