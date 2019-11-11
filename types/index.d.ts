@@ -251,7 +251,7 @@ export interface Settings {
   localeTranslations?: LocaleTranslations;
   // widget & dialog settings
   systemDialog?: boolean;
-  crop?: boolean;
+  crop?: 'disabled' | 'free' | '' | string;
   previewStep?: boolean;
   imagesOnly?: boolean;
   clearable?: boolean;
@@ -259,7 +259,7 @@ export interface Settings {
   multipleMax?: number;
   multipleMin?: number;
   multipleMaxStrict?: boolean;
-  imageShrink?: boolean;
+  imageShrink?: string;
   pathValue?: boolean;
   tabs?: string;
   preferredTypes?: string;
