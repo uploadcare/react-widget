@@ -16,6 +16,4 @@ const useValidators = (widget, validators) => {
   }, [widget, validators])
 }
 
-export {
-  useValidators
-}
+export { useValidators }

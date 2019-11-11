@@ -7,5 +7,5 @@ export default () => {
 
   const newFn = () => rerender()
 
-  return <Widget publicKey='demopublickey' onFileSelect={newFn} />
+  return <Widget publicKey="demopublickey" onFileSelect={newFn} />
 }

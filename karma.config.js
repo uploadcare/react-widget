@@ -8,7 +8,7 @@ const testUtils = require('react-dom/test-utils')
 
 process.env.CHROME_BIN = require('puppeteer').executablePath()
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     browsers: ['ChromeHeadless'],
     reporters: ['progress'],
