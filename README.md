@@ -133,10 +133,10 @@ const fileTypeLimit = (allowedFileTypes: string) => {
   const types = allowedFileTypes.split(' ')
 
   return function(fileInfo: FileInfo) {
-    if (fileInfo.filename === null) {
+    if (fileInfo.name === null) {
       return
     }
-    const extension = fileInfo.filename.split('.').pop()
+    const extension = fileInfo.name.split('.').pop()
 
     if (extension && !types.includes(extension)) {
       throw new Error('fileType')
