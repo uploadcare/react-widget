@@ -1,5 +1,5 @@
 import { ComponentType, Ref, RefForwardingComponent } from 'react';
-import JQuery from 'jquery';
+import JQuery = require('jquery');
 
 export type Locale =
   'en' |
