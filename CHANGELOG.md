@@ -1,9 +1,3 @@
-## Unreleased
-
-### Added
-
-* Type definitions for widget. See [PR#55](https://github.com/uploadcare/react-widget/pull/55)
-
 ## [1.0.3](https://github.com/uploadcare/react-widget/compare/1.0.2...1.0.3) (2019-11-07)
 
 
