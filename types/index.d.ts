@@ -244,8 +244,6 @@ export interface DialogApi {
 
 export interface Settings {
   // developer hooks
-  live?: boolean;
-  manualStart?: boolean;
   locale?: Locale;
   localePluralize?: (n: number) => string;
   localeTranslations?: LocaleTranslations;
