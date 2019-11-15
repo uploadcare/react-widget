@@ -6,8 +6,8 @@ import assert from 'assert'
 import Uploader from '../src/uploader'
 import Dialog from '../src/dialog'
 
-describe('Uploader', function () {
-  it('should renders without errors', function () {
+describe('Uploader', function() {
+  it('should renders without errors', function() {
     const { container } = render(<Uploader />)
     const status = container
       .querySelector('.uploadcare--widget')
@@ -17,8 +17,8 @@ describe('Uploader', function () {
   })
 })
 
-describe('Panel', function () {
-  it('should renders without errors', function () {
+describe('Panel', function() {
+  it('should renders without errors', function() {
     const { container } = render(<Dialog />)
     const panel = container.querySelector('.uploadcare--panel')
 

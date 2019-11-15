@@ -13,7 +13,7 @@ import {
   useDeepMemo
 } from './hooks'
 
-function camelCaseToDash (str) {
+function camelCaseToDash(str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 }
 
@@ -26,15 +26,10 @@ const propsToAttr = props =>
     {}
   )
 
-const useWidget = ({
-  value,
-  onFileSelect,
-  onChange,
-  apiRef,
-  customTabs,
-  validators,
-  ...options
-}, uploadcare) => {
+const useWidget = (
+  { value, onFileSelect, onChange, apiRef, customTabs, validators, ...options },
+  uploadcare
+) => {
   const input = useRef(null)
   const widget = useRef(null)
 
@@ -109,7 +104,7 @@ const useWidget = ({
   )
 
   return useCallback(
-    () => <input type='hidden' ref={input} {...attributes} />,
+    () => <input type="hidden" ref={input} {...attributes} />,
     [attributes]
   )
 }

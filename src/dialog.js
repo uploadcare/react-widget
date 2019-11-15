@@ -87,7 +87,7 @@ const Dialog = props => {
 
       <span hidden={!readyState}>
         <button
-          className='uploadcare--button uploadcare--button_primary'
+          className="uploadcare--button uploadcare--button_primary"
           onClick={() =>
             setState({
               opened: true,
