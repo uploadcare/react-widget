@@ -1,8 +1,28 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { CustomTabConstructor, FileInfo, Widget, WidgetAPI } from '@uploadcare/react-widget';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import {Widget, CustomTabConstructor, FileInfo, WidgetAPI, Locale, Crop} from '@uploadcare/react-widget';
 
 <Widget publicKey='demopublickey' />;
+
+<Widget
+  publicKey='demopublickey'
+  locale={Locale.de} />;
+
+<Widget
+  publicKey='demopublickey'
+  crop={Crop.Disabled} />;
+
+<Widget
+  publicKey='demopublickey'
+  crop={Crop.Free} />;
+
+<Widget
+  publicKey='demopublickey'
+  crop={Crop.Default} />;
+
+<Widget
+  publicKey='demopublickey'
+  crop='200x300' />;
 
 const fileTypeLimit = (allowedFileTypes: string) => {
   const types = allowedFileTypes.split(' ');
