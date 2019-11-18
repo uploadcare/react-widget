@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/uploadcare/react-widget/compare/1.0.3...1.1.0) (2019-11-18)
+
+
+### Features
+
+* added type definitions for Typescript ([#55](https://github.com/uploadcare/react-widget/issues/55)) ([99aa82c](https://github.com/uploadcare/react-widget/commit/99aa82c2affa4f022bfc2f00ef0d478c96e6cd6b))
+
 ## [1.0.3](https://github.com/uploadcare/react-widget/compare/1.0.2...1.0.3) (2019-11-07)
 
 
