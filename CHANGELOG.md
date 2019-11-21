@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/uploadcare/react-widget/compare/1.0.3...1.2.0) (2019-11-21)
+
+
+### Bug Fixes
+
+* **types:** fixed path to *.d.ts files([#60](https://github.com/uploadcare/react-widget/issues/60)) ([a67f5eb](https://github.com/uploadcare/react-widget/commit/a67f5eb44a1558b76d7c7139bc39034baad62af8))
+
+
 # [1.1.0](https://github.com/uploadcare/react-widget/compare/1.0.3...1.1.0) (2019-11-18)
 
 
