@@ -4,7 +4,7 @@
   "description": "React component for Uploadcare Widget",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "types",
+  "types": "types/index.d.ts",
   "scripts": {
     "lint:types": "dtslint types --onlyTestTsNext",
     "lint:js": "eslint ./src/** ./test/** karma.config.js rollup.config.js",
@@ -21,7 +21,7 @@
     "dist/*",
     "en/*",
     "locales.js",
-    "*.d.ts"
+    "types/index.d.ts"
   ],
   "repository": {
     "type": "git",
