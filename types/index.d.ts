@@ -296,6 +296,8 @@ export interface Settings {
   scriptBase?: string;
   debugUploads?: boolean;
   integration?: string;
+  // effects tab
+  effects?: string | string[];
 }
 
 export interface WidgetAPI {
