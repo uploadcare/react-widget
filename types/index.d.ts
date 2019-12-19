@@ -1,38 +1,37 @@
 import { ComponentType, Ref, RefForwardingComponent } from 'react';
 import JQuery = require('jquery');
 
-export enum Locale {
-  en = 'en',
-  ar = 'ar',
-  az = 'az',
-  ca = 'ca',
-  cs = 'cs',
-  da = 'da',
-  de = 'de',
-  el = 'el',
-  es = 'es',
-  et = 'et',
-  fr = 'fr',
-  he = 'he',
-  it = 'it',
-  ja = 'ja',
-  ko = 'ko',
-  lv = 'lv',
-  nb = 'nb',
-  nl = 'nl',
-  pl = 'pl',
-  pt = 'pt',
-  ro = 'ro',
-  ru = 'ru',
-  sk = 'sk',
-  sr = 'sr',
-  sv = 'sv',
-  tr = 'tr',
-  uk = 'uk',
-  vi = 'vi',
-  zhTW = 'zhTW',
-  zh = 'zh',
-}
+export type Locale =
+  'en' |
+  'ar' |
+  'az' |
+  'ca' |
+  'cs' |
+  'da' |
+  'de' |
+  'el' |
+  'es' |
+  'et' |
+  'fr' |
+  'he' |
+  'it' |
+  'ja' |
+  'ko' |
+  'lv' |
+  'nb' |
+  'nl' |
+  'pl' |
+  'pt' |
+  'ro' |
+  'ru' |
+  'sk' |
+  'sr' |
+  'sv' |
+  'tr' |
+  'uk' |
+  'vi' |
+  'zhTW' |
+  'zh';
 
 export type LocalePluralize = (n: number) => string;
 
@@ -243,12 +242,6 @@ export interface DialogApi {
   onTabVisibility(callback: OnTabVisibilityCallback): void;
 }
 
-export enum Crop {
-  Disabled = 'disabled',
-  Free = 'free',
-  Default = ''
-}
-
 export interface Settings {
   // developer hooks
   locale?: Locale;
@@ -256,7 +249,7 @@ export interface Settings {
   localeTranslations?: LocaleTranslations;
   // widget & dialog settings
   systemDialog?: boolean;
-  crop?: Crop | string;
+  crop?: string;
   previewStep?: boolean;
   imagesOnly?: boolean;
   clearable?: boolean;
