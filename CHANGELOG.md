@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/uploadcare/react-widget/compare/1.2.0...1.2.1) (2019-12-20)
+
+
+### Bug Fixes
+
+* **types:** add types for effects-tab ([#66](https://github.com/uploadcare/react-widget/issues/66)) ([17e04a0](https://github.com/uploadcare/react-widget/commit/17e04a09494180ee33a1f53c188055780569ab23))
+* **types:** rewrite enums to regular types ([#68](https://github.com/uploadcare/react-widget/issues/68)) ([4b4cedb](https://github.com/uploadcare/react-widget/commit/4b4cedb320c44ab80b62177308de8dc933d66277))
+
+
+
 # [1.2.0](https://github.com/uploadcare/react-widget/compare/1.0.3...1.2.0) (2019-11-21)
 
 
