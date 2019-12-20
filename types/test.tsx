@@ -16,6 +16,16 @@ import { Widget, CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/r
   publicKey='demopublickey'
   crop='200x300' />;
 
+<Widget
+  publicKey='demopublickey'
+  crop='200x300'
+  effects='blur,sharp' />;
+
+<Widget
+  publicKey='demopublickey'
+  crop='200x300'
+  effects={['blur', 'sharp']} />;
+
 const fileTypeLimit = (allowedFileTypes: string) => {
   const types = allowedFileTypes.split(' ');
 
