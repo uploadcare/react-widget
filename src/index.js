@@ -12,6 +12,7 @@ const Dialog = lazy(() =>
 
 const Config = ({ locale, localeTranslations, localePluralize }) => {
   useIsomorphicEffect(() => {
+    window.UPLOADCARE_INTEGRATION = 'react-widget'
     window.UPLOADCARE_LIVE = false
     window.UPLOADCARE_MANUAL_START = true
   }, [])
