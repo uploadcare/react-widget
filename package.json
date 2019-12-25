@@ -99,6 +99,6 @@
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-replace": "2.2.0",
     "shipjs": "0.12.1",
-    "typescript": "3.7.3"
+    "typescript": "3.7.4"
   }
 }
