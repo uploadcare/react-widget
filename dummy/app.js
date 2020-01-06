@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 
 import File from './file-select-callback'
 import Panel from './default-panel'
+import Effect from './effect'
+import Crop from './crop'
 
 const Example = ({ text, component: Component }) => (
   <div>
@@ -25,6 +27,14 @@ const examples = [
   {
     text: 'default panel example',
     component: Panel
+  },
+  {
+    text: 'crop',
+    component: Crop
+  },
+  {
+    text: 'effects',
+    component: Effect
   }
 ]
 
