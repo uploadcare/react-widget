@@ -190,6 +190,20 @@ export interface LocaleTranslations {
       link?: string;
     }
   };
+  effects?: {
+    captions?: {
+      blur?: string;
+      crop?: string;
+      enhance?: string;
+      flip?: string;
+      grayscale?: string;
+      invert?: string;
+      mirror?: string;
+      rotate?: string;
+      sharp?: string;
+    };
+    apply?: string;
+  };
 }
 
 export interface GeoLocation {
