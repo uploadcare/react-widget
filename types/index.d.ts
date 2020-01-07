@@ -1,7 +1,7 @@
 import { ComponentType, Ref, RefForwardingComponent } from 'react';
 import JQuery = require('jquery');
 
-export type Locale =
+type Locale =
   'en' |
   'ar' |
   'az' |
@@ -33,9 +33,9 @@ export type Locale =
   'zhTW' |
   'zh';
 
-export type LocalePluralize = (n: number) => string;
+type LocalePluralize = (n: number) => string;
 
-export interface LocaleTranslations {
+interface LocaleTranslations {
   uploading?: string;
   loadingInfo?: string;
   errors?: {
@@ -192,12 +192,12 @@ export interface LocaleTranslations {
   };
 }
 
-export interface GeoLocation {
+interface GeoLocation {
   latitude: number;
   longitude: number;
 }
 
-export interface OriginalImageInfo {
+interface OriginalImageInfo {
   height: number;
   width: number;
   geo_location: null | GeoLocation;
@@ -209,14 +209,14 @@ export interface OriginalImageInfo {
   sequence?: boolean;
 }
 
-export type Uuid = string;
+type Uuid = string;
 
-export interface SourceInfo {
+interface SourceInfo {
   source: string;
   file: any;
 }
 
-export interface FileInfo {
+interface FileInfo {
   uuid: Uuid;
   name: null | string;
   size: null | number;
@@ -230,9 +230,9 @@ export interface FileInfo {
   sourceInfo: null | SourceInfo;
 }
 
-export type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
+type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
 
-export interface DialogApi {
+interface DialogApi {
   addFiles(files: FileInfo[]): void;
   switchTab(tab: string): void;
   fileColl: FileInfo[];
@@ -242,7 +242,7 @@ export interface DialogApi {
   onTabVisibility(callback: OnTabVisibilityCallback): void;
 }
 
-export interface Settings {
+interface Settings {
   // developer hooks
   locale?: Locale;
   localePluralize?: (n: number) => string;
@@ -293,13 +293,13 @@ export interface Settings {
   effects?: string | string[];
 }
 
-export interface WidgetAPI {
+interface WidgetAPI {
   openDialog: (tab: string) => void;
   reloadInfo: () => void;
   getInput: () => HTMLInputElement;
 }
 
-export interface WidgetProps extends Settings {
+interface WidgetProps extends Settings {
   value?: string;
   onChange?: (fileInfo: FileInfo) => void;
   onFileSelect?: (fileInfo: FileInfo) => void;
@@ -309,7 +309,7 @@ export interface WidgetProps extends Settings {
   ref?: Ref<WidgetAPI>;
 }
 
-export type CustomTabConstructor = (
+type CustomTabConstructor = (
   container: JQuery,
   button: JQuery,
   dialogApi: DialogApi,
@@ -318,11 +318,30 @@ export type CustomTabConstructor = (
   uploadcare: any
 ) => void;
 
-export type Validator = ((fileInfo: FileInfo) => void);
+type Validator = ((fileInfo: FileInfo) => void);
 
-export const Widget: RefForwardingComponent<{
+declare const Widget: RefForwardingComponent<{
   locale?: Locale;
   localeTranslations?: LocaleTranslations;
   localePluralize?: LocalePluralize;
   preloader?: string;
 }, WidgetProps>;
+
+export {
+  Locale,
+  LocalePluralize,
+  LocaleTranslations,
+  GeoLocation,
+  OriginalImageInfo,
+  Uuid,
+  SourceInfo,
+  FileInfo,
+  DialogApi,
+  OnTabVisibilityCallback,
+  Settings,
+  WidgetAPI,
+  WidgetProps,
+  CustomTabConstructor,
+  Validator,
+  Widget
+};
