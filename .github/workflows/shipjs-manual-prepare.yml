@@ -22,7 +22,7 @@ jobs:
           git config --global user.name "jeetiss"
       - run: npm run release:prepare -- --yes --no-browse
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_INCOMING_HOOK: ${{ secrets.SLACK_INCOMING_HOOK }}
 
   create_done_comment:

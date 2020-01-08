@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   build:
-    name: Build
+    name: Release
     runs-on: Ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -18,6 +18,6 @@ jobs:
       - run: npm install
       - run: npm run release:trigger
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           SLACK_INCOMING_HOOK: ${{ secrets.SLACK_INCOMING_HOOK }}
