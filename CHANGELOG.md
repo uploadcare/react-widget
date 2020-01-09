@@ -5,7 +5,7 @@
 
 * update uploadcare-widget to 3.8.2 ([#99](https://github.com/uploadcare/react-widget/issues/99)) ([88d9e83](https://github.com/uploadcare/react-widget/commit/88d9e832f804abcaecd055d4f32ee27fc9eccb91))
 * **types:** add types for effects tab translations ([#96](https://github.com/uploadcare/react-widget/issues/96)) ([28ba5b7](https://github.com/uploadcare/react-widget/commit/28ba5b754abb67dec90aa78a33606d47a4f4540b))
-* **types:** update dependency dtslint to v2.0.3 and fix linter problems ([#92](https://github.com/uploadcare/react-widget/issues/92)) ([0d26981](https://github.com/uploadcare/react-widget/commit/0d26981180b902ef380180418488072c346584b5))
+* **types:** fix `strict-export-declare-modifiers` dtslint problem ([#92](https://github.com/uploadcare/react-widget/issues/92)) ([0d26981](https://github.com/uploadcare/react-widget/commit/0d26981180b902ef380180418488072c346584b5))
 
 
 
