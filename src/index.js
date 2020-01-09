@@ -45,7 +45,7 @@ export const Widget = forwardRef(
       <Config
         locale={locale}
         localeTranslations={localeTranslations}
-        localePluralize={localeTranslations}
+        localePluralize={localePluralize}
       />
 
       <Suspense fallback={preloader}>
@@ -66,7 +66,7 @@ export const Panel = ({
     <Config
       locale={locale}
       localeTranslations={localeTranslations}
-      localePluralize={localeTranslations}
+      localePluralize={localePluralize}
     />
 
     <Suspense fallback={preloader}>
