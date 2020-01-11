@@ -27,7 +27,17 @@ const propsToAttr = props =>
   )
 
 const useWidget = (
-  { value, onFileSelect, onChange, apiRef, customTabs, validators, ...options },
+  {
+    id,
+    name,
+    value,
+    onFileSelect,
+    onChange,
+    apiRef,
+    customTabs,
+    validators,
+    ...options
+  },
   uploadcare
 ) => {
   const input = useRef(null)
@@ -104,8 +114,10 @@ const useWidget = (
   )
 
   return useCallback(
-    () => <input type="hidden" ref={input} {...attributes} />,
-    [attributes]
+    () => (
+      <input type="hidden" ref={input} id={id} name={name} {...attributes} />
+    ),
+    [attributes, id, name]
   )
 }
 
