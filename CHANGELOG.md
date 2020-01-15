@@ -1,3 +1,12 @@
+## [1.2.3](https://github.com/uploadcare/react-widget/compare/v1.2.2...v1.2.3) (2020-01-15)
+
+
+### Bug Fixes
+
+* don't prefix input name and id attributes with `data` ([#106](https://github.com/uploadcare/react-widget/issues/106)) ([ee6d2db](https://github.com/uploadcare/react-widget/commit/ee6d2db8733ddea0dfcb060f036f5d2aa7af9fbc))
+
+
+
 ## [1.2.2](https://github.com/uploadcare/react-widget/compare/v1.2.1...v1.2.2) (2020-01-09)
 
 
