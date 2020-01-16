@@ -1,8 +1,8 @@
 # File Uploader for React
 
 <a href="https://uploadcare.com/?utm_source=github&utm_campaign=react-widget">
-  <img align="right" width="64" height="64"
-    src="https://ucarecdn.com/2f4864b7-ed0e-4411-965b-8148623aa680/uploadcare-logo-mark.svg"
+  <img align="right" width="56" height="56"
+    src="https://ucarecdn.com/1cc871de-5d82-442d-b4d6-aa2e35966879/-/resize/112x112/-/quality/lightest/logocircle2x.png"
     alt="">
 </a>
 
