@@ -338,7 +338,6 @@ declare const Widget: RefForwardingComponent<{
   locale?: Locale;
   localeTranslations?: LocaleTranslations;
   localePluralize?: LocalePluralize;
-  preloader?: string;
 }, WidgetProps>;
 
 export {
