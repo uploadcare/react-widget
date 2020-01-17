@@ -319,7 +319,7 @@ interface WidgetProps extends Settings {
   onFileSelect?: (fileInfo: FileInfo) => void;
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
-  preloader?: ComponentType;
+  preloader?: ComponentType | null;
   ref?: Ref<WidgetAPI>;
 }
 
@@ -338,7 +338,6 @@ declare const Widget: RefForwardingComponent<{
   locale?: Locale;
   localeTranslations?: LocaleTranslations;
   localePluralize?: LocalePluralize;
-  preloader?: string;
 }, WidgetProps>;
 
 export {
