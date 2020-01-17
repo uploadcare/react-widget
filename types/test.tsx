@@ -64,6 +64,10 @@ const Preloader = () => <div />;
   publicKey='demopublickey'
   preloader={Preloader}/>;
 
+<Widget
+  publicKey='demopublickey'
+  preloader={null}/>;
+
 const widgetApi = React.useRef<WidgetAPI>(null);
 
 <Widget ref={widgetApi} publicKey='demopublickey' />;
