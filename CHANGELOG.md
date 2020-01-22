@@ -1,3 +1,12 @@
+## [1.2.4](https://github.com/uploadcare/react-widget/compare/v1.2.3...v1.2.4) (2020-01-22)
+
+
+### Bug Fixes
+
+* **types:** allow null for `preloader` prop ([#114](https://github.com/uploadcare/react-widget/issues/114)) ([10a1517](https://github.com/uploadcare/react-widget/commit/10a151713647c36abb37f91a8fd6adff3a79dd81))
+
+
+
 ## [1.2.3](https://github.com/uploadcare/react-widget/compare/v1.2.2...v1.2.3) (2020-01-15)
 
 
