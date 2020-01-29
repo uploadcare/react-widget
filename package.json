@@ -98,7 +98,7 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-replace": "2.2.0",
-    "shipjs": "0.14.1",
+    "shipjs": "0.14.2",
     "typescript": "3.7.5",
     "uploadcare-widget-tab-effects": "1.4.6"
   }
