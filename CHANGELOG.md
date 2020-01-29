@@ -1,3 +1,7 @@
+## [1.2.5](https://github.com/uploadcare/react-widget/compare/v1.2.4...v1.2.5) (2020-01-29)
+
+
+
 ## [1.2.4](https://github.com/uploadcare/react-widget/compare/v1.2.3...v1.2.4) (2020-01-22)
 
 
