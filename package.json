@@ -89,7 +89,7 @@
     "mocha": "7.0.1",
     "parcel-bundler": "1.12.4",
     "prettier": "1.19.1",
-    "puppeteer": "2.1.0",
+    "puppeteer": "2.1.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "rimraf": "3.0.1",
