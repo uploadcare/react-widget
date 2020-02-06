@@ -7,7 +7,7 @@ module.exports = {
     prepared: null,
     releaseStart: null
   },
-  // skip preparetion if master contain only `chore` commits
+  // skip preparation if master contain only `chore` commits
   shouldPrepare: ({ releaseType, commitNumbersPerType }) => {
     const { fix = 0 } = commitNumbersPerType;
     if (releaseType === "patch" && fix === 0) {
