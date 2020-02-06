@@ -53,7 +53,7 @@
   "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
     "@uploadcare/client-suspense": "^1.0.2",
-    "react-fast-compare": "^2.0.4",
+    "react-fast-compare": "^3.0.0",
     "uploadcare-widget": "^3.8.2"
   },
   "peerDependencies": {
