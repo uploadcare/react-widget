@@ -1,3 +1,12 @@
+## [1.2.5](https://github.com/uploadcare/react-widget/compare/v1.2.4...v1.2.5) (2020-02-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-fast-compare to v3 ([#139](https://github.com/uploadcare/react-widget/issues/139)) ([1186573](https://github.com/uploadcare/react-widget/commit/1186573c34bef4b57d0b47838b76df820922d586))
+
+
+
 ## [1.2.4](https://github.com/uploadcare/react-widget/compare/v1.2.3...v1.2.4) (2020-01-22)
 
 
