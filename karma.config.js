@@ -1,7 +1,7 @@
 const babel = require('rollup-plugin-babel')
-const resolve = require('rollup-plugin-node-resolve')
-const commonjs = require('rollup-plugin-commonjs')
-const replace = require('rollup-plugin-replace')
+const resolve = require('@rollup/plugin-node-resolve')
+const commonjs = require('@rollup/plugin-commonjs')
+const replace = require('@rollup/plugin-replace')
 
 const react = require('react')
 const testUtils = require('react-dom/test-utils')
@@ -36,7 +36,7 @@ const rollupConfig = () => ({
   },
   plugins: [
     replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.NODE_ENV': JSON.stringify('test'),
       'process.env': '({})'
     }),
     commonjs({
