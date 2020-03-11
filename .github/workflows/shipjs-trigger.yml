@@ -9,13 +9,14 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           ref: master
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
         with:
           registry-url: "https://registry.npmjs.org"
       - run: npm install
+      - run: npm test
       - run: npm run release:trigger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
