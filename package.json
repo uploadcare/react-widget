@@ -65,6 +65,8 @@
     "@babel/core": "7.8.7",
     "@babel/preset-env": "7.8.7",
     "@babel/preset-react": "7.8.3",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-replace": "^2.3.1",
     "@testing-library/react": "9.5.0",
     "@types/jquery": "3.3.33",
     "@types/react": "16.9.23",
@@ -95,9 +97,6 @@
     "rimraf": "3.0.2",
     "rollup": "1.32.1",
     "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-replace": "2.2.0",
     "shipjs": "0.17.0",
     "typescript": "3.8.3",
     "uploadcare-widget-tab-effects": "1.4.6"
