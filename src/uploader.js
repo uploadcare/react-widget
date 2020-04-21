@@ -13,11 +13,11 @@ import {
   useDeepMemo
 } from './hooks'
 
-function camelCaseToDash(str) {
+function camelCaseToDash (str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 }
 
-const propsToAttr = props =>
+const propsToAttr = (props) =>
   Object.entries(props).reduce(
     (attr, [key, value]) => ({
       ...attr,
@@ -71,7 +71,7 @@ const useWidget = (
 
   useEffect(() => {
     let dialog
-    const saveDialog = ref => (dialog = ref)
+    const saveDialog = (ref) => (dialog = ref)
 
     widget.current.onDialogOpen.add(saveDialog)
 
@@ -83,7 +83,7 @@ const useWidget = (
 
   useEffect(() => {
     let files = []
-    const saveFiles = file => {
+    const saveFiles = (file) => {
       if (file) {
         files = file.files ? file.files() : [file]
       } else {
@@ -94,7 +94,7 @@ const useWidget = (
     widget.current.onChange.add(saveFiles)
 
     return () => {
-      files.forEach(file => file.cancel())
+      files.forEach((file) => file.cancel())
       widget.current.onChange.remove(saveFiles)
     }
   }, [attributes])
@@ -115,13 +115,13 @@ const useWidget = (
 
   return useCallback(
     () => (
-      <input type="hidden" ref={input} id={id} name={name} {...attributes} />
+      <input type='hidden' ref={input} id={id} name={name} {...attributes} />
     ),
     [attributes, id, name]
   )
 }
 
-const Uploader = props => {
+const Uploader = (props) => {
   const Input = useWidget(props, uploadcare)
 
   return <Input />
