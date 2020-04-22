@@ -8,5 +8,6 @@
       "updateTypes": ["patch", "minor"],
       "groupName": "dev dependencies (non-major)"
     }
-  ]
+  ],
+  "ignoreDeps": ["@rollup/plugin-commonjs"]
 }
