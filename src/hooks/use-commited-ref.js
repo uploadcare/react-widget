@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 
-export const useCommitedRef = value => {
+export const useCommitedRef = (value) => {
   const ref = useRef(value)
 
   useEffect(() => {

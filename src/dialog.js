@@ -52,11 +52,11 @@ const useDialog = (props, uploadcare) => {
       )
 
       setState({ file: null })
-      panelInstance.current.done(file => {
+      panelInstance.current.done((file) => {
         setState({ opened: false })
 
-        file.progress(state => setState({ progress: state.progress }))
-        file.done(file => setState({ file }))
+        file.progress((state) => setState({ progress: state.progress }))
+        file.done((file) => setState({ file }))
       })
     } else {
       // do nothing
@@ -72,7 +72,7 @@ const useDialog = (props, uploadcare) => {
   return [state, setState, panelContainer]
 }
 
-const Dialog = props => {
+const Dialog = (props) => {
   const [{ opened, file, progress }, setState, containerRef] = useDialog(
     props,
     uploadcare
@@ -87,7 +87,7 @@ const Dialog = props => {
 
       <span hidden={!readyState}>
         <button
-          className="uploadcare--button uploadcare--button_primary"
+          className='uploadcare--button uploadcare--button_primary'
           onClick={() =>
             setState({
               opened: true,

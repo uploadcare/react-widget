@@ -5,7 +5,7 @@ const useValidators = (widget, validators) => {
     if (validators != null) {
       const instance = widget.current
 
-      validators.forEach(validator => {
+      validators.forEach((validator) => {
         instance.validators.push(validator)
       })
 
