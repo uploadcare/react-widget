@@ -2,11 +2,13 @@ import React, { forwardRef } from 'react'
 import { lazy, Suspense } from '@uploadcare/client-suspense'
 import { useIsomorphicEffect } from './hooks'
 
-const Uploader = lazy(() =>
+// enable tree shaking with pure notation
+const Uploader = /* #__PURE__ */lazy(() =>
   import(/* webpackChunkName: "ucare-widget-chunk" */ './uploader')
 )
 
-const Dialog = lazy(() =>
+// enable tree shaking with pure notation
+const Dialog = /* #__PURE__ */lazy(() =>
   import(/* webpackChunkName: "ucare-panel-chunk" */ './dialog')
 )
 
