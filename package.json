@@ -7,14 +7,14 @@
   "types": "types/index.d.ts",
   "scripts": {
     "lint:types": "dtslint types --onlyTestTsNext",
-    "lint:js": "eslint ./src/** ./test/** karma.config.js rollup.config.js",
+    "lint:js": "eslint ./src/** ./test/** rollup.config.js",
     "clean": "rimraf dist en",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
     "prepublishOnly": "npm run clean && npm run build",
-    "test:dev": "karma start karma.config.js",
-    "format": "prettier --write \"./src/**/*.js\" \"./test/**/*.js\" karma.config.js rollup.config.js",
-    "test": "npm run lint:js && npm run lint:types && karma start karma.config.js --single-run --nocache",
+    "test:dev": "jest",
+    "format": "prettier --write \"./src/**/*.js\" \"./test/**/*.js\" rollup.config.js",
+    "test": "npm run lint:js && npm run lint:types && jest",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger"
   },
@@ -66,12 +66,10 @@
     "@babel/preset-env": "7.9.5",
     "@babel/preset-react": "7.9.4",
     "@rollup/plugin-commonjs": "11.0.2",
-    "@rollup/plugin-node-resolve": "7.1.3",
     "@rollup/plugin-replace": "2.3.2",
     "@testing-library/react": "10.0.2",
     "@types/jquery": "3.3.35",
     "@types/react": "16.9.34",
-    "assert": "2.0.0",
     "babel-eslint": "10.1.0",
     "dtslint": "3.4.1",
     "eslint": "6.8.0",
@@ -85,14 +83,10 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
     "eslint-plugin-standard": "4.0.1",
-    "karma": "5.0.2",
-    "karma-chrome-launcher": "3.1.0",
-    "karma-mocha": "2.0.0",
-    "karma-rollup-preprocessor": "7.0.5",
-    "mocha": "7.1.1",
+    "jest": "25.4.0",
+    "jest-esm-jsx-transform": "1.0.0",
     "parcel-bundler": "1.12.4",
     "prettier": "1.19.1",
-    "puppeteer": "3.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "rimraf": "3.0.2",
@@ -101,5 +95,13 @@
     "shipjs": "0.18.2",
     "typescript": "3.8.3",
     "uploadcare-widget-tab-effects": "1.4.6"
+  },
+  "jest": {
+    "testMatch": [
+      "**/test/**/*.js"
+    ],
+    "transform": {
+      "\\.js$": "jest-esm-jsx-transform"
+    }
   }
 }

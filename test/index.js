@@ -1,7 +1,6 @@
-/* eslint-env mocha */
+/* eslint-env jest */
 import React from 'react'
 import { render } from '@testing-library/react'
-import assert from 'assert'
 
 import Uploader from '../src/uploader'
 import Dialog from '../src/dialog'
@@ -13,7 +12,7 @@ describe('Uploader', function() {
       .querySelector('.uploadcare--widget')
       .getAttribute('data-status')
 
-    assert.strictEqual(status, 'ready')
+    expect(status).toBe('ready')
   })
 })
 
@@ -22,6 +21,6 @@ describe('Panel', function() {
     const { container } = render(<Dialog />)
     const panel = container.querySelector('.uploadcare--panel')
 
-    assert.notStrictEqual(panel, null)
+    expect(panel).toBeDefined()
   })
 })
