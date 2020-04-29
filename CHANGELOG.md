@@ -1,3 +1,12 @@
+## [1.2.6](https://github.com/uploadcare/react-widget/compare/v1.2.5...v1.2.6) (2020-04-29)
+
+
+### Bug Fixes
+
+* enable tree shaking with pure notation ([#164](https://github.com/uploadcare/react-widget/issues/164)) ([9b5d0da](https://github.com/uploadcare/react-widget/commit/9b5d0dab7f5741073593401eecaa7abc83717833))
+
+
+
 ## [1.2.5](https://github.com/uploadcare/react-widget/compare/v1.2.4...v1.2.5) (2020-02-19)
 
 
