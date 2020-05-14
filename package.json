@@ -92,6 +92,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.10.0",
     "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-module-replacement": "1.1.0",
     "shipjs": "0.19.0",
     "typescript": "3.9.2",
     "uploadcare-widget-tab-effects": "1.4.6"
