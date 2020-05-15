@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
+import replacement from 'rollup-plugin-module-replacement'
 
 import uploadcare from 'uploadcare-widget'
 
@@ -72,7 +73,14 @@ export default [
       sourcemap: false
     },
     plugins: [
-      replace({ 'uploadcare-widget': 'uploadcare-widget/uploadcare.lang.en' }),
+      replacement({
+        entries: [
+          {
+            find: 'uploadcare-widget',
+            replacement: 'uploadcare-widget/uploadcare.lang.en'
+          }
+        ]
+      }),
       commonjs({
         include: /node_modules/,
         sourceMap: false
