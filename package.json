@@ -72,7 +72,7 @@
     "@types/jquery": "3.3.38",
     "@types/react": "16.9.35",
     "babel-eslint": "10.1.0",
-    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "babel-plugin-annotate-pure-calls": "0.4.0",
     "dtslint": "3.5.2",
     "eslint": "7.0.0",
     "eslint-config-prettier": "6.11.0",
