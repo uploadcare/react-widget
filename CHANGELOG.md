@@ -1,3 +1,13 @@
+## [1.2.7](https://github.com/uploadcare/react-widget/compare/v1.2.6...v1.2.7) (2020-05-20)
+
+
+### Bug Fixes
+
+* use `annotate-pure-calls` instead of direct `#__pure` notations, mark module as side effect free ([#176](https://github.com/uploadcare/react-widget/issues/176)) ([2ebe6f5](https://github.com/uploadcare/react-widget/commit/2ebe6f52bf288c00f5c5e3ea6a29cb5be783081e))
+* use another plugin for module replacement ([#175](https://github.com/uploadcare/react-widget/issues/175)) ([fc117e4](https://github.com/uploadcare/react-widget/commit/fc117e496a1ec9da7c8fade771c70ee2837a6a86))
+
+
+
 ## [1.2.6](https://github.com/uploadcare/react-widget/compare/v1.2.5...v1.2.6) (2020-04-29)
 
 
