@@ -136,3 +136,17 @@ const UnsplashCreator: CustomTabConstructor = (
   tabs="file unsplash"
   customTabs={{ unsplash: UnsplashCreator }}
 />;
+
+<Widget
+  publicKey="demopublickey"
+  onDialogOpen={dialog => {
+    dialog.switchTab("dinamic");
+  }}
+  onDialogClose={e => {
+    if (e) {
+      'files' in e && e.files()[0].done(console.log);
+      e.promise().always(console.log);
+    }
+  }}
+  onTabChange={tab => console.log(tab)}
+/>;

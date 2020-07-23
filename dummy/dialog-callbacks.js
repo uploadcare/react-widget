@@ -4,19 +4,37 @@ import { Widget } from '../src'
 
 export default () => {
   return (
-    <Widget
-      multiple
-      publicKey='demopublickey'
-      onDialogOpen={() => console.log('Dialog opened')}
-      onTabChange={(e) => console.log('Tab changed:', e)}
-      onDialogClose={(e) => {
-        console.log('Dialog closed')
+    <>
+      Multiple:
+      <Widget
+        multiple
+        publicKey='demopublickey'
+        onDialogOpen={() => console.log('Dialog opened')}
+        onTabChange={(e) => console.log('Tab changed:', e)}
+        onDialogClose={(e) => {
+          console.log('Dialog closed')
 
-        Promise.resolve()
-          .then(() => e.promise())
-          .then((e) => console.log('result: ', e))
-          .catch(() => console.log('result: without files'))
-      }}
-    />
+          Promise.resolve()
+            .then(() => e.promise())
+            .then((e) => console.log('result: ', e))
+            .catch(() => console.log('result: without files'))
+
+          console.log(e.files())
+        }}
+      />
+
+      Single:
+      <Widget
+        publicKey='demopublickey'
+        onDialogClose={(e) => {
+          Promise.resolve()
+            .then(() => e.promise())
+            .then((e) => console.log('result: ', e))
+            .catch(() => console.log('result: without files'))
+
+          console.log(e)
+        }}
+      />
+    </>
   )
 }
