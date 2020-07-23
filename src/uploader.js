@@ -36,6 +36,7 @@ const useWidget = (
     apiRef,
     customTabs,
     validators,
+    tabsCss,
     ...options
   },
   uploadcare
@@ -102,6 +103,16 @@ const useWidget = (
   useEffect(() => {
     widget.current.value(value)
   }, [value])
+
+  useEffect(() => {
+    if (uploadcare && tabsCss && typeof tabsCss === 'string') {
+      if (tabsCss.indexOf('https://') === 0) {
+        uploadcare.tabsCss.addUrl(tabsCss)
+      } else {
+        uploadcare.tabsCss.addStyle(tabsCss)
+      }
+    }
+  }, [uploadcare, tabsCss])
 
   useImperativeHandle(
     apiRef,
