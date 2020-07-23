@@ -33,6 +33,9 @@ const useWidget = (
     value,
     onFileSelect,
     onChange,
+    onDialogOpen,
+    onDialogClose,
+    onTabChange,
     apiRef,
     customTabs,
     validators,
@@ -45,6 +48,9 @@ const useWidget = (
 
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
+  const dialogOpenCallback = useEventCallback(onDialogOpen)
+  const dialogCloseCallback = useEventCallback(onDialogClose)
+  const tabChangeCallback = useEventCallback(onTabChange)
 
   useCustomTabs(customTabs, uploadcare)
 
@@ -71,15 +77,23 @@ const useWidget = (
 
   useEffect(() => {
     let dialog
-    const saveDialog = (ref) => (dialog = ref)
+    const saveDialog = (ref) => {
+      dialog = ref
+      dialog
+        .done(dialogCloseCallback)
+        .fail(dialogCloseCallback)
+        .progress(tabChangeCallback)
+
+      dialogOpenCallback(ref)
+    }
 
     widget.current.onDialogOpen.add(saveDialog)
 
     return () => {
-      dialog && dialog.reject()
       widget.current.onDialogOpen.remove(saveDialog)
+      dialog && dialog.reject()
     }
-  }, [attributes])
+  }, [attributes, dialogCloseCallback, dialogOpenCallback, tabChangeCallback])
 
   useEffect(() => {
     let files = []
