@@ -328,6 +328,7 @@ interface WidgetProps extends Settings {
   onTabChange?: (tabName: string) => void;
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
+  tabsCss?: string;
   preloader?: ComponentType | null;
   ref?: Ref<WidgetAPI>;
 }
