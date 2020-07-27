@@ -138,6 +138,12 @@ const UnsplashCreator: CustomTabConstructor = (
 />;
 
 <Widget
+  publicKey='demopublickey'
+  tabs="facebook"
+  tabsCss=".source-facebook { background: #1877F2; }"
+/>;
+
+<Widget
   publicKey="demopublickey"
   onDialogOpen={dialog => {
     dialog.switchTab("dinamic");
