@@ -209,6 +209,24 @@ const Example = () => {
 
 <br>
 
+#### `tabsCss: string`
+
+Optionally define custom css for tabs opened in iframes (e.g. Facebook, Instagram, etc.). Can be a css string or an absolute file URL.
+
+```jsx
+// Via URL
+<Widget tabs="facebook" tabsCss="https://site.com/styles/uc.tabs.css"/>
+
+// Via plain CSS
+<Widget tabs="facebook" tabsCss=".source-facebook { background: #1877F2; }"/>
+```
+
+Note that all tab iframes are opened via HTTPS, so linked CSS files must also be served via HTTPS.
+
+* [Widget styling docs][uc-docs-widget-styling]
+
+<br>
+
 ### Widget configuration
 
 Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
@@ -257,6 +275,7 @@ request at [hello@uploadcare.com][uc-email-hello].
 [uc-feature-widget]: https://uploadcare.com/features/widget/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-config]: https://uploadcare.com/docs/uploads/widget/config/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-js-api]: https://uploadcare.com/docs/api_reference/javascript/?utm_source=github&utm_campaign=react-widget
+[uc-docs-widget-styling]: https://uploadcare.com/docs/file_uploader_api/tabs_styling/
 [uc-sign-up]: https://uploadcare.com/accounts/signup/
 [uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads

@@ -33,7 +33,7 @@ const useDialog = (props, uploadcare) => {
     progress: null
   })
 
-  const { customTabs } = props
+  const { customTabs, tabsCss } = props
 
   useCustomTabs(customTabs, uploadcare)
 
@@ -42,6 +42,14 @@ const useDialog = (props, uploadcare) => {
 
   useEffect(() => {
     if (state.opened) {
+      if (uploadcare && tabsCss && typeof tabsCss === 'string') {
+        if (tabsCss.indexOf('https://') === 0) {
+          uploadcare.tabsCss.addUrl(tabsCss)
+        } else {
+          uploadcare.tabsCss.addStyle(tabsCss)
+        }
+      }
+
       panelInstance.current && panelInstance.current.reject()
       panelInstance.current = uploadcare.openPanel(
         panelContainer.current,
