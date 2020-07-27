@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/uploadcare/react-widget/compare/v1.2.7...v1.3.0) (2020-07-27)
+
+
+### Features
+
+* add onDialogClose onDialogOpen onTabChange callbacks ([#186](https://github.com/uploadcare/react-widget/issues/186)) ([6822c22](https://github.com/uploadcare/react-widget/commit/6822c2298df410169b0bbab71261784913e826e7))
+* support tabsCss property ([#187](https://github.com/uploadcare/react-widget/issues/187)) ([158602b](https://github.com/uploadcare/react-widget/commit/158602b317f01bdc0bc012e1ef055cc83fef9a84))
+
+### Bug Fixes
+
+* **types:** add type for tabsCss prop ([#189](https://github.com/uploadcare/react-widget/issues/189)) ([3803d46](https://github.com/uploadcare/react-widget/commit/3803d46619c5030db849556d615b506fa831db56))
+
+
+
 ## [1.2.7](https://github.com/uploadcare/react-widget/compare/v1.2.6...v1.2.7) (2020-05-20)
 
 
