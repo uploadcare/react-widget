@@ -313,10 +313,19 @@ interface WidgetAPI {
   getInput: () => HTMLInputElement;
 }
 
+type FileUpload = JQuery.Deferred<FileInfo>;
+interface MultiFiles {
+  promise: () => FileUpload;
+  files: () => FileUpload[];
+}
+
 interface WidgetProps extends Settings {
   value?: string;
   onChange?: (fileInfo: FileInfo) => void;
   onFileSelect?: (fileInfo: FileInfo) => void;
+  onDialogOpen?: (dialog: DialogApi) => void;
+  onDialogClose?: (info: undefined | FileUpload | MultiFiles) => void;
+  onTabChange?: (tabName: string) => void;
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
   preloader?: ComponentType | null;

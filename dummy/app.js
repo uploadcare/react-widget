@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import File from './file-select-callback'
+import Callbacks from './dialog-callbacks'
 import Panel from './default-panel'
 import Effect from './effect'
 import Crop from './crop'
@@ -21,8 +21,8 @@ const Example = ({ text, component: Component }) => (
 
 const examples = [
   {
-    text: 'rerendering on file select callback fire',
-    component: File
+    text: 'New callbacks',
+    component: Callbacks
   },
   {
     text: 'default panel example',

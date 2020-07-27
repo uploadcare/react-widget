@@ -94,6 +94,29 @@ Set a function to be called after **a new file is selected**.
 
 <br>
 
+#### `onDialogOpen: (dialog: DialogApi) => void`
+
+Set a function to be called after **dialog is opened**.
+
+* [DialogApi object description][api-refs-dialog]
+
+<br>
+
+#### `onDialogClose: (objs: undefined | FileInfo | MultiFiles) => void`
+
+Set a function to be called after **dialog is closed**.
+
+* [FileInfo object description][api-refs-props]
+* [MultiFiles object description][multi-type-desc]
+
+<br>
+
+#### `onTabChange: (tabName: string) => void`
+
+Set a function to be called after **tab is changed**.
+
+<br>
+
 #### `customTabs: {[key: string]: CustomTabConstructor}`
 
 Add **custom tabs** for a widget.
@@ -224,7 +247,9 @@ request at [hello@uploadcare.com][uc-email-hello].
 [custom-tabs-docs]: https://uploadcare.com/docs/api_reference/javascript/custom_tabs/?utm_source=github&utm_campaign=react-widget
 
 [api-refs-props]: https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties?utm_source=github&utm_campaign=react-widget
-[api-refs-validation]: https://uploadcare.com/docs/file_uploads/widget/moderation/
+[api-refs-dialog]: https://uploadcare.com/docs/file_uploader_api/dialog_panel/#dialog-api?utm_source=github&utm_campaign=react-widget
+[api-refs-validation]: https://uploadcare.com/docs/file_uploads/widget/moderation/?utm_source=github&utm_campaign=react-widget
+[multi-type-desc]: https://github.com/uploadcare/react-widget/blob/cbcbb8772052d489c9c1003ca9f91cb857bf1120/types/index.d.ts#L317-L320
 
 [uc-email-bounty]: mailto:bugbounty@uploadcare.com
 [uc-email-hello]: mailto:hello@uploadcare.com
