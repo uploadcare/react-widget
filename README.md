@@ -6,8 +6,8 @@
     alt="">
 </a>
 
-This is a component made to integrate [Uploadcare Widget][uc-feature-widget]
-into your React app easily; convenient props management and lazy loading
+This component helps you integrate [Uploadcare Widget][uc-feature-widget]
+into your React app natively; props management and lazy loading
 are bundled.
 
 The component allows users to upload files from their devices, social media,
@@ -50,13 +50,13 @@ import { Widget } from "@uploadcare/react-widget";
 * [Basic usage example on CodeSandbox][sandbox-props]
 * [Gatsby basic usage example on CodeSandbox][sandbox-gatsby]
 
-To use the component, you should have an **API key** from Uploadcare.
+To use this component, get an **API key** from your Uploadcare project.
 
-Uploadcare account is free and gives access to serverless file uploads,
-transformations, CDN delivery, and APIs. After [sign up][uc-sign-up], you land
-on the Dashboard where you manage projects. Projects are identified by their
-*public keys*: replace `YOUR_PUBLIC_KEY` with your project’s Public API Key
-and you are all set.
+Uploadcare account provides services for file uploads, transformations, CDN
+delivery, as well as APIs. After [signing up][uc-sign-up], you'll see Dashboard
+where you can manage projects. Each Project is identified by its *public key*.
+Replace `YOUR_PUBLIC_KEY` with your project’s Public API Key and you are all
+set.
 
 You can refer to our [integration guide][react-guide] for more details.
 
@@ -133,7 +133,7 @@ Note that we added the fifth argument to the custom tab constructor — an
 `uploadcare` object. The widget is lazily-loaded, so you don’t have to import
 `uploadcare-widget` separately for your custom tab.
 
-Remember that you have to also include your custom tab in the `tabs` prop to
+Remember that you also need to include your custom tab in the `tabs` prop to
 make it work:
 
 ```jsx
@@ -149,7 +149,7 @@ make it work:
 
 Set **validators** for a widget. Validator is a JavaScript function that
 receives a `fileInfo` object for each uploaded file and throws an exception if
-that file does not meet validation requirements.
+that file doesn't meet validation requirements.
 
 ```jsx
 const fileTypeLimit = (allowedFileTypes: string) => {
@@ -180,15 +180,15 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 
 #### `preloader: ComponentType`
 
-Set a custom **preloader**. Preloader is a Component to be shown while a widget
-is loading.
+Set a custom **preloader**. A preloader component shows up when the widget
+is being loaded.
 
 <br>
 
 #### `ref: widgetApiRef`
 
-Define a reference object to hold the Widget API wrapper. Use it to access
-methods: `openDialog`, `reloadInfo`, and `getInput`.
+Define a reference object to address the Widget API wrapper. Use it to access
+these methods: `openDialog`, `reloadInfo`, and `getInput`.
 
 ```jsx
 const Example = () => {
@@ -211,7 +211,8 @@ const Example = () => {
 
 #### `tabsCss: string`
 
-Optionally define custom css for tabs opened in iframes (e.g. Facebook, Instagram, etc.). Can be a css string or an absolute file URL.
+Optional. Define a custom CSS for tabs opened in iframes (e.g., Facebook,
+Instagram, etc.). It can be a CSS string or an absolute URL to a CSS file.
 
 ```jsx
 // Via URL
@@ -221,7 +222,8 @@ Optionally define custom css for tabs opened in iframes (e.g. Facebook, Instagra
 <Widget tabs="facebook" tabsCss=".source-facebook { background: #1877F2; }"/>
 ```
 
-Note that all tab iframes are opened via HTTPS, so linked CSS files must also be served via HTTPS.
+Note that all iframe tabs are opened via HTTPS, so linked CSS files should also
+be available over HTTPS.
 
 * [Widget styling docs][uc-docs-widget-styling]
 
@@ -241,17 +243,16 @@ point and consider checking out the docs on [widget configuration][uc-docs-widge
 
 ## Security issues
 
-If you think you ran into something in Uploadcare libraries which might have
-security implications, please hit us up at [bugbounty@uploadcare.com][uc-email-bounty]
-or Hackerone.
+If you ran into something in Uploadcare libraries that might have security
+implications, please hit us up at [bugbounty@uploadcare.com][uc-email-bounty] or
+Hackerone.
 
-We’ll contact you personally in a short time to fix an issue through co-op and
-prior to any public disclosure.
+We’ll contact you shortly to fix and issue prior to any public disclosure.
 
 ## Feedback
 
-Issues and PRs are welcome. You can provide your feedback or drop us a support
-request at [hello@uploadcare.com][uc-email-hello].
+We want to hear your issue reports and feature requests at
+[hello@uploadcare.com][uc-email-hello].
 
 
 [es6-debate]: https://gist.github.com/Rich-Harris/51e1bf24e7c093469ef7a0983bad94cb
