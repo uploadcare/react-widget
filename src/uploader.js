@@ -61,7 +61,7 @@ const useWidget = (
     widget.current = uploadcare.Widget(input.current)
     const widgetElement = input.current.nextSibling
 
-    return () => widgetElement && widgetElement.remove()
+    return () => widgetElement && widgetElement.parentNode.removeChild(widgetElement)
   }, [uploadcare, attributes])
 
   useValidators(widget, validators)
