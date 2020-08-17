@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/uploadcare/react-widget/compare/v1.3.0...v1.3.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* **uploader:** replace IE unsupported ChildNode.remove method ([#197](https://github.com/uploadcare/react-widget/issues/197)) ([6e2274c](https://github.com/uploadcare/react-widget/commit/6e2274c222a6d70ace0cb7dfe68be989fc049f41))
+
+
+
 # [1.3.0](https://github.com/uploadcare/react-widget/compare/v1.2.7...v1.3.0) (2020-07-27)
 
 
