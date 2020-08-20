@@ -133,7 +133,8 @@ const useWidget = (
     () => ({
       openDialog: () => widget.current.openDialog(),
       reloadInfo: () => widget.current.reloadInfo(),
-      getInput: () => widget.current.inputElement
+      getInput: () => widget.current.inputElement,
+      rebuildLocale: settings => uploadcare.plugin(internal => internal.locale.rebuild(settings))
     }),
     []
   )
