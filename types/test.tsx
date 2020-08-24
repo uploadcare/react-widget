@@ -49,12 +49,24 @@ const validators = [fileTypeLimit('mp3 avi mp4')];
 
 <Widget
   publicKey='demopublickey'
-  onChange={console.log}
+  onChange={e => {
+    e.uuid;
+    e.cdnUrl;
+    e.isStored;
+  }}
   clearable />;
 
 <Widget
   publicKey='demopublickey'
-  onFileSelect={console.log}
+  onFileSelect={e => {
+    // @ts-expect-error
+    e.error;
+
+    if (e) {
+      'files' in e && e.files()[0].done(console.log);
+      e.promise().always(console.log);
+    }
+  }}
   clearable
   multiple />;
 
@@ -149,6 +161,9 @@ const UnsplashCreator: CustomTabConstructor = (
     dialog.switchTab("dinamic");
   }}
   onDialogClose={e => {
+    // @ts-expect-error
+    e.error;
+
     if (e) {
       'files' in e && e.files()[0].done(console.log);
       e.promise().always(console.log);
