@@ -314,7 +314,6 @@ interface WidgetAPI {
   openDialog: (tab: string) => void;
   reloadInfo: () => void;
   getInput: () => HTMLInputElement;
-  rebuildLocale: (settings: Settings) => LocaleSettings;
 }
 
 type FileUpload = JQuery.Deferred<FileInfo>;
