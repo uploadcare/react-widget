@@ -10,7 +10,8 @@ import {
   useEventCallback,
   useCustomTabs,
   useValidators,
-  useDeepMemo
+  useDeepMemo,
+  useDeepEffect
 } from './hooks'
 
 function camelCaseToDash (str) {
@@ -40,12 +41,16 @@ const useWidget = (
     customTabs,
     validators,
     tabsCss,
+    locale,
+    localeTranslations,
+    localePluralize,
     ...options
   },
   uploadcare
 ) => {
   const input = useRef(null)
   const widget = useRef(null)
+  const render = useRef(true)
 
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
@@ -57,11 +62,32 @@ const useWidget = (
 
   const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
+  useDeepEffect(() => {
+    if (render.current) {
+      render.current = false
+
+      return () => {
+        delete window.UPLOADCARE_LOCALE
+        delete window.UPLOADCARE_LOCALE_TRANSLATIONS
+        delete window.UPLOADCARE_LOCALE_PLURALIZE
+      }
+    }
+
+    uploadcare.plugin((internal) =>
+      internal.locale.rebuild({
+        locale,
+        localeTranslations,
+        localePluralize
+      })
+    )
+  }, [locale, localeTranslations, localePluralize])
+
   useEffect(() => {
     widget.current = uploadcare.Widget(input.current)
     const widgetElement = input.current.nextSibling
 
-    return () => widgetElement && widgetElement.parentNode.removeChild(widgetElement)
+    return () =>
+      widgetElement && widgetElement.parentNode.removeChild(widgetElement)
   }, [uploadcare, attributes])
 
   useValidators(widget, validators)
@@ -133,8 +159,7 @@ const useWidget = (
     () => ({
       openDialog: () => widget.current.openDialog(),
       reloadInfo: () => widget.current.reloadInfo(),
-      getInput: () => widget.current.inputElement,
-      rebuildLocale: settings => uploadcare.plugin(internal => internal.locale.rebuild(settings))
+      getInput: () => widget.current.inputElement
     }),
     []
   )

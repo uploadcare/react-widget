@@ -49,7 +49,13 @@ export const Widget = forwardRef(
       />
 
       <Suspense fallback={preloader}>
-        <Uploader {...props} apiRef={ref} />
+        <Uploader
+          locale={locale}
+          localeTranslations={localeTranslations}
+          localePluralize={localePluralize}
+          {...props}
+          apiRef={ref}
+        />
       </Suspense>
     </>
   )
