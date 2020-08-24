@@ -97,7 +97,7 @@
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-module-replacement": "1.1.0",
     "shipjs": "0.20.1",
-    "typescript": "3.9.7",
+    "typescript": "4.0.2",
     "uploadcare-widget-tab-effects": "1.4.7"
   },
   "jest": {
