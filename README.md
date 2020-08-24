@@ -188,7 +188,7 @@ is being loaded.
 #### `ref: widgetApiRef`
 
 Define a reference object to address the Widget API wrapper. Use it to access
-these methods: `openDialog`, `reloadInfo`, `getInput`, and `rebuildLocale`.
+these methods: `openDialog`, `reloadInfo` and `getInput`.
 
 ```jsx
 const Example = () => {

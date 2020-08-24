@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import DynamicLocales from './dynamic-locales'
 import Callbacks from './dialog-callbacks'
 import Panel from './default-panel'
-import Effect from './effect'
+// import Effect from './effect'
 import Crop from './crop'
 
 const Example = ({ text, component: Component }) => (
@@ -21,6 +22,10 @@ const Example = ({ text, component: Component }) => (
 
 const examples = [
   {
+    text: 'Dynamic locales',
+    component: DynamicLocales
+  },
+  {
     text: 'New callbacks',
     component: Callbacks
   },
@@ -31,11 +36,11 @@ const examples = [
   {
     text: 'crop',
     component: Crop
-  },
-  {
-    text: 'effects',
-    component: Effect
   }
+  // {
+  //   text: 'effects',
+  //   component: Effect
+  // }
 ]
 
 ReactDOM.render(
