@@ -1,18 +1,18 @@
 module.exports = {
   publishCommand: ({ defaultCommand }) => `${defaultCommand} --access public`,
   mergeStrategy: { toSameBranch: ['master'] },
-  pullRequestReviewers: ['jeetiss'],
+  pullRequestReviewers: ['nd0ut'],
   slack: {
     // disable slack notification for `prepared` lifecycle.
     // Ship.js will send slack message only for `releaseSuccess`.
-    prepared: null,
+    prepared: null
   },
   // skip preparation if master contain only `chore` commits
   shouldPrepare: ({ releaseType, commitNumbersPerType }) => {
-    const { fix = 0 } = commitNumbersPerType;
-    if (releaseType === "patch" && fix === 0) {
-      return false;
+    const { fix = 0 } = commitNumbersPerType
+    if (releaseType === 'patch' && fix === 0) {
+      return false
     }
-    return true;
+    return true
   }
 }
