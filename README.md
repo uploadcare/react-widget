@@ -85,11 +85,12 @@ Set a function to be called after **a file is uploaded and ready**.
 
 <br>
 
-#### `onFileSelect: (fileInfo: FileInfo) => void`
+#### `onFileSelect: (fileInfo: FileInfo | FilesInfo | null) => void`
 
 Set a function to be called after **a new file is selected**.
 
 * [FileInfo object description][api-refs-props]
+* [FilesInfo object description][multi-type-desc]
 * [Example][sandbox-on-file-select]
 
 <br>
@@ -102,12 +103,12 @@ Set a function to be called after **dialog is opened**.
 
 <br>
 
-#### `onDialogClose: (objs: undefined | FileInfo | MultiFiles) => void`
+#### `onDialogClose: (objs: FileInfo | FilesInfo | null) => void`
 
 Set a function to be called after **dialog is closed**.
 
 * [FileInfo object description][api-refs-props]
-* [MultiFiles object description][multi-type-desc]
+* [FilesInfo object description][multi-type-desc]
 
 <br>
 
