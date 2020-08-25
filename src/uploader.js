@@ -50,7 +50,6 @@ const useWidget = (
 ) => {
   const input = useRef(null)
   const widget = useRef(null)
-  const firstRender = useRef(true)
 
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
@@ -63,26 +62,22 @@ const useWidget = (
   const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
   useDeepEffect(() => {
-    if (!firstRender.current) {
-      window.UPLOADCARE_LOCALE = locale
+    if (locale) window.UPLOADCARE_LOCALE = locale
+    if (localePluralize) window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
+    if (localeTranslations) {
       window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
-      window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
-
-      uploadcare.plugin((internal) =>
-        internal.locale.rebuild({
-          locale,
-          localeTranslations,
-          localePluralize
-        })
-      )
     }
 
-    firstRender.current = false
+    if (locale || localePluralize || localeTranslations) {
+      uploadcare.plugin((internal) => {
+        internal.locale.rebuild({ locale, localeTranslations, localePluralize })
+      })
+    }
 
     return () => {
-      delete window.UPLOADCARE_LOCALE
-      delete window.UPLOADCARE_LOCALE_TRANSLATIONS
-      delete window.UPLOADCARE_LOCALE_PLURALIZE
+      if (locale) delete window.UPLOADCARE_LOCALE
+      if (localePluralize) delete window.UPLOADCARE_LOCALE_PLURALIZE
+      if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
     }
   }, [locale, localeTranslations, localePluralize])
 
