@@ -104,15 +104,35 @@ describe('Uploader', function () {
     const { container, rerender } = render(
       <Uploader
         publicKey='demopublickey'
-        locale='en'
         localeTranslations={translation('yay!')}
       />
+    )
+
+    fireEvent(
+      getByText(container, 'Choose a file'),
+      new window.MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      })
+    )
+
+    await waitFor(() =>
+      expect(
+        getByText(container.nextSibling, 'yay!')
+      ).toBeInTheDocument()
+    )
+
+    fireEvent(
+      getByTitle(container.nextSibling, 'Close'),
+      new window.MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      })
     )
 
     rerender(
       <Uploader
         publicKey='demopublickey'
-        locale={null}
         localeTranslations={undefined}
       />
     )
