@@ -50,7 +50,7 @@ const useWidget = (
 ) => {
   const input = useRef(null)
   const widget = useRef(null)
-  const render = useRef(true)
+  const firstRender = useRef(true)
 
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
@@ -63,23 +63,27 @@ const useWidget = (
   const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
   useDeepEffect(() => {
-    if (render.current) {
-      render.current = false
+    if (!firstRender.current) {
+      window.UPLOADCARE_LOCALE = locale
+      window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
+      window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
 
-      return () => {
-        delete window.UPLOADCARE_LOCALE
-        delete window.UPLOADCARE_LOCALE_TRANSLATIONS
-        delete window.UPLOADCARE_LOCALE_PLURALIZE
-      }
+      uploadcare.plugin((internal) =>
+        internal.locale.rebuild({
+          locale,
+          localeTranslations,
+          localePluralize
+        })
+      )
     }
 
-    uploadcare.plugin((internal) =>
-      internal.locale.rebuild({
-        locale,
-        localeTranslations,
-        localePluralize
-      })
-    )
+    firstRender.current = false
+
+    return () => {
+      delete window.UPLOADCARE_LOCALE
+      delete window.UPLOADCARE_LOCALE_TRANSLATIONS
+      delete window.UPLOADCARE_LOCALE_PLURALIZE
+    }
   }, [locale, localeTranslations, localePluralize])
 
   useEffect(() => {
