@@ -68,11 +68,13 @@ const useWidget = (
       window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
     }
 
-    if (locale || localePluralize || localeTranslations) {
-      uploadcare.plugin((internal) => {
-        internal.locale.rebuild({ locale, localeTranslations, localePluralize })
+    uploadcare.plugin((internal) => {
+      internal.locale.rebuild({
+        locale: locale || null,
+        localeTranslations: localeTranslations || null,
+        localePluralize: localeTranslations || null
       })
-    }
+    })
 
     return () => {
       if (locale) delete window.UPLOADCARE_LOCALE
