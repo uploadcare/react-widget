@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import { Widget } from '..'
 
+
 const translation = (text) => ({
   dialog: {
     tabs: {
