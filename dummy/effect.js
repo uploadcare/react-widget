@@ -4,14 +4,14 @@ import { Widget } from '../src'
 
 const translation = {
   effects: {
-    apply: 'Применити',
+    apply: 'Применити'
   }
 }
 
 export default () => {
   return (
     <Widget
-      publicKey="demopublickey"
+      publicKey='demopublickey'
       localeTranslations={translation}
       previewStep
       customTabs={{ preview: effects }}
