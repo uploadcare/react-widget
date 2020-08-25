@@ -1,4 +1,3 @@
-
 /* eslint-env jest */
 import React from 'react'
 import {
@@ -14,21 +13,13 @@ import Uploader from '../src/uploader'
 
 describe('Uploader', function () {
   it('should change locales dynamicaly', async function () {
-    const { container, rerender } = render(
-      <Uploader
-        publicKey='demopublickey'
-        locale='en'
-      />
+    const { container, rerender, unmount } = render(
+      <Uploader publicKey='demopublickey' locale='en' />
     )
 
     expect(getByText(container, 'Choose a file')).toBeInTheDocument()
 
-    rerender(
-      <Uploader
-        publicKey='demopublickey'
-        locale='ru'
-      />
-    )
+    rerender(<Uploader publicKey='demopublickey' locale='ru' />)
 
     fireEvent(
       getByText(container, 'Choose a file'),
@@ -38,7 +29,10 @@ describe('Uploader', function () {
       })
     )
 
-    expect(getByText(container.nextSibling, 'Выберите локальный файл')).toBeInTheDocument()
+    expect(
+      getByText(container.nextSibling, 'Выберите локальный файл')
+    ).toBeInTheDocument()
+    unmount()
   })
 
   it('should change labels dynamicaly', async function () {
@@ -50,7 +44,7 @@ describe('Uploader', function () {
       }
     })
 
-    const { container, rerender } = render(
+    const { container, rerender, unmount } = render(
       <Uploader
         publicKey='demopublickey'
         localeTranslations={translation('wow!')}
@@ -65,7 +59,9 @@ describe('Uploader', function () {
       })
     )
 
-    await waitFor(() => expect(getByText(container.nextSibling, 'wow!')).toBeInTheDocument())
+    await waitFor(() =>
+      expect(getByText(container.nextSibling, 'wow!')).toBeInTheDocument()
+    )
 
     fireEvent(
       getByTitle(container.nextSibling, 'Close'),
@@ -90,6 +86,49 @@ describe('Uploader', function () {
       })
     )
 
-    await waitFor(() => expect(getByText(container.nextSibling, 'dynamic!')).toBeInTheDocument())
+    await waitFor(() =>
+      expect(getByText(container.nextSibling, 'dynamic!')).toBeInTheDocument()
+    )
+    unmount()
+  })
+
+  it('should allow return default translation', async function () {
+    const translation = (text) => ({
+      dialog: {
+        tabs: {
+          file: { button: text }
+        }
+      }
+    })
+
+    const { container, rerender } = render(
+      <Uploader
+        publicKey='demopublickey'
+        locale='en'
+        localeTranslations={translation('yay!')}
+      />
+    )
+
+    rerender(
+      <Uploader
+        publicKey='demopublickey'
+        locale={null}
+        localeTranslations={undefined}
+      />
+    )
+
+    fireEvent(
+      getByText(container, 'Choose a file'),
+      new window.MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      })
+    )
+
+    await waitFor(() =>
+      expect(
+        getByText(container.nextSibling, 'Choose a local file')
+      ).toBeInTheDocument()
+    )
   })
 })
