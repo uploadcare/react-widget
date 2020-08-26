@@ -1,3 +1,12 @@
+## [1.3.2](https://github.com/uploadcare/react-widget/compare/v1.3.1...v1.3.2) (2020-08-26)
+
+
+### Bug Fixes
+
+* **types:** improve `onFileSelect` callback typings ([#204](https://github.com/uploadcare/react-widget/issues/204)) ([c365c53](https://github.com/uploadcare/react-widget/commit/c365c53d083ea80baa69dea6e0bbe62a778b71d9))
+
+
+
 ## [1.3.1](https://github.com/uploadcare/react-widget/compare/v1.3.0...v1.3.1) (2020-08-17)
 
 
