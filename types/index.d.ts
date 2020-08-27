@@ -256,11 +256,14 @@ interface DialogApi {
   onTabVisibility(callback: OnTabVisibilityCallback): void;
 }
 
-interface Settings {
+interface LocaleSettings {
   // developer hooks
   locale?: Locale;
-  localePluralize?: (n: number) => string;
+  localePluralize?: LocalePluralize;
   localeTranslations?: LocaleTranslations;
+}
+
+interface Settings extends LocaleSettings {
   // widget & dialog settings
   systemDialog?: boolean;
   crop?: string;
@@ -344,16 +347,13 @@ type CustomTabConstructor = (
 
 type Validator = ((fileInfo: FileInfo) => void);
 
-declare const Widget: RefForwardingComponent<{
-  locale?: Locale;
-  localeTranslations?: LocaleTranslations;
-  localePluralize?: LocalePluralize;
-}, WidgetProps>;
+declare const Widget: RefForwardingComponent<LocaleSettings, WidgetProps>;
 
 export {
   Locale,
   LocalePluralize,
   LocaleTranslations,
+  LocaleSettings,
   GeoLocation,
   OriginalImageInfo,
   Uuid,

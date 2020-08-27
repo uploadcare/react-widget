@@ -189,7 +189,7 @@ is being loaded.
 #### `ref: widgetApiRef`
 
 Define a reference object to address the Widget API wrapper. Use it to access
-these methods: `openDialog`, `reloadInfo`, and `getInput`.
+these methods: `openDialog`, `reloadInfo` and `getInput`.
 
 ```jsx
 const Example = () => {
@@ -277,7 +277,7 @@ We want to hear your issue reports and feature requests at
 [uc-feature-widget]: https://uploadcare.com/features/widget/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-config]: https://uploadcare.com/docs/uploads/widget/config/?utm_source=github&utm_campaign=react-widget
 [uc-docs-widget-js-api]: https://uploadcare.com/docs/api_reference/javascript/?utm_source=github&utm_campaign=react-widget
-[uc-docs-widget-styling]: https://uploadcare.com/docs/file_uploader_api/tabs_styling/
+[uc-docs-widget-styling]: https://uploadcare.com/docs/file_uploader_api/tabs_styling/?utm_source=github&utm_campaign=react-widget
 [uc-sign-up]: https://uploadcare.com/accounts/signup/
 [uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads

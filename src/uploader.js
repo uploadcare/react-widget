@@ -10,7 +10,8 @@ import {
   useEventCallback,
   useCustomTabs,
   useValidators,
-  useDeepMemo
+  useDeepMemo,
+  useDeepEffect
 } from './hooks'
 
 function camelCaseToDash (str) {
@@ -40,6 +41,9 @@ const useWidget = (
     customTabs,
     validators,
     tabsCss,
+    locale,
+    localeTranslations,
+    localePluralize,
     ...options
   },
   uploadcare
@@ -57,11 +61,34 @@ const useWidget = (
 
   const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
+  useDeepEffect(() => {
+    if (locale) window.UPLOADCARE_LOCALE = locale
+    if (localePluralize) window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
+    if (localeTranslations) {
+      window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
+    }
+
+    uploadcare.plugin((internal) => {
+      internal.locale.rebuild({
+        locale: locale || null,
+        localeTranslations: localeTranslations || null,
+        localePluralize: localePluralize || null
+      })
+    })
+
+    return () => {
+      if (locale) delete window.UPLOADCARE_LOCALE
+      if (localePluralize) delete window.UPLOADCARE_LOCALE_PLURALIZE
+      if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
+    }
+  }, [locale, localeTranslations, localePluralize])
+
   useEffect(() => {
     widget.current = uploadcare.Widget(input.current)
     const widgetElement = input.current.nextSibling
 
-    return () => widgetElement && widgetElement.parentNode.removeChild(widgetElement)
+    return () =>
+      widgetElement && widgetElement.parentNode.removeChild(widgetElement)
   }, [uploadcare, attributes])
 
   useValidators(widget, validators)

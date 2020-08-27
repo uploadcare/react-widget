@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import uploadcare from 'uploadcare-widget'
 
-import { useState, useCustomTabs } from './hooks'
+import { useState, useCustomTabs, useDeepEffect } from './hooks'
 
 const containerStyles = {
   height: '500px',
@@ -33,8 +33,21 @@ const useDialog = (props, uploadcare) => {
     progress: null
   })
 
-  const { customTabs, tabsCss } = props
+  const { customTabs, tabsCss, locale, localePluralize, localeTranslations } = props
 
+  useDeepEffect(() => {
+    if (locale) window.UPLOADCARE_LOCALE = locale
+    if (localePluralize) window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
+    if (localeTranslations) {
+      window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
+    }
+
+    return () => {
+      if (locale) delete window.UPLOADCARE_LOCALE
+      if (localePluralize) delete window.UPLOADCARE_LOCALE_PLURALIZE
+      if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
+    }
+  }, [locale, localePluralize, localeTranslations])
   useCustomTabs(customTabs, uploadcare)
 
   const panelContainer = useRef(null)

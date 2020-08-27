@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { Widget } from '../src'
+import { Widget } from '..'
 
 const translation = (text) => ({
   dialog: {
@@ -19,7 +19,7 @@ const Test = () => {
       <Widget
         publicKey='demopublickey'
         localeTranslations={translation(
-          value ? 'Hello Henry Myers!' : 'What you think about that stuff?'
+          value ? 'Wow!' : 'So dynamic!'
         )}
       />
     </>

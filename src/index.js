@@ -10,43 +10,20 @@ const Dialog = lazy(() =>
   import(/* webpackChunkName: "ucare-panel-chunk" */ './dialog')
 )
 
-const Config = ({ locale, localeTranslations, localePluralize }) => {
+const Config = () => {
   useIsomorphicEffect(() => {
     window.UPLOADCARE_INTEGRATION = 'react-widget'
     window.UPLOADCARE_LIVE = false
     window.UPLOADCARE_MANUAL_START = true
   }, [])
 
-  // configurate translations
-  useIsomorphicEffect(() => {
-    window.UPLOADCARE_LOCALE = window.UPLOADCARE_LOCALE || locale
-    window.UPLOADCARE_LOCALE_TRANSLATIONS =
-      window.UPLOADCARE_LOCALE_TRANSLATIONS || localeTranslations
-    window.UPLOADCARE_LOCALE_PLURALIZE =
-      window.UPLOADCARE_LOCALE_PLURALIZE || localePluralize
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return null
 }
 
 export const Widget = forwardRef(
-  (
-    {
-      locale,
-      localeTranslations,
-      localePluralize,
-      preloader = 'Loading...',
-      ...props
-    },
-    ref
-  ) => (
+  ({ preloader = 'Loading...', ...props }, ref) => (
     <>
-      <Config
-        locale={locale}
-        localeTranslations={localeTranslations}
-        localePluralize={localePluralize}
-      />
+      <Config />
 
       <Suspense fallback={preloader}>
         <Uploader {...props} apiRef={ref} />
@@ -55,19 +32,9 @@ export const Widget = forwardRef(
   )
 )
 
-export const Panel = ({
-  locale,
-  localeTranslations,
-  localePluralize,
-  preloader = 'Loading...',
-  ...props
-}) => (
+export const Panel = ({ preloader = 'Loading...', ...props }) => (
   <>
-    <Config
-      locale={locale}
-      localeTranslations={localeTranslations}
-      localePluralize={localePluralize}
-    />
+    <Config />
 
     <Suspense fallback={preloader}>
       <Dialog {...props} />
