@@ -72,7 +72,7 @@ const useWidget = (
       internal.locale.rebuild({
         locale: locale || null,
         localeTranslations: localeTranslations || null,
-        localePluralize: localeTranslations || null
+        localePluralize: localePluralize || null
       })
     })
 
