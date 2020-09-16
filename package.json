@@ -75,7 +75,7 @@
     "@types/react-dom": "16.9.8",
     "babel-eslint": "10.1.0",
     "babel-plugin-annotate-pure-calls": "0.4.0",
-    "dtslint": "3.7.0",
+    "dtslint": "4.0.1",
     "eslint": "7.9.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-config-standard": "14.1.1",
