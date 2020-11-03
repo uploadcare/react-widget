@@ -58,8 +58,8 @@
     "uploadcare-widget": "^3.8.2"
   },
   "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.10.2 || ^17.0.0",
+    "react-dom": "^16.10.2 || ^17.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.11.6",
@@ -92,8 +92,8 @@
     "jest-esm-jsx-transform": "1.0.0",
     "parcel-bundler": "1.12.4",
     "prettier": "2.1.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "rimraf": "3.0.2",
     "rollup": "2.29.0",
     "rollup-plugin-babel": "4.4.0",
