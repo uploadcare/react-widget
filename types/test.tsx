@@ -74,7 +74,16 @@ const Preloader = () => <div />;
 
 <Widget
   publicKey='demopublickey'
+  // @ts-expect-error
   preloader={Preloader}/>;
+
+<Widget
+  publicKey='demopublickey'
+  preloader={<Preloader />}/>;
+
+<Widget
+  publicKey='demopublickey'
+  preloader='Hello world'/>;
 
 <Widget
   publicKey='demopublickey'
