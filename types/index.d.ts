@@ -242,6 +242,12 @@ interface FileInfo {
   cdnUrl: null | string;
   cdnUrlModifiers: null | string;
   sourceInfo: null | SourceInfo;
+  crop?: {
+    height: number;
+    left: number;
+    top: number;
+    width: number;
+  };
 }
 
 type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
