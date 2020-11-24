@@ -1,4 +1,4 @@
-import { ComponentType, Ref, RefForwardingComponent } from 'react';
+import { Ref, RefForwardingComponent } from 'react';
 import JQuery = require('jquery');
 
 type Locale =
@@ -338,7 +338,7 @@ interface WidgetProps extends Settings {
   customTabs?: {[key: string]: CustomTabConstructor};
   validators?: Validator[];
   tabsCss?: string;
-  preloader?: ComponentType | null;
+  preloader?: JSX.Element | string | number | null;
   ref?: Ref<WidgetAPI>;
 }
 
