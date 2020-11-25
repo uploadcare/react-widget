@@ -1,3 +1,13 @@
+## [1.3.3](https://github.com/uploadcare/react-widget/compare/v1.3.2...v1.3.3) (2020-11-25)
+
+
+### Bug Fixes
+
+* **types:** add crop to FileInfo ([#226](https://github.com/uploadcare/react-widget/issues/226)) ([1693eae](https://github.com/uploadcare/react-widget/commit/1693eae52dd2a9be868b35a512eb585d9aceffa5))
+* **types:** fix preloader type ([#227](https://github.com/uploadcare/react-widget/issues/227)) ([23c3491](https://github.com/uploadcare/react-widget/commit/23c3491bbe671af293960d348035db307e5093a2))
+
+
+
 ## [1.3.2](https://github.com/uploadcare/react-widget/compare/v1.3.1...v1.3.2) (2020-08-27)
 
 
