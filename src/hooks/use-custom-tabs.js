@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
 
-const noop = function () {}
-
 export const useCustomTabs = (tabs, uploadcare) => {
   useEffect(() => {
     const customTabs = Object.entries(tabs || [])
@@ -11,8 +9,5 @@ export const useCustomTabs = (tabs, uploadcare) => {
         return implementation(...args, uploadcare)
       })
     })
-
-    return () =>
-      customTabs.forEach(([name]) => uploadcare.registerTab(name, noop))
   }, [tabs, uploadcare])
 }
