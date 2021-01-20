@@ -1,3 +1,12 @@
+## [1.3.4](https://github.com/uploadcare/react-widget/compare/v1.3.3...v1.3.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* **custom-tabs:** fix using custom tabs at multiple instances ([#237](https://github.com/uploadcare/react-widget/issues/237)) ([3863f60](https://github.com/uploadcare/react-widget/commit/3863f60b2e1ea8e3b7db923cfd84f8108b27e70f))
+
+
+
 ## [1.3.3](https://github.com/uploadcare/react-widget/compare/v1.3.2...v1.3.3) (2020-11-25)
 
 
