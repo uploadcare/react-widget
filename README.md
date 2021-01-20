@@ -130,6 +130,9 @@ function myTab(container, button, dialogApi, settings, name, uploadcare) {
 <Widget customTabs={{ tabname: myTab }} />
 ```
 
+Since custom tabs are global internally, any local property change will affect all the widget instances.
+So we're highly recommend not to redefine tab constructors and not to have different constructors under the same name.
+
 Note that we added the fifth argument to the custom tab constructor — an
 `uploadcare` object. The widget is lazily-loaded, so you don’t have to import
 `uploadcare-widget` separately for your custom tab.
