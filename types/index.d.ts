@@ -355,8 +355,26 @@ interface WidgetAPI {
 interface FileUpload extends JQuery.Deferred<FileInfo> {
   cancel: () => FileUpload;
 }
+
+/**
+ * The result of uploading multiple files to upload care is a file group.
+ *
+ * The react upload care widget does not (yet) define this type.
+ *
+ * This type is reverse engineered from stepping into the debugger.
+ */
+ interface FileGroup {
+  cdnUrl: string;
+  count: number;
+  isImage: boolean;
+  isStored: boolean;
+  name: string;
+  size: number;
+  uuid: string;
+}
+
 interface FilesUpload {
-  promise: () => FileUpload;
+  promise: () => FileGroup;
   files: () => FileUpload[];
 }
 
@@ -397,6 +415,7 @@ export {
   Uuid,
   SourceInfo,
   FileInfo,
+  FileGroup,
   FileUpload,
   FilesUpload,
   DialogApi,
