@@ -365,6 +365,8 @@ export {
   Uuid,
   SourceInfo,
   FileInfo,
+  FileUpload,
+  FilesUpload,
   DialogApi,
   OnTabVisibilityCallback,
   Settings,
