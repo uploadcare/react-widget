@@ -70,6 +70,8 @@ yarn-error.log
 
 # builded code
 dist
+min
 en
+en-min
 e2e_test
 locales.js
