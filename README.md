@@ -21,6 +21,7 @@ required to handle uploads.
 
 * [Install](#install)
 * [Usage](#usage)
+* [Available bundles](#available-bundles)
 * [Configuration](#configuration)
   * [Component configuration](#component-configuration)
   * [Widget configuration](#widget-configuration)
@@ -38,12 +39,6 @@ npm i @uploadcare/react-widget
 ```jsx
 import { Widget } from "@uploadcare/react-widget";
 
-/*
- * Also, you can save 30% in bundle size by using English-only version:
- *
- * import { Widget } from "@uploadcare/react-widget/en";
- */
-
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
 ```
 
@@ -59,6 +54,14 @@ Replace `YOUR_PUBLIC_KEY` with your project’s Public API Key and you are all
 set.
 
 You can refer to our [integration guide][react-guide] for more details.
+
+## Available bundles
+By default, npm and other package managers import the full (all locales) CommonJS or ESM bundle.
+
+To reduce your bundle size, you can also import one of the following:
+* The english-only bundle (saves ~27% in bundle size) as `@uploadcare/react-widget/en`
+* The minified all-locales bundle (saves ~44% in bundle size) as `@uploadcare/react-widget/min`
+* The minified english-only bundle (saves ~60% in bundle size) as `@uploadcare/react-widget/en-min/`
 
 ## Configuration
 
