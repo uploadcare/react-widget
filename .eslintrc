@@ -1,5 +1,5 @@
 {
-  "extends": ["standard", "eslint-config-standard-jsx", "prettier/standard"],
+  "extends": ["standard", "eslint-config-standard-jsx", "prettier"],
   "parser": "babel-eslint",
   "plugins": ["react-hooks", "prettier"],
   "rules": {
