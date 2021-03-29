@@ -231,13 +231,13 @@ interface SourceInfo {
 }
 
 interface FileInfo {
-  uuid: Uuid;
+  uuid: null | Uuid;
   name: null | string;
   size: null | number;
   isStored: null | boolean;
   isImage: null | boolean;
   originalImageInfo: null | OriginalImageInfo;
-  mimeType: string;
+  mimeType: null | string;
   originalUrl: null | string;
   cdnUrl: null | string;
   cdnUrlModifiers: null | string;
