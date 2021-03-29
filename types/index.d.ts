@@ -373,8 +373,10 @@ interface FileUpload extends JQuery.Deferred<FileInfo> {
   uuid: string;
 }
 
+interface FileGroupUpload extends JQuery.Deferred<FileGroup> { }
+
 interface FilesUpload {
-  promise: () => FileGroup;
+  promise: () => FileGroupUpload;
   files: () => FileUpload[];
 }
 
@@ -416,6 +418,7 @@ export {
   SourceInfo,
   FileInfo,
   FileGroup,
+  FileGroupUpload,
   FileUpload,
   FilesUpload,
   DialogApi,
