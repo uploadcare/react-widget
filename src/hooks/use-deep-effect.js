@@ -8,5 +8,6 @@ export const useDeepEffect = (effect, deps) => {
     ref.current = deps
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(effect, ref.current)
 }
