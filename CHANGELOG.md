@@ -1,3 +1,9 @@
+## Unreleased
+
+### Bug Fixes
+
+* **types** Export types FileUpload and FilesUpload.
+
 ## [1.3.5](https://github.com/uploadcare/react-widget/compare/v1.3.4...v1.3.5) (2021-02-26)
 
 
