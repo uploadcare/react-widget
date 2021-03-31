@@ -1,3 +1,12 @@
+## [1.3.6](https://github.com/uploadcare/react-widget/compare/v1.3.5...v1.3.6) (2021-03-31)
+
+
+### Bug Fixes
+
+* **types:** export file upload types ([#251](https://github.com/uploadcare/react-widget/issues/251)) ([dbc7a75](https://github.com/uploadcare/react-widget/commit/dbc7a757589250b7f106e86fe0a8a00324bd1eee))
+
+
+
 ## Unreleased
 
 ### Bug Fixes
