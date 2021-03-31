@@ -231,13 +231,13 @@ interface SourceInfo {
 }
 
 interface FileInfo {
-  uuid: Uuid;
+  uuid: null | Uuid;
   name: null | string;
   size: null | number;
   isStored: null | boolean;
   isImage: null | boolean;
   originalImageInfo: null | OriginalImageInfo;
-  mimeType: string;
+  mimeType: null | string;
   originalUrl: null | string;
   cdnUrl: null | string;
   cdnUrlModifiers: null | string;
@@ -252,10 +252,40 @@ interface FileInfo {
 
 type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
 
+interface Collection<T> {
+  onAdd: JQuery.Callbacks;
+  onRemove: JQuery.Callbacks;
+  onSort: JQuery.Callbacks;
+  onReplace: JQuery.Callbacks;
+  __items: T[];
+
+  add: (item: T) => JQuery.Callbacks | undefined;
+  remove: (item: T) => JQuery.Callbacks | undefined;
+  clear: () => JQuery.Callbacks[];
+  replace: (oldItem: T, newItem: T) => JQuery.Callbacks | undefined;
+  sort: (comparator: (a: T, b: T) => boolean) => JQuery.Callbacks;
+  get: (index: number) => T;
+  length: () => number;
+}
+
+interface UniqCollection<T> extends Collection<T> {
+  add: (item: T) => JQuery.Callbacks | undefined;
+}
+interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
+  anyDoneList: JQuery.Callbacks;
+  anyFailList: JQuery.Callbacks;
+  anyProgressList: JQuery.Callbacks;
+
+  onAnyDone: unknown;
+  onAnyFail: unknown;
+  onAnyProgress: unknown;
+  lastProgresses: unknown;
+  autoThen: unknown;
+}
 interface DialogApi {
   addFiles(files: FileInfo[]): void;
   switchTab(tab: string): void;
-  fileColl: FileInfo[];
+  fileColl: CollectionOfPromises<FileInfo>;
   hideTab(tab: string): void;
   showTab(tab: string): void;
   isTabVisible(tab: string): boolean;
@@ -322,9 +352,31 @@ interface WidgetAPI {
   getInput: () => HTMLInputElement;
 }
 
-type FileUpload = JQuery.Deferred<FileInfo>;
+interface FileUpload extends JQuery.Deferred<FileInfo> {
+  cancel: () => FileUpload;
+}
+
+/**
+ * The result of uploading multiple files to upload care is a file group.
+ *
+ * The react upload care widget does not (yet) define this type.
+ *
+ * This type is reverse engineered from stepping into the debugger.
+ */
+ interface FileGroup {
+  cdnUrl: string;
+  count: number;
+  isImage: boolean;
+  isStored: boolean;
+  name: string;
+  size: number;
+  uuid: string;
+}
+
+interface FileGroupUpload extends JQuery.Deferred<FileGroup> { }
+
 interface FilesUpload {
-  promise: () => FileUpload;
+  promise: () => FileGroupUpload;
   files: () => FileUpload[];
 }
 
@@ -365,6 +417,8 @@ export {
   Uuid,
   SourceInfo,
   FileInfo,
+  FileGroup,
+  FileGroupUpload,
   FileUpload,
   FilesUpload,
   DialogApi,

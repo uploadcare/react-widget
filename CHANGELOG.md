@@ -3,6 +3,9 @@
 ### Bug Fixes
 
 * **types** Export types FileUpload and FilesUpload.
+* **types** FileInfo type updated to account for null uuid and mime-type during validation callback
+* **types** Fix the type of the fileColl attibute of the dialog api
+* **types** Add and export the FileGroup type
 
 ## [1.3.5](https://github.com/uploadcare/react-widget/compare/v1.3.4...v1.3.5) (2021-02-26)
 
