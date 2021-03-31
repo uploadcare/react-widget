@@ -1,3 +1,12 @@
+## [1.3.7](https://github.com/uploadcare/react-widget/compare/v1.3.6...v1.3.7) (2021-03-31)
+
+
+### Bug Fixes
+
+* **build:** Add minified ESM builds ([#252](https://github.com/uploadcare/react-widget/issues/252)) ([c64e038](https://github.com/uploadcare/react-widget/commit/c64e038ed9e8f9088645b9da2948324bda5c1498))
+
+
+
 ## [1.3.6](https://github.com/uploadcare/react-widget/compare/v1.3.5...v1.3.6) (2021-03-31)
 
 
