@@ -1,3 +1,12 @@
+## [1.3.8](https://github.com/uploadcare/react-widget/compare/v1.3.7...v1.3.8) (2021-07-19)
+
+
+### Bug Fixes
+
+* reassign callbacks on widget reinitialization ([#268](https://github.com/uploadcare/react-widget/issues/268)) ([90ed6f2](https://github.com/uploadcare/react-widget/commit/90ed6f285d217704c69fae67e7bc1f0db78e3e5a))
+
+
+
 ## [1.3.7](https://github.com/uploadcare/react-widget/compare/v1.3.6...v1.3.7) (2021-03-31)
 
 
