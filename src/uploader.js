@@ -86,7 +86,7 @@ const useWidget = (
       if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
       if (previewUrlCallback) delete window.UPLOADCARE_PREVIEW_URL_CALLBACK
     }
-  }, [locale, localeTranslations, localePluralize])
+  }, [locale, localeTranslations, localePluralize, previewUrlCallback])
 
   useEffect(() => {
     widget.current = uploadcare.Widget(input.current)
