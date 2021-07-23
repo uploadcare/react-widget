@@ -44,6 +44,7 @@ const useWidget = (
     locale,
     localeTranslations,
     localePluralize,
+    previewUrlCallback,
     ...options
   },
   uploadcare
@@ -67,6 +68,9 @@ const useWidget = (
     if (localeTranslations) {
       window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
     }
+    if (previewUrlCallback) {
+      window.UPLOADCARE_PREVIEW_URL_CALLBACK = previewUrlCallback
+    }
 
     uploadcare.plugin((internal) => {
       internal.locale.rebuild({
@@ -80,8 +84,9 @@ const useWidget = (
       if (locale) delete window.UPLOADCARE_LOCALE
       if (localePluralize) delete window.UPLOADCARE_LOCALE_PLURALIZE
       if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
+      if (previewUrlCallback) delete window.UPLOADCARE_PREVIEW_URL_CALLBACK
     }
-  }, [locale, localeTranslations, localePluralize])
+  }, [locale, localeTranslations, localePluralize, previewUrlCallback])
 
   useEffect(() => {
     widget.current = uploadcare.Widget(input.current)
