@@ -1,3 +1,4 @@
+/// <reference types="@types/jquery-deferred" />
 import { Ref, RefForwardingComponent } from 'react';
 import JQuery = require('jquery');
 
