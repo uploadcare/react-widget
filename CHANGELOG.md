@@ -1,3 +1,12 @@
+## [1.3.9](https://github.com/uploadcare/react-widget/compare/v1.3.8...v1.3.9) (2021-10-27)
+
+
+### Bug Fixes
+
+* import jquery typings ([#281](https://github.com/uploadcare/react-widget/issues/281)) ([b40b6cc](https://github.com/uploadcare/react-widget/commit/b40b6cc8199b66008fcb1239c8707f1d0ada41c9))
+
+
+
 ## [1.3.8](https://github.com/uploadcare/react-widget/compare/v1.3.7...v1.3.8) (2021-07-23)
 
 
