@@ -263,8 +263,8 @@ We want to hear your issue reports and feature requests at
 
 
 [es6-debate]: https://gist.github.com/Rich-Harris/51e1bf24e7c093469ef7a0983bad94cb
-[build-img]: https://api.travis-ci.com/uploadcare/react-widget.svg?branch=master
-[build-link]: https://travis-ci.com/uploadcare/react-widget
+[build-img]: https://img.shields.io/github/workflow/status/uploadcare/react-widget/test/master?label=build
+[build-link]: https://github.com/uploadcare/react-widget/actions/workflows/test.yml
 [npm-img]: https://img.shields.io/npm/v/@uploadcare/react-widget.svg
 [npm-link]: https://www.npmjs.com/package/@uploadcare/react-widget
 [widget-options-docs]: https://uploadcare.com/docs/file_uploads/widget/options/#options?utm_source=github&utm_campaign=react-widget
