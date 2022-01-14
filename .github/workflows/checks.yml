@@ -1,4 +1,4 @@
-name: ci
+name: checks
 
 on:
   pull_request:
@@ -7,17 +7,16 @@ on:
       - master
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
       - name: Install dependencies
         working-directory: ./
         run: npm ci
       - name: Run build
-        working-directory: ./
         run: npm run build
       - name: Run test
-        working-directory: ./
         run: npm run test
+
