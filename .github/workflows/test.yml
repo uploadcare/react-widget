@@ -1,6 +1,10 @@
 name: ci
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -11,6 +15,9 @@ jobs:
       - name: Install dependencies
         working-directory: ./
         run: npm ci
+      - name: Run build
+        working-directory: ./
+        run: npm run build
       - name: Run test
         working-directory: ./
         run: npm run test
