@@ -57,7 +57,7 @@
   "dependencies": {
     "@uploadcare/client-suspense": "^1.0.5",
     "react-fast-compare": "^3.2.0",
-    "uploadcare-widget": "^3.10.2"
+    "uploadcare-widget": "^3.17.0"
   },
   "peerDependencies": {
     "react": "^16.10.2 || ^17.0.0",
@@ -103,7 +103,7 @@
     "rollup-plugin-terser": "7.0.2",
     "shipjs": "0.23.1",
     "typescript": "4.2.3",
-    "uploadcare-widget-tab-effects": "1.4.7",
+    "uploadcare-widget-tab-effects": "1.5.0",
     "@types/jquery-deferred": "^0.3.0"
   },
   "jest": {
