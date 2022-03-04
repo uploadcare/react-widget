@@ -1,3 +1,12 @@
+## [1.3.10](https://github.com/uploadcare/react-widget/compare/v1.3.9...v1.3.10) (2022-03-04)
+
+
+### Bug Fixes
+
+* Bump widget version ([#311](https://github.com/uploadcare/react-widget/issues/311)) ([b163cbd](https://github.com/uploadcare/react-widget/commit/b163cbd13911047a05faec00a88c915aa853fbd5)).
+As a consequence, Icelandic locale added.
+
+
 ## [1.3.9](https://github.com/uploadcare/react-widget/compare/v1.3.8...v1.3.9) (2021-10-27)
 
 
