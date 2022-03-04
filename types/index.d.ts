@@ -15,6 +15,7 @@ type Locale =
   'et' |
   'fr' |
   'he' |
+  'is' |
   'it' |
   'ja' |
   'ko' |
