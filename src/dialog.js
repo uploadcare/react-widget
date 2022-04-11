@@ -103,7 +103,6 @@ const useDialog = (props, uploadcare) => {
 
     getDialogApi().fileColl.anyDoneList.add(onChangeWrapper)
     getDialogApi().fileColl.anyFailList.add(onChangeWrapper)
-    getDialogApi().fileColl.onAdd.add(onChangeWrapper)
     getDialogApi().fileColl.onRemove.add(onChangeWrapper)
     getDialogApi().fileColl.onReplace.add(onChangeWrapper)
     getDialogApi().fileColl.onSort.add(onChangeWrapper)
@@ -113,7 +112,6 @@ const useDialog = (props, uploadcare) => {
 
       getDialogApi().fileColl.anyDoneList.remove(onChangeWrapper)
       getDialogApi().fileColl.anyFailList.remove(onChangeWrapper)
-      getDialogApi().fileColl.onAdd.remove(onChangeWrapper)
       getDialogApi().fileColl.onRemove.remove(onChangeWrapper)
       getDialogApi().fileColl.onReplace.remove(onChangeWrapper)
       getDialogApi().fileColl.onSort.remove(onChangeWrapper)
