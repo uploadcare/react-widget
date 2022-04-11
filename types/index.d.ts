@@ -346,6 +346,8 @@ interface Settings extends LocaleSettings {
   integration?: string;
   // effects tab
   effects?: string | string[];
+
+  remoteTabSessionKey?: string
 }
 
 interface WidgetAPI {
