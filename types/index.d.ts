@@ -278,10 +278,16 @@ interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
   anyFailList: JQuery.Callbacks;
   anyProgressList: JQuery.Callbacks;
 
-  onAnyDone: unknown;
-  onAnyFail: unknown;
-  onAnyProgress: unknown;
-  lastProgresses: unknown;
+  onAdd: JQuery.Callbacks;
+  onRemove: JQuery.Callbacks;
+  onReplace: JQuery.Callbacks;
+  onSort: JQuery.Callbacks;
+
+  onAnyDone: (cb: () => void) => void;
+  onAnyFail: (cb: () => void) => void;
+  onAnyProgress: (cb: () => void) => void;
+  lastProgresses: () => Array<ProgressInfo>;
+
   autoThen: unknown;
 }
 interface DialogApi {
