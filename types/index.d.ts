@@ -1,5 +1,5 @@
 /// <reference types="@types/jquery-deferred" />
-import { Ref, RefForwardingComponent } from 'react';
+import { Ref, ForwardRefRenderFunction } from 'react';
 import JQuery = require('jquery');
 
 type Locale =
@@ -409,7 +409,7 @@ type CustomTabConstructor = (
 
 type Validator = ((fileInfo: FileInfo) => void);
 
-declare const Widget: RefForwardingComponent<LocaleSettings, WidgetProps>;
+declare const Widget: ForwardRefRenderFunction<LocaleSettings, WidgetProps>;
 
 export {
   Locale,
