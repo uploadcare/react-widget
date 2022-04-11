@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Widget, CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/react-widget';
+import { Widget, Panel, PanelAPI,  CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/react-widget';
+// @ts-ignore
+import uploadcare from 'uploadcare-widget'
 
 <Widget publicKey='demopublickey' />;
 
@@ -180,3 +182,31 @@ const UnsplashCreator: CustomTabConstructor = (
   }}
   onTabChange={tab => console.log(tab)}
 />;
+
+const panelApi = React.useRef<PanelAPI>(null);
+
+<Panel
+  ref={panelApi}
+  publicKey="demopublickey"
+  onTabChange={tab => console.log(tab)}
+  tabs="facebook"
+  tabsCss=".source-facebook { background: #1877F2; }"
+  customTabs={{ unsplash: UnsplashCreator }}
+  validators={validators}
+  crop='200x300'
+  onChange={(files) => {
+    Promise.all(
+      files.map((file) =>
+        file
+        .then((fileInfo) => ({ state: 'success', fileInfo }))
+        .catch((errorSource, fileInfo, error) => uploadcare.jQuery.Deferred().resolve({
+          state: 'failed',
+          errorSource,
+          fileInfo,
+          error
+        }))
+      )
+    ).then((results) => console.log('onChange', results))
+  }}
+>
+</Panel>;

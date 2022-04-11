@@ -252,6 +252,13 @@ interface FileInfo {
   };
 }
 
+interface ProgressInfo {
+  incompleteFileInfo: Partial<FileInfo>;
+  progress: number;
+  state: string;
+  uploadProgress: number;
+}
+
 type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
 
 interface Collection<T> {
@@ -333,7 +340,9 @@ interface Settings extends LocaleSettings {
   urlBase?: string;
   socialBase?: string;
   previewProxy?: string | null;
-  previewUrlCallback?: ((originalUrl: string, fileInfo: FileInfo) => string) | null;
+  previewUrlCallback?:
+    | ((originalUrl: string, fileInfo: FileInfo) => string)
+    | null;
   // fine tuning
   imagePreviewMaxSize?: number;
   multipartMinSize?: number;
@@ -353,7 +362,7 @@ interface Settings extends LocaleSettings {
   // effects tab
   effects?: string | string[];
 
-  remoteTabSessionKey?: string
+  remoteTabSessionKey?: string;
 }
 
 interface WidgetAPI {
@@ -373,7 +382,7 @@ interface FileUpload extends JQuery.Deferred<FileInfo> {
  *
  * This type is reverse engineered from stepping into the debugger.
  */
- interface FileGroup {
+interface FileGroup {
   cdnUrl: string;
   count: number;
   isImage: boolean;
@@ -383,7 +392,7 @@ interface FileUpload extends JQuery.Deferred<FileInfo> {
   uuid: string;
 }
 
-interface FileGroupUpload extends JQuery.Deferred<FileGroup> { }
+interface FileGroupUpload extends JQuery.Deferred<FileGroup> {}
 
 interface FilesUpload {
   promise: () => FileGroupUpload;
@@ -397,7 +406,7 @@ interface WidgetProps extends Settings {
   onDialogOpen?: (dialog: DialogApi) => void;
   onDialogClose?: (info: FileUpload | FilesUpload | null) => void;
   onTabChange?: (tabName: string) => void;
-  customTabs?: {[key: string]: CustomTabConstructor};
+  customTabs?: { [key: string]: CustomTabConstructor };
   validators?: Validator[];
   tabsCss?: string;
   preloader?: JSX.Element | string | number | null;
@@ -413,9 +422,26 @@ type CustomTabConstructor = (
   uploadcare: any
 ) => void;
 
-type Validator = ((fileInfo: FileInfo) => void);
+type Validator = (fileInfo: FileInfo) => void;
 
 declare const Widget: ForwardRefRenderFunction<LocaleSettings, WidgetProps>;
+
+type PanelAPI = DialogApi;
+
+interface PanelProps extends Settings {
+  value?: Array<string>;
+  onChange?: (files: Array<FileUpload>) => void;
+  onTabChange?: (tabName: string) => void;
+  onProgress?: (lastProgresses: Array<ProgressInfo>) => void;
+  customTabs?: { [key: string]: CustomTabConstructor };
+  validators?: Validator[];
+  tabsCss?: string;
+  preloader?: JSX.Element | string | number | null;
+  ref?: Ref<PanelAPI>;
+  multiple?: boolean;
+}
+
+declare const Panel: ForwardRefRenderFunction<LocaleSettings, PanelProps>;
 
 export {
   Locale,
@@ -438,5 +464,8 @@ export {
   WidgetProps,
   CustomTabConstructor,
   Validator,
-  Widget
+  Widget,
+  PanelAPI,
+  PanelProps,
+  Panel
 };

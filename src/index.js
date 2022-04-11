@@ -32,12 +32,14 @@ export const Widget = forwardRef(
   )
 )
 
-export const Panel = ({ preloader = 'Loading...', ...props }) => (
-  <>
-    <Config />
+export const Panel = forwardRef(
+  ({ preloader = 'Loading...', ...props }, ref) => (
+    <>
+      <Config />
 
-    <Suspense fallback={preloader}>
-      <Dialog {...props} />
-    </Suspense>
-  </>
+      <Suspense fallback={preloader}>
+        <Dialog {...props} apiRef={ref} />
+      </Suspense>
+    </>
+  )
 )

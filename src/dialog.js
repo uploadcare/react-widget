@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useRef } from 'react'
 import uploadcare from 'uploadcare-widget'
-
-import { useState, useCustomTabs, useDeepEffect } from './hooks'
+import { useCustomTabs, useDeepEffect, useEventCallback } from './hooks'
 
 const containerStyles = {
   height: '500px',
@@ -11,29 +10,38 @@ const containerStyles = {
   justifyContent: 'center'
 }
 
-const Progress = ({ hidden, value }) => {
-  const ref = useRef(null)
-  const renderer = useRef(null)
-
-  useEffect(() => {
-    renderer.current = new uploadcare.Circle(ref.current).renderer
-  }, [])
-
-  useEffect(() => {
-    renderer.current.setValue(value)
-  }, [value])
-
-  return <div hidden={hidden} ref={ref} />
-}
+const hiddenDoneButtonStyle = /* css */ `
+  .uploadcare--preview__done, .uploadcare--panel__done {
+    display: none;
+  }
+`
 
 const useDialog = (props, uploadcare) => {
-  const [state, setState] = useState({
-    opened: true,
-    file: null,
-    progress: null
-  })
+  const {
+    value = [],
+    apiRef,
+    customTabs,
+    tabsCss,
+    locale,
+    localeTranslations,
+    localePluralize,
+    onTabChange,
+    onChange,
+    onTabVisibility,
+    onProgress
+  } = props
 
-  const { customTabs, tabsCss, locale, localePluralize, localeTranslations } = props
+  const panelContainer = useRef(null)
+  const panelInstance = useRef(null)
+
+  const getDialogApi = () => panelInstance.current
+
+  const onTabChangeCallback = useEventCallback(onTabChange)
+  const onChangeCallback = useEventCallback(onChange)
+  const onTabVisibilityCallback = useEventCallback(onTabVisibility)
+  const onProgressCallback = useEventCallback(onProgress)
+
+  useCustomTabs(customTabs, uploadcare)
 
   useDeepEffect(() => {
     if (locale) window.UPLOADCARE_LOCALE = locale
@@ -48,81 +56,110 @@ const useDialog = (props, uploadcare) => {
       if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
     }
   }, [locale, localePluralize, localeTranslations])
-  useCustomTabs(customTabs, uploadcare)
 
-  const panelContainer = useRef(null)
-  const panelInstance = useRef(null)
+  window.api = panelInstance
 
   useEffect(() => {
-    if (state.opened) {
-      if (uploadcare && tabsCss && typeof tabsCss === 'string') {
-        if (tabsCss.indexOf('https://') === 0) {
-          uploadcare.tabsCss.addUrl(tabsCss)
-        } else {
-          uploadcare.tabsCss.addStyle(tabsCss)
-        }
+    if (uploadcare && tabsCss && typeof tabsCss === 'string') {
+      if (tabsCss.indexOf('https://') === 0) {
+        uploadcare.tabsCss.addUrl(tabsCss)
+      } else {
+        uploadcare.tabsCss.addStyle(tabsCss)
       }
-
-      panelInstance.current && panelInstance.current.reject()
-      panelInstance.current = uploadcare.openPanel(
-        panelContainer.current,
-        state.file
-          ? uploadcare.fileFrom('uploaded', state.file.uuid, props)
-          : null,
-        props
-      )
-
-      setState({ file: null })
-      panelInstance.current.done((file) => {
-        setState({ opened: false })
-
-        file.progress((state) => setState({ progress: state.progress }))
-        file.done((file) => setState({ file }))
-      })
-    } else {
-      // do nothing
     }
+  }, [uploadcare, tabsCss])
+
+  useEffect(() => {
+    const files = Array.isArray(value) ? value : [value]
+    panelInstance.current && panelInstance.current.reject()
+    panelInstance.current = uploadcare.openPanel(
+      panelContainer.current,
+      files,
+      {
+        multiple: true,
+        multipleMax: props.multiple ? undefined : 1,
+        ...props
+      }
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uploadcare, props, setState, state.opened])
+  }, [uploadcare, props])
+
+  useEffect(() => {
+    getDialogApi().progress(onTabChangeCallback)
+
+    const onChangeWrapper = () => {
+      const items = getDialogApi().fileColl.__items.map((deferred) =>
+        deferred.promise()
+      )
+      onChangeCallback(items)
+    }
+
+    const onProgressWrapper = () => {
+      const lastProgresses = getDialogApi().fileColl.lastProgresses()
+      onProgressCallback(lastProgresses)
+    }
+
+    getDialogApi().fileColl.anyProgressList.add(onProgressWrapper)
+
+    getDialogApi().fileColl.anyDoneList.add(onChangeWrapper)
+    getDialogApi().fileColl.anyFailList.add(onChangeWrapper)
+    getDialogApi().fileColl.onAdd.add(onChangeWrapper)
+    getDialogApi().fileColl.onRemove.add(onChangeWrapper)
+    getDialogApi().fileColl.onReplace.add(onChangeWrapper)
+    getDialogApi().fileColl.onSort.add(onChangeWrapper)
+
+    return () => {
+      getDialogApi().fileColl.anyProgressList.remove(onProgressWrapper)
+
+      getDialogApi().fileColl.anyDoneList.remove(onChangeWrapper)
+      getDialogApi().fileColl.anyFailList.remove(onChangeWrapper)
+      getDialogApi().fileColl.onAdd.remove(onChangeWrapper)
+      getDialogApi().fileColl.onRemove.remove(onChangeWrapper)
+      getDialogApi().fileColl.onReplace.remove(onChangeWrapper)
+      getDialogApi().fileColl.onSort.remove(onChangeWrapper)
+    }
+  }, [
+    onTabChangeCallback,
+    onChangeCallback,
+    onTabVisibilityCallback,
+    onProgressCallback
+  ])
+
+  useImperativeHandle(apiRef, () => getDialogApi(), [])
 
   useEffect(
     () => () => panelInstance.current && panelInstance.current.reject(),
     []
   )
 
-  return [state, setState, panelContainer]
+  useEffect(() => {
+    panelInstance.current.fileColl.clear()
+
+    for (const item of value) {
+      if (typeof item === 'string' && item.includes('~')) {
+        uploadcare.loadFileGroup(item, props).then((fileGroup) => {
+          const files = fileGroup.files()
+          panelInstance.current.addFiles(files)
+        })
+        return
+      }
+      panelInstance.current.fileColl.add(
+        uploadcare.fileFrom('uploaded', item, props)
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
+  return [panelContainer]
 }
 
 const Dialog = (props) => {
-  const [{ opened, file, progress }, setState, containerRef] = useDialog(
-    props,
-    uploadcare
-  )
-
-  const readyState = file && !opened
-  const progressState = !file && !opened && progress !== null
+  const [containerRef] = useDialog(props, uploadcare)
 
   return (
     <div id={props.id} style={containerStyles}>
+      <style>{hiddenDoneButtonStyle}</style>
       <div ref={containerRef} />
-
-      <span hidden={!readyState}>
-        <button
-          className='uploadcare--button uploadcare--button_primary'
-          onClick={() =>
-            setState({
-              opened: true,
-              sourse: 'natural'
-            })}
-        >
-          Open panel
-        </button>
-      </span>
-
-      <span hidden={!readyState}>File uuid: </span>
-      <span hidden={!readyState}>{file && file.uuid}</span>
-
-      <Progress hidden={!progressState} value={progress} />
     </div>
   )
 }
