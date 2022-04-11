@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Widget, Panel, PanelAPI,  CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/react-widget';
-// @ts-ignore
-import uploadcare from 'uploadcare-widget'
 
 <Widget publicKey='demopublickey' />;
 
@@ -195,18 +193,9 @@ const panelApi = React.useRef<PanelAPI>(null);
   validators={validators}
   crop='200x300'
   onChange={(files) => {
-    Promise.all(
-      files.map((file) =>
-        file
-        .then((fileInfo) => ({ state: 'success', fileInfo }))
-        .catch((errorSource, fileInfo, error) => uploadcare.jQuery.Deferred().resolve({
-          state: 'failed',
-          errorSource,
-          fileInfo,
-          error
-        }))
-      )
-    ).then((results) => console.log('onChange', results))
+    Promise.allSettled(files).then((results) =>
+      console.log('onChange', results)
+    )
   }}
 >
 </Panel>;
