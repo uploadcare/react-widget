@@ -1,6 +1,6 @@
+/// <reference types="@types/jquery" />
 /// <reference types="@types/jquery-deferred" />
 import { Ref, ForwardRefRenderFunction } from 'react';
-import JQuery = require('jquery');
 
 type Locale =
   'en' |
