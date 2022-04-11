@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 
 import { Panel } from '../src'
-import uploadcare from 'uploadcare-widget'
 
 export default () => {
   const ref = useRef()
@@ -19,20 +18,9 @@ export default () => {
       onTabChange={(e) => console.log('onTabChange', e)}
       onProgress={(progress) => console.log('onProgress', progress)}
       onChange={(files) => {
-        Promise.all(
-          files.map((file) =>
-            file
-              .then((fileInfo) => ({ state: 'success', fileInfo }))
-              .catch((errorSource, fileInfo, error) =>
-                uploadcare.jQuery.Deferred().resolve({
-                  state: 'failed',
-                  errorSource,
-                  fileInfo,
-                  error
-                })
-              )
-          )
-        ).then((results) => console.log('onChange', results))
+        Promise.allSettled(files).then((results) =>
+          console.log('onChange', results)
+        )
       }}
     />
   )
