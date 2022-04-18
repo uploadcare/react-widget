@@ -34,8 +34,6 @@ const useDialog = (props, uploadcare) => {
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
 
-  const getDialogApi = () => panelInstance.current
-
   const onTabChangeCallback = useEventCallback(onTabChange)
   const onChangeCallback = useEventCallback(onChange)
   const onTabVisibilityCallback = useEventCallback(onTabVisibility)
@@ -57,8 +55,6 @@ const useDialog = (props, uploadcare) => {
     }
   }, [locale, localePluralize, localeTranslations])
 
-  window.api = panelInstance
-
   useEffect(() => {
     if (uploadcare && tabsCss && typeof tabsCss === 'string') {
       if (tabsCss.indexOf('https://') === 0) {
@@ -78,43 +74,46 @@ const useDialog = (props, uploadcare) => {
       {
         multipleMax: props.multiple ? undefined : 1,
         ...props,
-        multiple: true,
+        multiple: true
       }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadcare, props])
 
   useEffect(() => {
-    getDialogApi().progress(onTabChangeCallback)
+    const dialogApi = panelInstance.current
+    dialogApi.progress(onTabChangeCallback)
 
     const onChangeWrapper = () => {
-      const items = getDialogApi().fileColl.__items.map((deferred) =>
+      const items = panelInstance.current.fileColl.__items.map((deferred) =>
         deferred.promise()
       )
       onChangeCallback(items)
     }
 
     const onProgressWrapper = () => {
-      const lastProgresses = getDialogApi().fileColl.lastProgresses()
+      const lastProgresses = panelInstance.current.fileColl.lastProgresses()
       onProgressCallback(lastProgresses)
     }
 
-    getDialogApi().fileColl.anyProgressList.add(onProgressWrapper)
+    dialogApi.fileColl.anyProgressList.add(onProgressWrapper)
 
-    getDialogApi().fileColl.anyDoneList.add(onChangeWrapper)
-    getDialogApi().fileColl.anyFailList.add(onChangeWrapper)
-    getDialogApi().fileColl.onRemove.add(onChangeWrapper)
-    getDialogApi().fileColl.onReplace.add(onChangeWrapper)
-    getDialogApi().fileColl.onSort.add(onChangeWrapper)
+    dialogApi.fileColl.anyDoneList.add(onChangeWrapper)
+    dialogApi.fileColl.anyFailList.add(onChangeWrapper)
+    dialogApi.fileColl.onRemove.add(onChangeWrapper)
+    dialogApi.fileColl.onReplace.add(onChangeWrapper)
+    dialogApi.fileColl.onSort.add(onChangeWrapper)
 
     return () => {
-      getDialogApi().fileColl.anyProgressList.remove(onProgressWrapper)
+      const dialogApi = panelInstance.current
 
-      getDialogApi().fileColl.anyDoneList.remove(onChangeWrapper)
-      getDialogApi().fileColl.anyFailList.remove(onChangeWrapper)
-      getDialogApi().fileColl.onRemove.remove(onChangeWrapper)
-      getDialogApi().fileColl.onReplace.remove(onChangeWrapper)
-      getDialogApi().fileColl.onSort.remove(onChangeWrapper)
+      dialogApi.fileColl.anyProgressList.remove(onProgressWrapper)
+
+      dialogApi.fileColl.anyDoneList.remove(onChangeWrapper)
+      dialogApi.fileColl.anyFailList.remove(onChangeWrapper)
+      dialogApi.fileColl.onRemove.remove(onChangeWrapper)
+      dialogApi.fileColl.onReplace.remove(onChangeWrapper)
+      dialogApi.fileColl.onSort.remove(onChangeWrapper)
     }
   }, [
     onTabChangeCallback,
@@ -123,7 +122,20 @@ const useDialog = (props, uploadcare) => {
     onProgressCallback
   ])
 
-  useImperativeHandle(apiRef, () => getDialogApi(), [])
+  useImperativeHandle(
+    apiRef,
+    () => ({
+      onTabVisibility: (cb) => panelInstance.current.onTabVisibility(cb),
+      hideTab: (tab) => panelInstance.current.hideTab(tab),
+      showTab: (tab) => panelInstance.current.showTab(tab),
+      switchTab: (tab) => panelInstance.current.switchTab(tab),
+      addFiles: (files) => panelInstance.current.addFiles(files),
+      isTabVisible: (tab) => panelInstance.current.isTabVisible(tab),
+      getFileColl: () => panelInstance.current.fileCol,
+      __UNSTABLE__getRawDialogApi: () => panelInstance.current
+    }),
+    []
+  )
 
   useEffect(
     () => () => panelInstance.current && panelInstance.current.reject(),
@@ -131,14 +143,14 @@ const useDialog = (props, uploadcare) => {
   )
 
   useEffect(() => {
-    let isUpdated = false;
+    let isUpdated = false
     panelInstance.current.fileColl.clear()
 
     for (const item of value) {
       if (typeof item === 'string' && item.includes('~')) {
         uploadcare.loadFileGroup(item, props).then((fileGroup) => {
           // value could be changed after group loaded
-          if(!isUpdated) {
+          if (!isUpdated) {
             const files = fileGroup.files()
             panelInstance.current.addFiles(files)
           }
