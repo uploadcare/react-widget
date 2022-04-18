@@ -76,9 +76,9 @@ const useDialog = (props, uploadcare) => {
       panelContainer.current,
       files,
       {
-        multiple: true,
         multipleMax: props.multiple ? undefined : 1,
-        ...props
+        ...props,
+        multiple: true,
       }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,19 +131,26 @@ const useDialog = (props, uploadcare) => {
   )
 
   useEffect(() => {
+    let isUpdated = false;
     panelInstance.current.fileColl.clear()
 
     for (const item of value) {
       if (typeof item === 'string' && item.includes('~')) {
         uploadcare.loadFileGroup(item, props).then((fileGroup) => {
-          const files = fileGroup.files()
-          panelInstance.current.addFiles(files)
+          // value could be changed after group loaded
+          if(!isUpdated) {
+            const files = fileGroup.files()
+            panelInstance.current.addFiles(files)
+          }
         })
-        return
+        break
       }
       panelInstance.current.fileColl.add(
         uploadcare.fileFrom('uploaded', item, props)
       )
+    }
+    return () => {
+      isUpdated = true
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
