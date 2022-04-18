@@ -27,7 +27,6 @@ const useDialog = (props, uploadcare) => {
     localePluralize,
     onTabChange,
     onChange,
-    onTabVisibility,
     onProgress
   } = props
 
@@ -36,7 +35,6 @@ const useDialog = (props, uploadcare) => {
 
   const onTabChangeCallback = useEventCallback(onTabChange)
   const onChangeCallback = useEventCallback(onChange)
-  const onTabVisibilityCallback = useEventCallback(onTabVisibility)
   const onProgressCallback = useEventCallback(onProgress)
 
   useCustomTabs(customTabs, uploadcare)
@@ -115,12 +113,7 @@ const useDialog = (props, uploadcare) => {
       dialogApi.fileColl.onReplace.remove(onChangeWrapper)
       dialogApi.fileColl.onSort.remove(onChangeWrapper)
     }
-  }, [
-    onTabChangeCallback,
-    onChangeCallback,
-    onTabVisibilityCallback,
-    onProgressCallback
-  ])
+  }, [onTabChangeCallback, onChangeCallback, onProgressCallback])
 
   useImperativeHandle(
     apiRef,
@@ -131,8 +124,8 @@ const useDialog = (props, uploadcare) => {
       switchTab: (tab) => panelInstance.current.switchTab(tab),
       addFiles: (files) => panelInstance.current.addFiles(files),
       isTabVisible: (tab) => panelInstance.current.isTabVisible(tab),
-      getFileColl: () => panelInstance.current.fileCol,
-      __UNSTABLE__getRawDialogApi: () => panelInstance.current
+      getFileColl: () => panelInstance.current.fileColl,
+      getRawDialogApi: () => panelInstance.current
     }),
     []
   )

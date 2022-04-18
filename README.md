@@ -282,7 +282,19 @@ Set a function to be called whenever **progress state changes**.
 
 #### `ref: panelApiRef`
 
-Define a reference object to address the Dialog API.
+Define a reference object to address the Dialog API wrapper.
+
+```typescript
+interface DialogApi {
+  addFiles(files: FileInfo[]): void;
+  switchTab(tab: string): void;
+  getFileColl(): CollectionOfPromises<FileInfo>;
+  hideTab(tab: string): void;
+  showTab(tab: string): void;
+  isTabVisible(tab: string): boolean;
+  onTabVisibility(callback: OnTabVisibilityCallback): void;
+}
+```
 
 * [Dialog API reference][api-refs-dialog]
 <!-- TODO: * [Example][sandbox-ref] -->

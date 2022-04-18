@@ -297,10 +297,11 @@ interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
 
   autoThen: unknown;
 }
+
 interface DialogApi {
   addFiles(files: FileInfo[]): void;
   switchTab(tab: string): void;
-  fileColl: CollectionOfPromises<FileInfo>;
+  getFileColl(): CollectionOfPromises<FileInfo>;
   hideTab(tab: string): void;
   showTab(tab: string): void;
   isTabVisible(tab: string): boolean;
