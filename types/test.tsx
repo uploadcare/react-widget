@@ -195,7 +195,7 @@ const panelApi = React.useRef<PanelAPI>(null);
   onChange={(files) => {
     Promise.allSettled(files).then((results) =>
       console.log('onChange', results)
-    )
+    );
   }}
 >
 </Panel>;
