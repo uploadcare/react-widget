@@ -293,7 +293,7 @@ interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
   onAnyDone: (cb: () => void) => void;
   onAnyFail: (cb: () => void) => void;
   onAnyProgress: (cb: () => void) => void;
-  lastProgresses: () => Array<ProgressInfo>;
+  lastProgresses: () => ProgressInfo[];
 
   autoThen: unknown;
 }
@@ -429,10 +429,10 @@ declare const Widget: ForwardRefRenderFunction<LocaleSettings, WidgetProps>;
 type PanelAPI = DialogApi;
 
 interface PanelProps extends Settings {
-  value?: Array<string>;
-  onChange?: (files: Array<FileUpload>) => void;
+  value?: string[];
+  onChange?: (files: FileUpload[]) => void;
   onTabChange?: (tabName: string) => void;
-  onProgress?: (lastProgresses: Array<ProgressInfo>) => void;
+  onProgress?: (lastProgresses: ProgressInfo[]) => void;
   customTabs?: { [key: string]: CustomTabConstructor };
   validators?: Validator[];
   tabsCss?: string;
