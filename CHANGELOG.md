@@ -1,6 +1,11 @@
 # [2.0.0](https://github.com/uploadcare/react-widget/compare/v1.3.10...v2.0.0) (2022-04-22)
 
 
+### Bug Fixes
+
+* fix(typing): jquery reference
+
+
 ### Features
 
 * `Panel` component ([#318](https://github.com/uploadcare/react-widget/issues/318)) ([339aeca](https://github.com/uploadcare/react-widget/commit/339aeca73a04736de8fc18f15d7323a31949c89e))
@@ -9,24 +14,6 @@
 ### BREAKING CHANGES
 
 * `Panel` component was undocumented but still exported. It's API and behaviour have changed. See README for the details.
-
-* fix(typing): jquery reference
-
-* chore: update dummy example
-
-* chore: refactor typing test
-
-* chore: do not call `onChange` on file add
-
-* chore: fix typings
-
-* chore: cancel group loading after value updated
-
-* chore: fix test
-
-* chore: wrap dialog api
-
-* chore: refactor DialogApi typings
 
 
 
