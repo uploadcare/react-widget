@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/uploadcare/react-widget/compare/v1.3.10...v2.0.0) (2022-04-22)
+
+
+### Bug Fixes
+
+* fix(typing): jquery reference
+
+
+### Features
+
+* `Panel` component ([#318](https://github.com/uploadcare/react-widget/issues/318)) ([339aeca](https://github.com/uploadcare/react-widget/commit/339aeca73a04736de8fc18f15d7323a31949c89e))
+
+
+### BREAKING CHANGES
+
+* `Panel` component was undocumented but still exported. It's API and behaviour have changed. See README for the details.
+
+
+
 ## [1.3.10](https://github.com/uploadcare/react-widget/compare/v1.3.9...v1.3.10) (2022-03-04)
 
 
