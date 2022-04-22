@@ -14,7 +14,7 @@ import {
   useDeepEffect
 } from './hooks'
 
-function camelCaseToDash (str) {
+function camelCaseToDash(str) {
   return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 }
 
@@ -172,7 +172,7 @@ const useWidget = (
 
   return useCallback(
     () => (
-      <input type='hidden' ref={input} id={id} name={name} {...attributes} />
+      <input type="hidden" ref={input} id={id} name={name} {...attributes} />
     ),
     [attributes, id, name]
   )

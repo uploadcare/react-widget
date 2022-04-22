@@ -14,12 +14,12 @@ import Uploader from '../src/uploader'
 describe('Uploader', function () {
   it('should change locales dynamicaly', async function () {
     const { container, rerender, unmount } = render(
-      <Uploader publicKey='demopublickey' locale='en' />
+      <Uploader publicKey="demopublickey" locale="en" />
     )
 
     expect(getByText(container, 'Choose a file')).toBeInTheDocument()
 
-    rerender(<Uploader publicKey='demopublickey' locale='ru' />)
+    rerender(<Uploader publicKey="demopublickey" locale="ru" />)
 
     fireEvent(
       getByText(container, 'Choose a file'),
@@ -46,7 +46,7 @@ describe('Uploader', function () {
 
     const { container, rerender, unmount } = render(
       <Uploader
-        publicKey='demopublickey'
+        publicKey="demopublickey"
         localeTranslations={translation('wow!')}
       />
     )
@@ -73,7 +73,7 @@ describe('Uploader', function () {
 
     rerender(
       <Uploader
-        publicKey='demopublickey'
+        publicKey="demopublickey"
         localeTranslations={translation('dynamic!')}
       />
     )
@@ -103,7 +103,7 @@ describe('Uploader', function () {
 
     const { container, rerender } = render(
       <Uploader
-        publicKey='demopublickey'
+        publicKey="demopublickey"
         localeTranslations={translation('yay!')}
       />
     )
@@ -117,9 +117,7 @@ describe('Uploader', function () {
     )
 
     await waitFor(() =>
-      expect(
-        getByText(container.nextSibling, 'yay!')
-      ).toBeInTheDocument()
+      expect(getByText(container.nextSibling, 'yay!')).toBeInTheDocument()
     )
 
     fireEvent(
@@ -131,10 +129,7 @@ describe('Uploader', function () {
     )
 
     rerender(
-      <Uploader
-        publicKey='demopublickey'
-        localeTranslations={undefined}
-      />
+      <Uploader publicKey="demopublickey" localeTranslations={undefined} />
     )
 
     fireEvent(

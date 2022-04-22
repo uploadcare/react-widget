@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import isEqual from 'react-fast-compare'
 
-export function useDeepMemo (factory, deps) {
+export function useDeepMemo(factory, deps) {
   let isValid = true
 
   const valueRef = useRef()

@@ -28,7 +28,7 @@ describe('Uploader', function () {
 
     const { container } = render(
       <Uploader
-        publicKey='demopublickey'
+        publicKey="demopublickey"
         onDialogOpen={dialogOpen}
         onTabChange={tabChange}
         onDialogClose={onDialogClose}

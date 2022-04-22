@@ -23,7 +23,8 @@ required to handle uploads.
 * [Usage](#usage)
 * [Available bundles](#available-bundles)
 * [Configuration](#configuration)
-  * [Component configuration](#component-configuration)
+  * [`Widget` component configuration](#widget-component-configuration)
+  * [`Panel` component configuration](#panel-component-configuration)
   * [Widget configuration](#widget-configuration)
 * [Security issues](#security-issues)
 * [Feedback](#feedback)
@@ -40,6 +41,14 @@ npm i @uploadcare/react-widget
 import { Widget } from "@uploadcare/react-widget";
 
 <Widget publicKey="YOUR_PUBLIC_KEY" />;
+```
+
+or
+
+```jsx
+import { Panel } from "@uploadcare/react-widget";
+
+<Panel publicKey="YOUR_PUBLIC_KEY" />;
 ```
 
 * [Basic usage example on CodeSandbox][sandbox-props]
@@ -65,7 +74,7 @@ To reduce your bundle size, you can also import one of the following:
 
 ## Configuration
 
-### Component configuration
+### `Widget` component configuration
 
 #### `value: string`
 
@@ -236,6 +245,77 @@ be available over HTTPS.
 
 <br>
 
+### `Panel` component configuration
+
+#### `value: string[]`
+
+Set an array of [file UUID][uc-docs-files]/[group UUID][uc-docs-groups] or a [CDN URL][delivery-docs]
+as a value.
+
+```jsx
+<Panel value={[
+  '9dd2f080-cc52-442d-aa06-1d9eec7f40d1',
+  'https://ucarecdn.com/fdfe4e67-f747-4993-91f5-be21d6d3c1a6/',
+  '9ef9af26-7356-4428-b69c-1b920f947989~2'
+]} />
+```
+
+<br>
+
+#### `onChange: (fileInstanceList: FileInstance[]) => void`
+
+Set a function to be called whenever **files state changes**.
+
+* [FileInstance object description][api-refs-file-instance]
+<!-- TODO: * [Example][sandbox-on-change] -->
+
+<br>
+
+#### `onProgress: (uploadInfoList: UploadInfo[]) => void`
+
+Set a function to be called whenever **progress state changes**.
+
+* [UploadInfo object description][api-refs-upload-info]
+<!-- TODO: * [Example][sandbox-on-change] -->
+
+<br>
+
+#### `ref: panelApiRef`
+
+Define a reference object to address the Dialog API wrapper.
+
+```typescript
+interface DialogApi {
+  addFiles(files: FileInfo[]): void;
+  switchTab(tab: string): void;
+  getFileColl(): CollectionOfPromises<FileInfo>;
+  hideTab(tab: string): void;
+  showTab(tab: string): void;
+  isTabVisible(tab: string): boolean;
+  onTabVisibility(callback: OnTabVisibilityCallback): void;
+}
+```
+
+* [Dialog API reference][api-refs-dialog]
+<!-- TODO: * [Example][sandbox-ref] -->
+
+<br>
+
+#### Those methods works exactly the same way as in `Widget` component:
+
+* [`onTabChange`](#ontabchange-tabname-string--void)
+* [`customTabs`](#customtabs-key-string-customtabconstructor)
+* [`validators`](#validators-validator)
+* [`preloader`](#preloader-componenttype)
+* [`tabsCss`](#tabscss-string)
+
+#### Those methods aren't supported in `Panel` component:
+
+* [`onFileSelect`](#onfileselect-fileinfo-fileinfo--filesinfo--null--void)
+* [`onDialogOpen`](#ondialogopen-dialog-dialogapi--void)
+* [`onDialogClose`](#ondialogclose-objs-fileinfo--filesinfo--null--void)
+
+
 ### Widget configuration
 
 Uploadcare Widget can be deeply customized to suit your UX/UI. You can define
@@ -272,6 +352,8 @@ We want to hear your issue reports and feature requests at
 [react-guide]: https://uploadcare.com/docs/guides/react/?utm_source=github&utm_campaign=react-widget
 [custom-tabs-docs]: https://uploadcare.com/docs/api_reference/javascript/custom_tabs/?utm_source=github&utm_campaign=react-widget
 
+[api-refs-upload-info]: https://uploadcare.com/docs/file-uploader-api/files-uploads/#upload-info
+[api-refs-file-instance]: https://uploadcare.com/docs/file-uploader-api/files-uploads/#file-new-instance
 [api-refs-props]: https://uploadcare.com/docs/api_reference/rest/accessing_files/#properties?utm_source=github&utm_campaign=react-widget
 [api-refs-dialog]: https://uploadcare.com/docs/file_uploader_api/dialog_panel/#dialog-api?utm_source=github&utm_campaign=react-widget
 [api-refs-validation]: https://uploadcare.com/docs/file_uploads/widget/moderation/?utm_source=github&utm_campaign=react-widget
