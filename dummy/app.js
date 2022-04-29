@@ -44,4 +44,10 @@ const examples = [
 ]
 
 const root = createRoot(document.getElementById('root'))
-root.render(examples.map((props, key) => <Example key={key} {...props} />))
+root.render(
+  <React.StrictMode>
+    {examples.map((props, key) => (
+      <Example key={key} {...props} />
+    ))}
+  </React.StrictMode>
+)
