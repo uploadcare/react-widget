@@ -45,7 +45,7 @@ describe('Uploader', function () {
     )
 
     await waitFor(() => expect(dialogOpen).toHaveBeenCalledTimes(1))
-    expect(tabChange).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(tabChange).toHaveBeenCalledTimes(1))
 
     fireEvent(
       getByTitle(container.parentNode, 'Close'),
