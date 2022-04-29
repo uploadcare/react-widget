@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Widget } from '..'
+import { Widget } from '../src/index.js'
 
 export default () => {
   return (

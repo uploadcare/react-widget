@@ -55,30 +55,32 @@
   },
   "homepage": "https://github.com/uploadcare/react-widget",
   "dependencies": {
-    "@uploadcare/client-suspense": "^1.0.5",
+    "@types/jquery": "^3.5.14",
+    "@types/jquery-deferred": "^0.3.0",
+    "@uploadcare/client-suspense": "^1.1.0",
     "react-fast-compare": "^3.2.0",
-    "uploadcare-widget": "^3.17.0",
-    "@types/jquery": "^3.5.5",
-    "@types/jquery-deferred": "^0.3.0"
+    "uploadcare-widget": "^3.17.2"
   },
   "peerDependencies": {
     "react": "^16.10.2 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.10.2 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.10",
-    "@babel/core": "7.13.13",
-    "@babel/preset-env": "7.13.12",
-    "@babel/preset-react": "7.13.13",
-    "@rollup/plugin-commonjs": "11.0.2",
-    "@rollup/plugin-replace": "2.4.2",
-    "@testing-library/jest-dom": "5.11.10",
-    "@testing-library/react": "11.2.5",
+    "@babel/cli": "7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-react": "7.16.7",
+    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-replace": "4.0.0",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.1.1",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
     "babel-eslint": "10.1.0",
+    "babel-jest": "^28.0.3",
     "babel-plugin-annotate-pure-calls": "0.4.0",
-    "dtslint": "4.0.8",
+    "dtslint": "4.2.1",
     "eslint": "7.23.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-config-standard": "16.0.2",
@@ -87,26 +89,28 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-promise": "4.3.1",
-    "eslint-plugin-react": "7.23.1",
-    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.5.0",
     "eslint-plugin-standard": "4.1.0",
-    "jest": "26.6.3",
-    "jest-canvas-mock": "2.3.1",
+    "jest": "28.0.3",
+    "jest-canvas-mock": "2.4.0",
+    "jest-environment-jsdom": "^28.0.2",
     "jest-esm-jsx-transform": "1.0.0",
     "parcel-bundler": "1.12.5",
     "prettier": "2.2.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "rimraf": "3.0.2",
-    "rollup": "2.43.1",
+    "rollup": "2.70.2",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-module-replacement": "1.2.1",
     "rollup-plugin-terser": "7.0.2",
-    "shipjs": "0.23.1",
-    "typescript": "4.2.3",
+    "shipjs": "0.24.4",
+    "typescript": "4.6.4",
     "uploadcare-widget-tab-effects": "1.5.0"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "setupFiles": [
       "./__setups__/scroll.js",
       "jest-canvas-mock"
@@ -115,7 +119,14 @@
       "**/test/**/*.js"
     ],
     "transform": {
-      "\\.js$": "jest-esm-jsx-transform"
+      "\\.js$": [
+        "babel-jest",
+        {
+          "plugins": [
+            "@babel/plugin-transform-modules-commonjs"
+          ]
+        }
+      ]
     }
   }
 }

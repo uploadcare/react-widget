@@ -7,6 +7,7 @@ import {
   waitFor,
   fireEvent
 } from '@testing-library/react'
+import {jest} from '@jest/globals';
 
 import Uploader from '../src/uploader'
 import Dialog from '../src/dialog'

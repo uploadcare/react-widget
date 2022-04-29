@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { Widget } from '..'
+import { Widget } from '../src/index.js'
 
 const translation = (text) => ({
   dialog: {
@@ -21,6 +21,7 @@ const Test = () => {
         localeTranslations={translation(
           value ? 'Wow!' : 'So dynamic!'
         )}
+        onTabChange={() => console.log("TAB CHANGE")}
       />
     </>
   )

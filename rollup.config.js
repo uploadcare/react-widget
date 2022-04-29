@@ -172,6 +172,11 @@ export default [
       file: 'locales.js',
       sourcemap: false
     },
-    plugins: [replace({ __LANGS__: JSON.stringify(uploadcare.locales) })]
+    plugins: [
+      replace({
+        __LANGS__: JSON.stringify(uploadcare.locales),
+        preventAssignment: true
+      })
+    ]
   }
 ]

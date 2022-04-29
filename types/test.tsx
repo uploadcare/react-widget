@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import { Widget, Panel, PanelAPI,  CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/react-widget';
 
 <Widget publicKey='demopublickey' />;
@@ -111,8 +111,8 @@ const UnsplashCreator: CustomTabConstructor = (
   const buttonNode = button[0];
 
   buttonNode.title = "Unsplash";
-
-  ReactDOM.render(
+  const root = ReactDOM.createRoot(container[0])
+  root.render(
     <>
       <TabButtonIcon node={buttonNode}>
         <symbol
@@ -146,8 +146,7 @@ const UnsplashCreator: CustomTabConstructor = (
           {"Load ✨"}
         </button>
       </div>
-    </>,
-    container[0]
+    </>
   );
 };
 
