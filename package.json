@@ -62,8 +62,8 @@
     "@types/jquery-deferred": "^0.3.0"
   },
   "peerDependencies": {
-    "react": "^16.10.2 || ^17.0.0",
-    "react-dom": "^16.10.2 || ^17.0.0"
+    "react": "^16.10.2 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.10.2 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.13.10",
@@ -74,8 +74,8 @@
     "@rollup/plugin-replace": "2.4.2",
     "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.5",
-    "@types/react": "17.0.3",
-    "@types/react-dom": "17.0.3",
+    "@types/react": "18.0.8",
+    "@types/react-dom": "18.0.3",
     "babel-eslint": "10.1.0",
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "dtslint": "4.0.8",
@@ -95,8 +95,8 @@
     "jest-esm-jsx-transform": "1.0.0",
     "parcel-bundler": "1.12.5",
     "prettier": "2.2.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "rimraf": "3.0.2",
     "rollup": "2.43.1",
     "rollup-plugin-babel": "4.4.0",
