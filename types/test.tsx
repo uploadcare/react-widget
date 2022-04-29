@@ -197,5 +197,4 @@ const panelApi = React.useRef<PanelAPI>(null);
       console.log('onChange', results)
     );
   }}
->
-</Panel>;
+/>;
