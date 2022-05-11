@@ -21,7 +21,6 @@ const Test = () => {
         localeTranslations={translation(
           value ? 'Wow!' : 'So dynamic!'
         )}
-        onTabChange={() => console.log("TAB CHANGE")}
       />
     </>
   )
