@@ -89,11 +89,16 @@ const useWidget = (
   }, [locale, localeTranslations, localePluralize, previewUrlCallback])
 
   useEffect(() => {
-    widget.current = uploadcare.Widget(input.current)
-    const widgetElement = input.current.nextSibling
+    const inputEl = input.current
+    widget.current = uploadcare.Widget(inputEl)
+    const widgetElement = inputEl.nextSibling
 
-    return () =>
+    return () => {
+      // useEffect could be called twice inside React.StrictMode
+      // to reinitialize widget on the same input element, we need to cleanup bounded jquery data on it
+      uploadcare.jQuery.removeData(inputEl)
       widgetElement && widgetElement.parentNode.removeChild(widgetElement)
+    }
   }, [uploadcare, attributes])
 
   useValidators(widget, validators)

@@ -7,6 +7,7 @@ import {
   waitFor,
   fireEvent
 } from '@testing-library/react'
+import {jest} from '@jest/globals';
 
 import Uploader from '../src/uploader'
 import Dialog from '../src/dialog'
@@ -44,7 +45,7 @@ describe('Uploader', function () {
     )
 
     await waitFor(() => expect(dialogOpen).toHaveBeenCalledTimes(1))
-    expect(tabChange).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(tabChange).toHaveBeenCalledTimes(1))
 
     fireEvent(
       getByTitle(container.parentNode, 'Close'),

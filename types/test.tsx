@@ -1,6 +1,7 @@
+import { CustomTabConstructor, FileInfo, Panel, PanelAPI, Widget, WidgetAPI } from '@uploadcare/react-widget';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Widget, Panel, PanelAPI,  CustomTabConstructor, FileInfo, WidgetAPI } from '@uploadcare/react-widget';
+import { createPortal } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 <Widget publicKey='demopublickey' />;
 
@@ -94,7 +95,7 @@ const widgetApi = React.useRef<WidgetAPI>(null);
 <Widget ref={widgetApi} publicKey='demopublickey' />;
 
 const TabButtonIcon = ({ node, children }: { node: Element, children: React.ReactElement }): React.ReactPortal => {
-  return ReactDOM.createPortal(
+  return createPortal(
     <svg style={{ display: "none" }}>{children}</svg>,
     node
   );
@@ -111,8 +112,8 @@ const UnsplashCreator: CustomTabConstructor = (
   const buttonNode = button[0];
 
   buttonNode.title = "Unsplash";
-
-  ReactDOM.render(
+  const root = createRoot(container[0]);
+  root.render(
     <>
       <TabButtonIcon node={buttonNode}>
         <symbol
@@ -146,8 +147,7 @@ const UnsplashCreator: CustomTabConstructor = (
           {"Load ✨"}
         </button>
       </div>
-    </>,
-    container[0]
+    </>
   );
 };
 
@@ -197,5 +197,4 @@ const panelApi = React.useRef<PanelAPI>(null);
       console.log('onChange', results)
     );
   }}
->
-</Panel>;
+/>;

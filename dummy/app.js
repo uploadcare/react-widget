@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import DynamicLocales from './dynamic-locales'
 import Callbacks from './dialog-callbacks'
@@ -43,7 +43,11 @@ const examples = [
   }
 ]
 
-ReactDOM.render(
-  examples.map((props, key) => <Example key={key} {...props} />),
-  document.getElementById('root')
+const root = createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
+    {examples.map((props, key) => (
+      <Example key={key} {...props} />
+    ))}
+  </React.StrictMode>
 )

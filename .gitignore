@@ -75,3 +75,7 @@ en
 en-min
 e2e_test
 locales.js
+
+# parcel cache
+.parcel-cache
+.parcel-output
