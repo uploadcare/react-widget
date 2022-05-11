@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/uploadcare/react-widget/compare/v2.0.0...v2.1.0) (2022-05-11)
+
+
+### Features
+
+* react 18 support & strict mode ([#321](https://github.com/uploadcare/react-widget/issues/321)) ([a4d643d](https://github.com/uploadcare/react-widget/commit/a4d643d06b16413d3ea087e1d5c98dcca2dd1355))
+
+
+
 # [2.0.0](https://github.com/uploadcare/react-widget/compare/v1.3.10...v2.0.0) (2022-04-22)
 
 
