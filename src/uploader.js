@@ -96,6 +96,8 @@ const useWidget = (
     return () => {
       // useEffect could be called twice inside React.StrictMode
       // to reinitialize widget on the same input element, we need to cleanup bounded jquery data on it
+      // `uploadcareWidget` is a data attr that is used to store widget api
+      // see https://github.com/uploadcare/uploadcare-widget/blob/feat/unsplash-tab/src/widget/live.js#L11
       uploadcare.jQuery(inputEl).removeData('uploadcareWidget')
       widgetElement && widgetElement.remove()
     }
