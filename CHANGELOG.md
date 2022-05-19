@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/uploadcare/react-widget/compare/v2.1.0...v2.1.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* remove `uploadcareWidget` jquery data between widget initializations in strict mode ([#323](https://github.com/uploadcare/react-widget/issues/323)) ([61c6e85](https://github.com/uploadcare/react-widget/commit/61c6e85d29aa245719ba924f511f270a26877193))
+
+
+
 # [2.1.0](https://github.com/uploadcare/react-widget/compare/v2.0.0...v2.1.0) (2022-05-11)
 
 
