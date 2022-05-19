@@ -96,8 +96,8 @@ const useWidget = (
     return () => {
       // useEffect could be called twice inside React.StrictMode
       // to reinitialize widget on the same input element, we need to cleanup bounded jquery data on it
-      uploadcare.jQuery.removeData(inputEl)
-      widgetElement && widgetElement.parentNode.removeChild(widgetElement)
+      uploadcare.jQuery(inputEl).removeData('uploadcareWidget')
+      widgetElement && widgetElement.remove()
     }
   }, [uploadcare, attributes])
 
