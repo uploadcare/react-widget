@@ -51,6 +51,7 @@ const useWidget = (
 ) => {
   const input = useRef(null)
   const widget = useRef(null)
+  const cachedValueRef = useRef(null)
 
   const fileSelectedCallback = useEventCallback(onFileSelect)
   const changeCallback = useEventCallback(onChange)
@@ -92,6 +93,10 @@ const useWidget = (
     const inputEl = input.current
     widget.current = uploadcare.Widget(inputEl)
     const widgetElement = inputEl.nextSibling
+    if(cachedValueRef.current) {
+      // restore widget value when called twice in React.StrictMode
+      widget.current.value(cachedValueRef.current)
+    }
 
     return () => {
       // useEffect could be called twice inside React.StrictMode
@@ -154,7 +159,10 @@ const useWidget = (
   }, [attributes])
 
   useEffect(() => {
-    widget.current.value(value)
+    if(cachedValueRef.current !== value) {
+      widget.current.value(value)
+    }
+    cachedValueRef.current = value
   }, [value])
 
   useEffect(() => {
