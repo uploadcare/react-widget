@@ -1,3 +1,13 @@
+## [2.1.2](https://github.com/uploadcare/react-widget/compare/v2.1.1...v2.1.2) (2022-07-06)
+
+
+### Bug Fixes
+
+* fix(Widget): do not update widget value if it's not changed ([#329](https://github.com/uploadcare/react-widget/issues/329)) ([2c11e27](https://github.com/uploadcare/react-widget/commit/2c11e272f0ceff72139b8272a961d7140dc5aa48))
+* fix(types): fix `DialogApi.addFiles` signature ([#329](https://github.com/uploadcare/react-widget/issues/329)) ([2c11e27](https://github.com/uploadcare/react-widget/commit/2c11e272f0ceff72139b8272a961d7140dc5aa48))
+
+
+
 ## [2.1.1](https://github.com/uploadcare/react-widget/compare/v2.1.0...v2.1.1) (2022-05-19)
 
 
