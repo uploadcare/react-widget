@@ -76,14 +76,19 @@ To reduce your bundle size, you can also import one of the following:
 
 ### `Widget` component configuration
 
-#### `value: string`
+#### `value: string[] | string | JQuery.Deferred | JQuery.Deferred[]`
 
-Set a [file UUID][uc-docs-files]/[group UUID][uc-docs-groups] or a [CDN URL][delivery-docs]
+Set an array of [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]/[CDN URL][delivery-docs]/[File Instance][uc-docs-widget-api-file-instance]/[Group Instance][uc-docs-widget-api-group-instance]
 as a value.
 
 ```jsx
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1' />
 <Widget value='9dd2f080-cc52-442d-aa06-1d9eec7f40d1~12' />
+<Widget value={[
+  '9dd2f080-cc52-442d-aa06-1d9eec7f40d1',
+  'https://ucarecdn.com/fdfe4e67-f747-4993-91f5-be21d6d3c1a6/',
+  '9ef9af26-7356-4428-b69c-1b920f947989~2'
+]} />
 ```
 
 <br>
@@ -247,9 +252,9 @@ be available over HTTPS.
 
 ### `Panel` component configuration
 
-#### `value: string[]`
+#### `value: string[] | string | JQuery.Deferred | JQuery.Deferred[]`
 
-Set an array of [file UUID][uc-docs-files]/[group UUID][uc-docs-groups] or a [CDN URL][delivery-docs]
+Set an array of [file UUID][uc-docs-files]/[group UUID][uc-docs-groups]/[CDN URL][delivery-docs]/[File Instance][uc-docs-widget-api-file-instance]/[Group Instance][uc-docs-widget-api-group-instance]
 as a value.
 
 ```jsx
@@ -368,6 +373,8 @@ We want to hear your issue reports and feature requests at
 [uc-docs-widget-styling]: https://uploadcare.com/docs/file_uploader_api/tabs_styling/?utm_source=github&utm_campaign=react-widget
 [uc-sign-up]: https://uploadcare.com/accounts/signup/
 [uc-docs-groups]: https://uploadcare.com/docs/delivery/group_api/#groups
+[uc-docs-widget-api-group-instance]: https://uploadcare.com/docs/file-uploader-api/file-groups/#new-instance
+[uc-docs-widget-api-file-instance]: https://uploadcare.com/docs/file-uploader-api/files-uploads/#file-new-instance
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads
 
 [sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
