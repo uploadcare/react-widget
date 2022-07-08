@@ -70,7 +70,7 @@ By default, npm and other package managers import the full (all locales) CommonJ
 To reduce your bundle size, you can also import one of the following:
 * The english-only bundle (saves ~27% in bundle size) as `@uploadcare/react-widget/en`
 * The minified all-locales bundle (saves ~44% in bundle size) as `@uploadcare/react-widget/min`
-* The minified english-only bundle (saves ~60% in bundle size) as `@uploadcare/react-widget/en-min/`
+* The minified english-only bundle (saves ~60% in bundle size) as `@uploadcare/react-widget/en-min`
 
 ## Configuration
 
