@@ -2,6 +2,7 @@
   "name": "@uploadcare/react-widget",
   "version": "2.1.1",
   "description": "React component for Uploadcare Widget",
+  "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "types/index.d.ts",
