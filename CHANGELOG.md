@@ -1,3 +1,12 @@
+## [2.1.3](https://github.com/uploadcare/react-widget/compare/v2.1.2...v2.1.3) (2022-07-08)
+
+
+### Bug Fixes
+
+* type module ([#333](https://github.com/uploadcare/react-widget/issues/333)) ([a0bce27](https://github.com/uploadcare/react-widget/commit/a0bce27b5f7b4827d84763242e2342b2aed1a50b))
+
+
+
 ## [2.1.2](https://github.com/uploadcare/react-widget/compare/v2.1.1...v2.1.2) (2022-07-06)
 
 
