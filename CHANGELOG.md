@@ -1,3 +1,12 @@
+## [2.1.4](https://github.com/uploadcare/react-widget/compare/v2.1.3...v2.1.4) (2022-07-11)
+
+
+### Bug Fixes
+
+* add `exports` field to the package.json ([#336](https://github.com/uploadcare/react-widget/issues/336)) ([79b2579](https://github.com/uploadcare/react-widget/commit/79b25798010c9107e9d4eed8d62060bb450d73fb))
+
+
+
 ## [2.1.3](https://github.com/uploadcare/react-widget/compare/v2.1.2...v2.1.3) (2022-07-08)
 
 
