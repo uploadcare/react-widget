@@ -68,9 +68,9 @@ You can refer to our [integration guide][react-guide] for more details.
 By default, npm and other package managers import the full (all locales) CommonJS or ESM bundle.
 
 To reduce your bundle size, you can also import one of the following:
-* The english-only bundle (saves ~27% in bundle size) as `@uploadcare/react-widget/en/index.js`
-* The minified all-locales bundle (saves ~44% in bundle size) as `@uploadcare/react-widget/min/index.js`
-* The minified english-only bundle (saves ~60% in bundle size) as `@uploadcare/react-widget/en-min/index.js`
+* The english-only bundle (saves ~27% in bundle size) as `@uploadcare/react-widget/en`
+* The minified all-locales bundle (saves ~44% in bundle size) as `@uploadcare/react-widget/min`
+* The minified english-only bundle (saves ~60% in bundle size) as `@uploadcare/react-widget/en-min`
 
 ## Configuration
 
