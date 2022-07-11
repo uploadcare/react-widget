@@ -3,10 +3,19 @@
   "version": "2.1.3",
   "description": "React component for Uploadcare Widget",
   "type": "module",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "types/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./types/index.d.ts",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./en": "./en/index.js",
+    "./en-min": "./en-min/index.js",
+    "./min": "./min/index.js"
+  },
   "scripts": {
     "lint:types": "dtslint types --onlyTestTsNext",
     "lint:js": "eslint ./src/** ./test/** rollup.config.js",
