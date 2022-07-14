@@ -294,7 +294,7 @@ Define a reference object to address the Dialog API wrapper.
 
 ```typescript
 interface DialogApi {
-  addFiles(type: string, files: Array<any>): void;
+  addFiles(type: string, files: any[]): void;
   addFiles(files: Array<JQuery.Deferred<FileInfo>>): void;
   switchTab(tab: string): void;
   getFileColl(): CollectionOfPromises<FileInfo>;
