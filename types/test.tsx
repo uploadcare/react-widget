@@ -134,14 +134,17 @@ const UnsplashCreator: CustomTabConstructor = (
         Random photo from unsplash:
         <br />
         <button
-          onClick={() =>
+          onClick={() => {
             dialog.addFiles([
               uploadcare.fileFrom(
                 "url",
                 "https://source.unsplash.com/random/800x600/",
                 settings
               )
-            ])
+            ]);
+
+            dialog.addFiles('object', [new Blob(['test'])]);
+          }
           }
         >
           {"Load ✨"}

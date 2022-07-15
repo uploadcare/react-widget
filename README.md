@@ -289,9 +289,13 @@ Set a function to be called whenever **progress state changes**.
 
 Define a reference object to address the Dialog API wrapper.
 
+[Dialog API reference][api-refs-dialog]
+<!-- TODO: * [Example][sandbox-ref] -->
+
 ```typescript
 interface DialogApi {
-  addFiles(files: FileInfo[]): void;
+  addFiles(type: string, files: any[]): void;
+  addFiles(files: Array<JQuery.Deferred<FileInfo>>): void;
   switchTab(tab: string): void;
   getFileColl(): CollectionOfPromises<FileInfo>;
   hideTab(tab: string): void;
@@ -300,9 +304,6 @@ interface DialogApi {
   onTabVisibility(callback: OnTabVisibilityCallback): void;
 }
 ```
-
-* [Dialog API reference][api-refs-dialog]
-<!-- TODO: * [Example][sandbox-ref] -->
 
 <br>
 

@@ -299,6 +299,7 @@ interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
 }
 
 interface DialogApi {
+  addFiles(type: string, files: any[]): void;
   addFiles(files: Array<JQuery.Deferred<FileInfo>>): void;
   switchTab(tab: string): void;
   getFileColl(): CollectionOfPromises<FileInfo>;
