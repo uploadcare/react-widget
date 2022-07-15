@@ -3,7 +3,7 @@
 
 ### Bug Fixes
 
-* types for dialog.addFiles ([#339](https://github.com/uploadcare/react-widget/issues/339)) ([91951b8](https://github.com/uploadcare/react-widget/commit/91951b8ad48a5faebaadf4e41e06deb8a1d85ba5))
+* types for `dialog.addFiles` ([#339](https://github.com/uploadcare/react-widget/issues/339)) ([91951b8](https://github.com/uploadcare/react-widget/commit/91951b8ad48a5faebaadf4e41e06deb8a1d85ba5))
 
 
 
