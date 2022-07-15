@@ -1,3 +1,12 @@
+## [2.1.5](https://github.com/uploadcare/react-widget/compare/v2.1.4...v2.1.5) (2022-07-15)
+
+
+### Bug Fixes
+
+* types for dialog.addFiles ([#339](https://github.com/uploadcare/react-widget/issues/339)) ([91951b8](https://github.com/uploadcare/react-widget/commit/91951b8ad48a5faebaadf4e41e06deb8a1d85ba5))
+
+
+
 ## [2.1.4](https://github.com/uploadcare/react-widget/compare/v2.1.3...v2.1.4) (2022-07-11)
 
 
