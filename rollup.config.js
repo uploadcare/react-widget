@@ -136,7 +136,7 @@ export default [
     external: [
       'react',
       'react-fast-compare',
-      'uploadcare-widget/uploadcare.lang.en.min',
+      'uploadcare-widget/uploadcare.lang.en.min.js',
       '@uploadcare/client-suspense'
     ],
     output: {
@@ -149,7 +149,7 @@ export default [
         entries: [
           {
             find: 'uploadcare-widget',
-            replacement: 'uploadcare-widget/uploadcare.lang.en.min'
+            replacement: 'uploadcare-widget/uploadcare.lang.en.min.js'
           }
         ]
       }),
