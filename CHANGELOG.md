@@ -1,3 +1,12 @@
+## [2.1.6](https://github.com/uploadcare/react-widget/compare/v2.1.5...v2.1.6) (2022-08-29)
+
+
+### Bug Fixes
+
+* add extension to uploadcare-widget import ([#343](https://github.com/uploadcare/react-widget/issues/343)) ([714eb0d](https://github.com/uploadcare/react-widget/commit/714eb0d9dbca300a9ddf973994fc1ffd682b4c6a))
+
+
+
 ## [2.1.5](https://github.com/uploadcare/react-widget/compare/v2.1.4...v2.1.5) (2022-07-15)
 
 
