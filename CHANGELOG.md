@@ -8,7 +8,7 @@
 
 ### Features
 
-* **Widget:** add `widgetApiRef.setValue` method ([#347](https://github.com/uploadcare/react-widget/issues/347)) ([64f8c12](https://github.com/uploadcare/react-widget/commit/64f8c121bc15431e44a757278552896f3ad24ca7))
+* **Widget:** add `widgetApiRef.value` method ([#347](https://github.com/uploadcare/react-widget/issues/347)) ([64f8c12](https://github.com/uploadcare/react-widget/commit/64f8c121bc15431e44a757278552896f3ad24ca7))
 
 
 
