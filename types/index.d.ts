@@ -368,7 +368,7 @@ interface Settings extends LocaleSettings {
 }
 
 interface WidgetAPI {
-  openDialog: (tab: string) => void;
+  openDialog: (tab?: string | null | Settings) => void;
   reloadInfo: () => void;
   getInput: () => HTMLInputElement;
   value: (value?: null | string[] | JQuery.Deferred<FileInfo> | JQuery.Deferred<FileGroup>) => void;
