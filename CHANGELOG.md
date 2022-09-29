@@ -1,3 +1,17 @@
+# [2.2.0](https://github.com/uploadcare/react-widget/compare/v2.1.6...v2.2.0) (2022-09-29)
+
+
+### Bug Fixes
+
+* **types:** `openDialog()` could accept optional argument of string, null or `Settings` type ([#349](https://github.com/uploadcare/react-widget/issues/349)) ([63938d0](https://github.com/uploadcare/react-widget/commit/63938d0b23ce338b5fc22349e2152f69074ee1dd))
+
+
+### Features
+
+* **Widget:** add `widgetApiRef.setValue` method ([#347](https://github.com/uploadcare/react-widget/issues/347)) ([64f8c12](https://github.com/uploadcare/react-widget/commit/64f8c121bc15431e44a757278552896f3ad24ca7))
+
+
+
 ## [2.1.6](https://github.com/uploadcare/react-widget/compare/v2.1.5...v2.1.6) (2022-08-29)
 
 
