@@ -209,7 +209,14 @@ is being loaded.
 #### `ref: widgetApiRef`
 
 Define a reference object to address the Widget API wrapper. Use it to access
-these methods: `openDialog`, `reloadInfo` and `getInput`.
+these methods: `value`, `openDialog`, `reloadInfo` and `getInput`.
+
+1. `value()` is the alias for [`widget.value()`][uc-docs-widget-single-file-value]
+2. `openDialog()` is the alias for [`widget.openDialog()`][uc-docs-widget-open-dialog]
+3. `reloadIngo()` is the alias for [`widget.reloadInfo()`][uc-docs-widget-reload-info]
+4. `getInput()` returns widget's input element instance.
+
+Example:
 
 ```jsx
 const Example = () => {
@@ -377,6 +384,9 @@ We want to hear your issue reports and feature requests at
 [uc-docs-widget-api-group-instance]: https://uploadcare.com/docs/file-uploader-api/file-groups/#new-instance
 [uc-docs-widget-api-file-instance]: https://uploadcare.com/docs/file-uploader-api/files-uploads/#file-new-instance
 [uc-docs-files]: https://uploadcare.com/docs/concepts/#uploads
+[uc-docs-widget-single-file-value]: https://uploadcare.com/docs/file-uploader-api/widget/#single-file-value
+[uc-docs-widget-open-dialog]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-open-dialog
+[uc-docs-widget-reload-info]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-reload-info
 
 [sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
 [sandbox-props]: https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v

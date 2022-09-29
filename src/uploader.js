@@ -93,7 +93,7 @@ const useWidget = (
     const inputEl = input.current
     widget.current = uploadcare.Widget(inputEl)
     const widgetElement = inputEl.nextSibling
-    if(cachedValueRef.current) {
+    if (cachedValueRef.current) {
       // restore widget value when called twice in React.StrictMode
       widget.current.value(cachedValueRef.current)
     }
@@ -159,7 +159,7 @@ const useWidget = (
   }, [attributes])
 
   useEffect(() => {
-    if(cachedValueRef.current !== value) {
+    if (cachedValueRef.current !== value) {
       widget.current.value(value)
     }
     cachedValueRef.current = value
@@ -180,7 +180,8 @@ const useWidget = (
     () => ({
       openDialog: () => widget.current.openDialog(),
       reloadInfo: () => widget.current.reloadInfo(),
-      getInput: () => widget.current.inputElement
+      getInput: () => widget.current.inputElement,
+      value: (value) => widget.current.value(value)
     }),
     []
   )

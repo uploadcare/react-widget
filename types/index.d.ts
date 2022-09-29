@@ -371,6 +371,7 @@ interface WidgetAPI {
   openDialog: (tab: string) => void;
   reloadInfo: () => void;
   getInput: () => HTMLInputElement;
+  value: (value?: null | string[] | JQuery.Deferred<FileInfo> | JQuery.Deferred<FileGroup>) => void;
 }
 
 interface FileUpload extends JQuery.Deferred<FileInfo> {
