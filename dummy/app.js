@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client'
 import DynamicLocales from './dynamic-locales'
 import Callbacks from './dialog-callbacks'
 import Panel from './default-panel'
-import Effect from './effect'
+import WidgetWithEffects from './widget-with-effects'
+import PanelWithEffects from './panel-with-effects'
 import Crop from './crop'
 
 const Example = ({ text, component: Component }) => (
@@ -38,8 +39,12 @@ const examples = [
     component: Crop
   },
   {
-    text: 'Effects',
-    component: Effect
+    text: 'Widget with effects',
+    component: WidgetWithEffects
+  },
+  {
+    text: 'Panel with effects',
+    component: PanelWithEffects
   }
 ]
 

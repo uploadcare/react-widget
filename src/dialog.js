@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useRef } from 'react'
+import React, { useEffect, useImperativeHandle, useRef, useMemo, useState } from 'react'
 import uploadcare from 'uploadcare-widget'
 import { useCustomTabs, useDeepEffect, useEventCallback } from './hooks'
 
@@ -10,8 +10,9 @@ const containerStyles = {
   justifyContent: 'center'
 }
 
-const hiddenDoneButtonStyle = /* css */ `
-  .uploadcare--preview__done, .uploadcare--panel__done {
+const getHiddenDoneButtonStyle = containerId => /* css */ `
+  .${containerId} .uploadcare--preview__done:not(.uploadcare-tab-effects--done),
+  .${containerId} .uploadcare--panel__done:not(.uploadcare-tab-effects--done) {
     display: none;
   }
 `
@@ -164,11 +165,16 @@ const useDialog = (props, uploadcare) => {
 }
 
 const Dialog = (props) => {
+  const [containerId] = useState(() => `uploadcare-${Date.now()}`)
+  const styleElement = useMemo(() => {
+    return <style>{getHiddenDoneButtonStyle(containerId)}</style>
+  }, [containerId])
+
   const [containerRef] = useDialog(props, uploadcare)
 
   return (
-    <div id={props.id} style={containerStyles}>
-      <style>{hiddenDoneButtonStyle}</style>
+    <div id={props.id} className={containerId} style={containerStyles}>
+      {styleElement}
       <div ref={containerRef} />
     </div>
   )
