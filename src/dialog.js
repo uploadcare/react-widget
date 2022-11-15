@@ -1,4 +1,10 @@
-import React, { useEffect, useImperativeHandle, useRef, useMemo, useState } from 'react'
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useMemo,
+  useState
+} from 'react'
 import uploadcare from 'uploadcare-widget'
 import { useCustomTabs, useDeepEffect, useEventCallback } from './hooks'
 
@@ -10,7 +16,7 @@ const containerStyles = {
   justifyContent: 'center'
 }
 
-const getHiddenDoneButtonStyle = containerId => /* css */ `
+const getHiddenDoneButtonStyle = (containerId) => /* css */ `
   .${containerId} .uploadcare--preview__done:not(.uploadcare-tab-effects--done),
   .${containerId} .uploadcare--panel__done:not(.uploadcare-tab-effects--done) {
     display: none;
@@ -36,12 +42,7 @@ const useDialog = (props, uploadcare) => {
     ...restProps
   } = props
 
-  const {
-    tabsCss,
-    locale,
-    localeTranslations,
-    localePluralize,
-  } = restProps
+  const { tabsCss, locale, localeTranslations, localePluralize } = restProps
 
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
