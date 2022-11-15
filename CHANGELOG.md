@@ -1,3 +1,13 @@
+## [2.2.1](https://github.com/uploadcare/react-widget/compare/v2.2.0...v2.2.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* add missing `Apply` button in the Effects Tab ([5a0ab11](https://github.com/uploadcare/react-widget/commit/5a0ab1162bc59a29bb1341a695268311e85236ee))
+* **panel:** prevent widget reinit & clearing on re-renders ([a098d48](https://github.com/uploadcare/react-widget/commit/a098d4863f2e50988f2ae5e734964865ad9c660e))
+
+
+
 # [2.2.0](https://github.com/uploadcare/react-widget/compare/v2.1.6...v2.2.0) (2022-09-29)
 
 
