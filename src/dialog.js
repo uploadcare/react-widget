@@ -1,4 +1,10 @@
-import React, { useEffect, useImperativeHandle, useRef } from 'react'
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useMemo,
+  useState
+} from 'react'
 import uploadcare from 'uploadcare-widget'
 import { useCustomTabs, useDeepEffect, useEventCallback } from './hooks'
 
@@ -10,25 +16,33 @@ const containerStyles = {
   justifyContent: 'center'
 }
 
-const hiddenDoneButtonStyle = /* css */ `
-  .uploadcare--preview__done, .uploadcare--panel__done {
+const getHiddenDoneButtonStyle = (containerId) => /* css */ `
+  .${containerId} .uploadcare--preview__done:not(.uploadcare-tab-effects--done),
+  .${containerId} .uploadcare--panel__done:not(.uploadcare-tab-effects--done) {
     display: none;
   }
 `
 
+const getValueItems = (value, props) => {
+  let uuids = []
+  if (value) {
+    uuids = Array.isArray(value) ? value : [value]
+  }
+  return uuids
+}
+
 const useDialog = (props, uploadcare) => {
   const {
-    value = [],
+    value,
     apiRef,
-    customTabs,
-    tabsCss,
-    locale,
-    localeTranslations,
-    localePluralize,
     onTabChange,
     onChange,
-    onProgress
+    onProgress,
+    customTabs,
+    ...restProps
   } = props
+
+  const { tabsCss, locale, localeTranslations, localePluralize } = restProps
 
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
@@ -64,19 +78,19 @@ const useDialog = (props, uploadcare) => {
   }, [uploadcare, tabsCss])
 
   useEffect(() => {
-    const files = Array.isArray(value) ? value : [value]
+    const files = getValueItems(value)
     panelInstance.current && panelInstance.current.reject()
     panelInstance.current = uploadcare.openPanel(
       panelContainer.current,
       files,
       {
-        multipleMax: props.multiple ? undefined : 1,
-        ...props,
+        multipleMax: restProps.multiple ? undefined : 1,
+        ...restProps,
         multiple: true
       }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uploadcare, props])
+  }, [uploadcare, ...Object.values(restProps)])
 
   useEffect(() => {
     const dialogApi = panelInstance.current
@@ -138,8 +152,8 @@ const useDialog = (props, uploadcare) => {
   useEffect(() => {
     let isUpdated = false
     panelInstance.current.fileColl.clear()
-
-    for (const item of value) {
+    const files = getValueItems(value)
+    for (const item of files) {
       if (typeof item === 'string' && item.includes('~')) {
         uploadcare.loadFileGroup(item, props).then((fileGroup) => {
           // value could be changed after group loaded
@@ -164,11 +178,16 @@ const useDialog = (props, uploadcare) => {
 }
 
 const Dialog = (props) => {
+  const [containerId] = useState(() => `uploadcare-${Date.now()}`)
+  const styleElement = useMemo(() => {
+    return <style>{getHiddenDoneButtonStyle(containerId)}</style>
+  }, [containerId])
+
   const [containerRef] = useDialog(props, uploadcare)
 
   return (
-    <div id={props.id} style={containerStyles}>
-      <style>{hiddenDoneButtonStyle}</style>
+    <div id={props.id} className={containerId} style={containerStyles}>
+      {styleElement}
       <div ref={containerRef} />
     </div>
   )
