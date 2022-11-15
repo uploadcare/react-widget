@@ -17,19 +17,31 @@ const getHiddenDoneButtonStyle = containerId => /* css */ `
   }
 `
 
+const getValueItems = (value, props) => {
+  let uuids = []
+  if (value) {
+    uuids = Array.isArray(value) ? value : [value]
+  }
+  return uuids
+}
+
 const useDialog = (props, uploadcare) => {
   const {
-    value = [],
+    value,
     apiRef,
+    onTabChange,
+    onChange,
+    onProgress,
     customTabs,
+    ...restProps
+  } = props
+
+  const {
     tabsCss,
     locale,
     localeTranslations,
     localePluralize,
-    onTabChange,
-    onChange,
-    onProgress
-  } = props
+  } = restProps
 
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
@@ -65,19 +77,19 @@ const useDialog = (props, uploadcare) => {
   }, [uploadcare, tabsCss])
 
   useEffect(() => {
-    const files = Array.isArray(value) ? value : [value]
+    const files = getValueItems(value)
     panelInstance.current && panelInstance.current.reject()
     panelInstance.current = uploadcare.openPanel(
       panelContainer.current,
       files,
       {
-        multipleMax: props.multiple ? undefined : 1,
-        ...props,
+        multipleMax: restProps.multiple ? undefined : 1,
+        ...restProps,
         multiple: true
       }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uploadcare, props])
+  }, [uploadcare, ...Object.values(restProps)])
 
   useEffect(() => {
     const dialogApi = panelInstance.current
@@ -139,8 +151,8 @@ const useDialog = (props, uploadcare) => {
   useEffect(() => {
     let isUpdated = false
     panelInstance.current.fileColl.clear()
-
-    for (const item of value) {
+    const files = getValueItems(value)
+    for (const item of files) {
       if (typeof item === 'string' && item.includes('~')) {
         uploadcare.loadFileGroup(item, props).then((fileGroup) => {
           // value could be changed after group loaded
