@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
+import { useDeepEffect } from './use-deep-effect'
 
 export const useCustomTabs = (tabs, uploadcare) => {
-  useEffect(() => {
+  useDeepEffect(() => {
     const customTabs = Object.entries(tabs || [])
 
     customTabs.forEach(([name, implementation]) => {
