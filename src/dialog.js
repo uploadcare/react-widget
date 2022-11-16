@@ -6,7 +6,8 @@ import React, {
   useState
 } from 'react'
 import uploadcare from 'uploadcare-widget'
-import { useCustomTabs, useDeepEffect, useEventCallback } from './hooks'
+import { useCustomTabs, useDeepEffect, useCommitedCallback } from './hooks'
+import { defaultPreviewUrlCallback } from './default-preview-url-callback'
 
 const containerStyles = {
   height: '500px',
@@ -39,6 +40,8 @@ const useDialog = (props, uploadcare) => {
     onChange,
     onProgress,
     customTabs,
+    previewUrlCallback,
+    metadataCallback,
     ...restProps
   } = props
 
@@ -47,9 +50,14 @@ const useDialog = (props, uploadcare) => {
   const panelContainer = useRef(null)
   const panelInstance = useRef(null)
 
-  const onTabChangeCallback = useEventCallback(onTabChange)
-  const onChangeCallback = useEventCallback(onChange)
-  const onProgressCallback = useEventCallback(onProgress)
+  const onTabChangeCallback = useCommitedCallback(onTabChange)
+  const onChangeCallback = useCommitedCallback(onChange)
+  const onProgressCallback = useCommitedCallback(onProgress)
+
+  const metadataCommitedCallback = useCommitedCallback(metadataCallback)
+  const previewUrlCommitedCallback = useCommitedCallback(
+    previewUrlCallback || defaultPreviewUrlCallback
+  )
 
   useCustomTabs(customTabs, uploadcare)
 
@@ -86,7 +94,9 @@ const useDialog = (props, uploadcare) => {
       {
         multipleMax: restProps.multiple ? undefined : 1,
         ...restProps,
-        multiple: true
+        multiple: true,
+        metadataCallback: metadataCommitedCallback,
+        previewUrlCallback: previewUrlCommitedCallback
       }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -135,6 +135,28 @@ Set a function to be called after **tab is changed**.
 
 <br>
 
+#### `metadata: (metadata: Record<string, string>)`
+
+The option can be used to set metadata object associated with the uploaded file.
+
+Note that metadata supports `string` values only, any non-string value will be converted to `string`, including `boolean`, `number`, `null` and `undefined`.
+
+See [Metadata docs][uc-docs-metadata] for details.
+
+<br>
+
+#### `metadataCallback: () => Record<string, string>`
+
+Defines the function that specifies the actual metadata object a file uploader should use to associate with the uploaded file. It's helpful in the case of dynamic metadata object.
+
+If this option is specified, option `metadata` will be overridden (without merging).
+
+Note that metadata supports `string` values only, any non-string value will be converted to `string`, including `boolean`, `number`, `null` and `undefined`.
+
+See [Metadata docs][uc-docs-metadata] for details.
+
+<br>
+
 #### `customTabs: {[key: string]: CustomTabConstructor}`
 
 Add **custom tabs** for a widget.
@@ -387,6 +409,7 @@ We want to hear your issue reports and feature requests at
 [uc-docs-widget-single-file-value]: https://uploadcare.com/docs/file-uploader-api/widget/#single-file-value
 [uc-docs-widget-open-dialog]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-open-dialog
 [uc-docs-widget-reload-info]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-reload-info
+[uc-docs-metadata]: https://uploadcare.com/docs/file-metadata/
 
 [sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
 [sandbox-props]: https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v

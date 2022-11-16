@@ -1,31 +1,19 @@
 import React, {
-  useEffect,
-  useRef,
   useCallback,
-  useImperativeHandle
+  useEffect,
+  useImperativeHandle,
+  useRef
 } from 'react'
 import uploadcare from 'uploadcare-widget'
 
+import { defaultPreviewUrlCallback } from './default-preview-url-callback'
 import {
-  useEventCallback,
+  useCommitedCallback,
   useCustomTabs,
-  useValidators,
+  useDeepEffect,
   useDeepMemo,
-  useDeepEffect
+  useValidators
 } from './hooks'
-
-function camelCaseToDash(str) {
-  return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
-}
-
-const propsToAttr = (props) =>
-  Object.entries(props).reduce(
-    (attr, [key, value]) => ({
-      ...attr,
-      [`data-${camelCaseToDash(key)}`]: value
-    }),
-    {}
-  )
 
 const useWidget = (
   {
@@ -45,6 +33,7 @@ const useWidget = (
     localeTranslations,
     localePluralize,
     previewUrlCallback,
+    metadataCallback,
     ...options
   },
   uploadcare
@@ -53,24 +42,26 @@ const useWidget = (
   const widget = useRef(null)
   const cachedValueRef = useRef(null)
 
-  const fileSelectedCallback = useEventCallback(onFileSelect)
-  const changeCallback = useEventCallback(onChange)
-  const dialogOpenCallback = useEventCallback(onDialogOpen)
-  const dialogCloseCallback = useEventCallback(onDialogClose)
-  const tabChangeCallback = useEventCallback(onTabChange)
+  const fileSelectedCallback = useCommitedCallback(onFileSelect)
+  const changeCallback = useCommitedCallback(onChange)
+  const dialogOpenCallback = useCommitedCallback(onDialogOpen)
+  const dialogCloseCallback = useCommitedCallback(onDialogClose)
+  const tabChangeCallback = useCommitedCallback(onTabChange)
+
+  const metadataCommitedCallback = useCommitedCallback(metadataCallback)
+  const previewUrlCommitedCallback = useCommitedCallback(
+    previewUrlCallback || defaultPreviewUrlCallback
+  )
+
+  const widgetOptions = useDeepMemo(() => options, [options])
 
   useCustomTabs(customTabs, uploadcare)
-
-  const attributes = useDeepMemo(() => propsToAttr(options), [options])
 
   useDeepEffect(() => {
     if (locale) window.UPLOADCARE_LOCALE = locale
     if (localePluralize) window.UPLOADCARE_LOCALE_PLURALIZE = localePluralize
     if (localeTranslations) {
       window.UPLOADCARE_LOCALE_TRANSLATIONS = localeTranslations
-    }
-    if (previewUrlCallback) {
-      window.UPLOADCARE_PREVIEW_URL_CALLBACK = previewUrlCallback
     }
 
     uploadcare.plugin((internal) => {
@@ -85,13 +76,17 @@ const useWidget = (
       if (locale) delete window.UPLOADCARE_LOCALE
       if (localePluralize) delete window.UPLOADCARE_LOCALE_PLURALIZE
       if (localeTranslations) delete window.UPLOADCARE_LOCALE_TRANSLATIONS
-      if (previewUrlCallback) delete window.UPLOADCARE_PREVIEW_URL_CALLBACK
     }
-  }, [locale, localeTranslations, localePluralize, previewUrlCallback])
+  }, [locale, localeTranslations, localePluralize])
 
   useEffect(() => {
     const inputEl = input.current
-    widget.current = uploadcare.Widget(inputEl)
+    widget.current = uploadcare.Widget(inputEl, {
+      ...widgetOptions,
+      metadataCallback: metadataCommitedCallback,
+      previewUrlCallback: previewUrlCommitedCallback
+    })
+
     const widgetElement = inputEl.nextSibling
     if (cachedValueRef.current) {
       // restore widget value when called twice in React.StrictMode
@@ -106,7 +101,13 @@ const useWidget = (
       uploadcare.jQuery(inputEl).removeData('uploadcareWidget')
       widgetElement && widgetElement.remove()
     }
-  }, [uploadcare, attributes])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    uploadcare,
+    widgetOptions,
+    metadataCommitedCallback,
+    previewUrlCommitedCallback
+  ])
 
   useValidators(widget, validators)
 
@@ -118,7 +119,7 @@ const useWidget = (
       widget.current.onUploadComplete.remove(changeCallback)
       widget.current.onChange.remove(fileSelectedCallback)
     }
-  }, [changeCallback, fileSelectedCallback, uploadcare, attributes])
+  }, [changeCallback, fileSelectedCallback, uploadcare, widgetOptions])
 
   useEffect(() => {
     let dialog
@@ -138,7 +139,12 @@ const useWidget = (
       widget.current.onDialogOpen.remove(saveDialog)
       dialog && dialog.reject()
     }
-  }, [attributes, dialogCloseCallback, dialogOpenCallback, tabChangeCallback])
+  }, [
+    dialogCloseCallback,
+    dialogOpenCallback,
+    tabChangeCallback,
+    widgetOptions
+  ])
 
   useEffect(() => {
     let files = []
@@ -156,7 +162,7 @@ const useWidget = (
       files.forEach((file) => file.cancel())
       widget.current.onChange.remove(saveFiles)
     }
-  }, [attributes])
+  }, [widgetOptions])
 
   useEffect(() => {
     if (cachedValueRef.current !== value) {
@@ -187,10 +193,8 @@ const useWidget = (
   )
 
   return useCallback(
-    () => (
-      <input type="hidden" ref={input} id={id} name={name} {...attributes} />
-    ),
-    [attributes, id, name]
+    () => <input type="hidden" ref={input} id={id} name={name} />,
+    [id, name]
   )
 }
 

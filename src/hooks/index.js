@@ -1,6 +1,6 @@
 export * from './use-commited-ref'
 export * from './use-destructuring'
-export * from './use-event-callback'
+export * from './use-commited-callback'
 export * from './use-state'
 export * from './use-custom-tabs'
 export * from './use-validators'
