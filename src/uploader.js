@@ -7,7 +7,7 @@ import React, {
 import uploadcare from 'uploadcare-widget'
 
 import {
-  useEventCallback,
+  useCommitedCallback,
   useCustomTabs,
   useValidators,
   useDeepMemo,
@@ -53,11 +53,11 @@ const useWidget = (
   const widget = useRef(null)
   const cachedValueRef = useRef(null)
 
-  const fileSelectedCallback = useEventCallback(onFileSelect)
-  const changeCallback = useEventCallback(onChange)
-  const dialogOpenCallback = useEventCallback(onDialogOpen)
-  const dialogCloseCallback = useEventCallback(onDialogClose)
-  const tabChangeCallback = useEventCallback(onTabChange)
+  const fileSelectedCallback = useCommitedCallback(onFileSelect)
+  const changeCallback = useCommitedCallback(onChange)
+  const dialogOpenCallback = useCommitedCallback(onDialogOpen)
+  const dialogCloseCallback = useCommitedCallback(onDialogClose)
+  const tabChangeCallback = useCommitedCallback(onTabChange)
 
   useCustomTabs(customTabs, uploadcare)
 
