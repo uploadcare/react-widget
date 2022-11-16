@@ -6,6 +6,8 @@ import Callbacks from './dialog-callbacks'
 import Panel from './default-panel'
 import WidgetWithEffects from './widget-with-effects'
 import PanelWithEffects from './panel-with-effects'
+import PanelMetadata from './panel-metadata'
+import WidgetMetadata from './widget-metadata'
 import Crop from './crop'
 
 const Example = ({ text, component: Component }) => (
@@ -45,6 +47,14 @@ const examples = [
   {
     text: 'Panel with effects',
     component: PanelWithEffects
+  },
+  {
+    text: 'Panel with metadata',
+    component: PanelMetadata
+  },
+  {
+    text: 'Widget with metadata',
+    component: WidgetMetadata
   }
 ]
 
