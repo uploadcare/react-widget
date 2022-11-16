@@ -1,5 +1,5 @@
 import React from 'react'
-import effects from 'uploadcare-widget-tab-effects'
+import effects from 'uploadcare-widget-tab-effects/react'
 import { Widget } from '../src'
 
 const translation = {
