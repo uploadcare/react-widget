@@ -188,6 +188,33 @@ make it work:
 
 <br>
 
+#### Add [Image Editor][uc-docs-image-editor]
+
+1. Install `uploadcare-widget-tab-effects` package
+
+```bash
+npm i uploadcare-widget-tab-effects
+```
+
+2. Import one of the bundles:
+
+  * `uploadcare-widget-tab-effects/react` for all-locales bundle
+  * `uploadcare-widget-tab-effects/react-en` for english-only bundle
+
+```js
+import effects from 'uploadcare-widget-tab-effects/react'
+// or
+// import effects from 'uploadcare-widget-tab-effects/react-en'
+```
+
+3. Pass the `effects` object to the `customTabs` prop:
+
+```jsx
+<Widget previewStep customTabs={{ preview: effects }} />
+```
+
+<br>
+
 #### `validators: Validator[]`
 
 Set **validators** for a widget. Validator is a JavaScript function that
@@ -410,6 +437,7 @@ We want to hear your issue reports and feature requests at
 [uc-docs-widget-open-dialog]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-open-dialog
 [uc-docs-widget-reload-info]: https://uploadcare.com/docs/file-uploader-api/widget/#widget-reload-info
 [uc-docs-metadata]: https://uploadcare.com/docs/file-metadata/
+[uc-docs-image-editor]: https://uploadcare.com/docs/uploads/image-editor/
 
 [sandbox-simple-demo]: https://codesandbox.io/s/uploadcarereact-widget-7xpqp
 [sandbox-props]: https://codesandbox.io/s/uploadcarereact-widget-props-example-oqk0v
