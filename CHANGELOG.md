@@ -12,7 +12,6 @@
 * add metadata support ([59d211b](https://github.com/uploadcare/react-widget/commit/59d211b1002f9e80864747e66fe17a7ebcd751c7))
 
 
-
 # [2.2.0](https://github.com/uploadcare/react-widget/compare/v2.1.6...v2.2.0) (2022-09-29)
 
 
