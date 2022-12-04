@@ -9,12 +9,22 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./en": "./en/index.js",
-    "./en-min": "./en-min/index.js",
-    "./min": "./min/index.js"
+    "./en": {
+      "types": "./types/index.d.ts",
+      "import": "./en/index.js"
+    },
+    "./en-min": {
+      "types": "./types/index.d.ts",
+      "import": "./en-min/index.js"
+    },
+    "./min": {
+      "types": "./types/index.d.ts",
+      "import": "./min/index.js"
+    }
   },
   "scripts": {
     "lint:types": "dtslint types --onlyTestTsNext",
