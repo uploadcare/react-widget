@@ -17,6 +17,8 @@ export default [
       '@uploadcare/client-suspense'
     ],
     output: {
+      entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs',
       format: 'esm',
       dir: 'dist/esm',
       sourcemap: false
@@ -43,6 +45,8 @@ export default [
       '@uploadcare/client-suspense'
     ],
     output: {
+      entryFileNames: '[name].cjs',
+      chunkFileNames: '[name]-[hash].cjs',
       format: 'cjs',
       dir: 'dist/cjs',
       sourcemap: false
@@ -70,6 +74,8 @@ export default [
       '@uploadcare/client-suspense'
     ],
     output: {
+      entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs',
       format: 'esm',
       dir: 'min',
       sourcemap: false
@@ -105,6 +111,8 @@ export default [
       '@uploadcare/client-suspense'
     ],
     output: {
+      entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs',
       format: 'esm',
       dir: 'en',
       sourcemap: false
@@ -140,6 +148,8 @@ export default [
       '@uploadcare/client-suspense'
     ],
     output: {
+      entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs',
       format: 'esm',
       dir: 'en-min',
       sourcemap: false
