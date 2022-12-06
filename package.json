@@ -3,23 +3,37 @@
   "version": "2.3.0",
   "description": "React component for Uploadcare Widget",
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./types/index.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
     },
-    "./en": "./en/index.js",
-    "./en-min": "./en-min/index.js",
-    "./min": "./min/index.js"
+    "./min": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm-min/index.mjs",
+      "require": "./dist/cjs-min/index.cjs"
+    },
+    "./en": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm-en/index.mjs",
+      "require": "./dist/cjs-en/index.cjs"
+    },
+    "./en-min": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/esm-en-min/index.mjs",
+      "require": "./dist/cjs-en-min/index.cjs"
+    },
+    "./locales.js": "./locales.js"
   },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./types/index.d.ts",
   "scripts": {
     "lint:types": "dtslint types --onlyTestTsNext",
     "lint:js": "eslint ./src/** ./test/** rollup.config.js",
-    "clean": "rimraf dist en min en-min",
+    "clean": "rimraf dist",
     "build": "rollup -c",
     "dummy": "parcel dummy/index.html",
     "prepublishOnly": "npm run clean && npm run build",
@@ -31,9 +45,6 @@
   },
   "files": [
     "dist/*",
-    "min/*",
-    "en/*",
-    "en-min/*",
     "locales.js",
     "types/index.d.ts"
   ],
