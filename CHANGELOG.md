@@ -13,7 +13,6 @@
 * add CJS bundles for `min`, `en`, and `en-min` ([522e0f5](https://github.com/uploadcare/react-widget/commit/522e0f5f146d51663789928b93aaa123ab0bbf01))
 
 
-
 # [2.3.0](https://github.com/uploadcare/react-widget/compare/v2.2.0...v2.3.0) (2022-11-17)
 
 
