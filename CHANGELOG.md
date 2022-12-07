@@ -1,3 +1,19 @@
+# [2.4.0](https://github.com/uploadcare/react-widget/compare/v2.3.0...v2.4.0) (2022-12-07)
+
+
+### Bug Fixes
+
+* restore dialog callbacks after dialog re-initialization ([87867fa](https://github.com/uploadcare/react-widget/commit/87867fa652e1224952cb1e71d80c870c376f27af))
+* specify types for each module export ([e52a994](https://github.com/uploadcare/react-widget/commit/e52a994cca1b2432773d99719acd0496d6e7650b))
+* use `.mjs` extension for ESM bundles and `.cjs` extension for CJS bundles ([e37c9ae](https://github.com/uploadcare/react-widget/commit/e37c9ae6e828c0cfa3b87f8e93af6e633faf8da0))
+
+
+### Features
+
+* add CJS bundles for `min`, `en`, and `en-min` ([522e0f5](https://github.com/uploadcare/react-widget/commit/522e0f5f146d51663789928b93aaa123ab0bbf01))
+
+
+
 # [2.3.0](https://github.com/uploadcare/react-widget/compare/v2.2.0...v2.3.0) (2022-11-17)
 
 
