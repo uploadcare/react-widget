@@ -139,8 +139,8 @@ const useDialog = (props, uploadcare) => {
       dialogApi.fileColl.onReplace.remove(onChangeWrapper)
       dialogApi.fileColl.onSort.remove(onChangeWrapper)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     ...Object.values(restProps),
     onTabChangeCallback,
     onChangeCallback,
