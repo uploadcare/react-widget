@@ -83,7 +83,9 @@ const useWidget = (
     const inputEl = input.current
     widget.current = uploadcare.Widget(inputEl, {
       ...widgetOptions,
-      metadataCallback: metadataCommitedCallback,
+      metadataCallback: widgetOptions.metadata
+        ? undefined
+        : metadataCommitedCallback,
       previewUrlCallback: previewUrlCommitedCallback
     })
 
