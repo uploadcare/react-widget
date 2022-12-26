@@ -141,6 +141,9 @@ The option can be used to set metadata object associated with the uploaded file.
 
 Note that metadata supports `string` values only, any non-string value will be converted to `string`, including `boolean`, `number`, `null` and `undefined`.
 
+**WARNING**: If this option is specified, option `metadataCallback` will be overridden (without merging).
+This is opposite from the uploadcare-widget's behavior.
+
 See [Metadata docs][uc-docs-metadata] for details.
 
 <br>
@@ -148,8 +151,6 @@ See [Metadata docs][uc-docs-metadata] for details.
 #### `metadataCallback: () => Record<string, string>`
 
 Defines the function that specifies the actual metadata object a file uploader should use to associate with the uploaded file. It's helpful in the case of dynamic metadata object.
-
-If this option is specified, option `metadata` will be overridden (without merging).
 
 Note that metadata supports `string` values only, any non-string value will be converted to `string`, including `boolean`, `number`, `null` and `undefined`.
 

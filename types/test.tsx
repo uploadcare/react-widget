@@ -200,4 +200,6 @@ const panelApi = React.useRef<PanelAPI>(null);
       console.log('onChange', results)
     );
   }}
+  metadata={{ foo: 'bar' }}
+  metadataCallback={() => ({ foo: 'bar' })}
 />;

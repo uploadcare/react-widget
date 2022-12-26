@@ -2,7 +2,7 @@
 /// <reference types="@types/jquery-deferred" />
 import { Ref, ForwardRefRenderFunction } from 'react';
 
-type Locale =
+export type Locale =
   'en' |
   'ar' |
   'az' |
@@ -35,9 +35,9 @@ type Locale =
   'zhTW' |
   'zh';
 
-type LocalePluralize = (n: number) => string;
+export type LocalePluralize = (n: number) => string;
 
-interface LocaleTranslations {
+export interface LocaleTranslations {
   uploading?: string;
   loadingInfo?: string;
   errors?: {
@@ -208,42 +208,83 @@ interface LocaleTranslations {
   };
 }
 
-interface GeoLocation {
+export interface GeoLocation {
   latitude: number;
   longitude: number;
 }
 
-interface OriginalImageInfo {
-  height: number;
-  width: number;
-  geo_location: null | GeoLocation;
-  datetime_original: string;
-  format: string;
-  color_mode: string;
-  dpi: null | number[];
-  orientation: null | number;
-  sequence?: boolean;
+export interface OriginalImageInfo {
+	height: number;
+	width: number;
+	geoLocation: GeoLocation | null;
+	datetimeOriginal: string;
+	format: string;
+	colorMode: string;
+	dpi: {
+		"0": number;
+		"1": number;
+	} | null;
+	orientation: number | null;
+	sequence: boolean | null;
 }
 
-type Uuid = string;
+export interface AudioInfo {
+	bitrate: number | null;
+	codec: string | null;
+	sampleRate: number | null;
+	channels: string | null;
+}
 
-interface SourceInfo {
+export interface OriginalVideoInfo {
+	duration: number;
+	format: string;
+	bitrate: number;
+	audio: AudioInfo | null;
+	video: {
+		height: number;
+		width: number;
+		frameRate: number;
+		bitrate: number;
+		codec: string;
+	};
+}
+
+export interface MimeInfo {
+	mime: string;
+	type: string;
+	subtype: string;
+}
+
+export interface OriginalContentInfo {
+	mime?: MimeInfo;
+	image?: OriginalImageInfo;
+	video?: OriginalVideoInfo;
+}
+
+export type Metadata = Record<string, string>;
+
+export type Uuid = string;
+
+export interface SourceInfo {
   source: string;
   file: any;
 }
 
-interface FileInfo {
+export interface FileInfo {
   uuid: null | Uuid;
   name: null | string;
   size: null | number;
   isStored: null | boolean;
   isImage: null | boolean;
   originalImageInfo: null | OriginalImageInfo;
+  originalVideoInfo: null | OriginalVideoInfo;
+  originalContentInfo: null | OriginalContentInfo;
   mimeType: null | string;
   originalUrl: null | string;
   cdnUrl: null | string;
   cdnUrlModifiers: null | string;
   sourceInfo: null | SourceInfo;
+  metadata: null | Metadata;
   crop?: {
     height: number;
     left: number;
@@ -252,16 +293,16 @@ interface FileInfo {
   };
 }
 
-interface ProgressInfo {
+export interface ProgressInfo {
   incompleteFileInfo: Partial<FileInfo>;
   progress: number;
   state: string;
   uploadProgress: number;
 }
 
-type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
+export type OnTabVisibilityCallback = (tab: string, shown: boolean) => void;
 
-interface Collection<T> {
+export interface Collection<T> {
   onAdd: JQuery.Callbacks;
   onRemove: JQuery.Callbacks;
   onSort: JQuery.Callbacks;
@@ -277,10 +318,10 @@ interface Collection<T> {
   length: () => number;
 }
 
-interface UniqCollection<T> extends Collection<T> {
+export interface UniqCollection<T> extends Collection<T> {
   add: (item: T) => JQuery.Callbacks | undefined;
 }
-interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
+export interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
   anyDoneList: JQuery.Callbacks;
   anyFailList: JQuery.Callbacks;
   anyProgressList: JQuery.Callbacks;
@@ -298,7 +339,7 @@ interface CollectionOfPromises<T> extends UniqCollection<JQuery.Deferred<T>> {
   autoThen: unknown;
 }
 
-interface DialogApi {
+export interface DialogApi {
   addFiles(type: string, files: any[]): void;
   addFiles(files: Array<JQuery.Deferred<FileInfo>>): void;
   switchTab(tab: string): void;
@@ -309,14 +350,14 @@ interface DialogApi {
   onTabVisibility(callback: OnTabVisibilityCallback): void;
 }
 
-interface LocaleSettings {
+export interface LocaleSettings {
   // developer hooks
   locale?: Locale;
   localePluralize?: LocalePluralize;
   localeTranslations?: LocaleTranslations;
 }
 
-interface Settings extends LocaleSettings {
+export interface Settings extends LocaleSettings {
   // widget & dialog settings
   systemDialog?: boolean;
   crop?: string;
@@ -345,6 +386,8 @@ interface Settings extends LocaleSettings {
   previewUrlCallback?:
     | ((originalUrl: string, fileInfo: FileInfo) => string)
     | null;
+  metadataCallback?: () => Metadata;
+  metadata?: Metadata;
   // fine tuning
   imagePreviewMaxSize?: number;
   multipartMinSize?: number;
@@ -367,14 +410,14 @@ interface Settings extends LocaleSettings {
   remoteTabSessionKey?: string;
 }
 
-interface WidgetAPI {
+export interface WidgetAPI {
   openDialog: (tab?: string | null | Settings) => void;
   reloadInfo: () => void;
   getInput: () => HTMLInputElement;
   value: (value?: null | string[] | JQuery.Deferred<FileInfo> | JQuery.Deferred<FileGroup>) => void;
 }
 
-interface FileUpload extends JQuery.Deferred<FileInfo> {
+export interface FileUpload extends JQuery.Deferred<FileInfo> {
   cancel: () => FileUpload;
 }
 
@@ -383,9 +426,9 @@ interface FileUpload extends JQuery.Deferred<FileInfo> {
  *
  * The react upload care widget does not (yet) define this type.
  *
- * This type is reverse engineered from stepping into the debugger.
+ * This export type is reverse engineered from stepping into the debugger.
  */
-interface FileGroup {
+export interface FileGroup {
   cdnUrl: string;
   count: number;
   isImage: boolean;
@@ -395,14 +438,14 @@ interface FileGroup {
   uuid: string;
 }
 
-interface FileGroupUpload extends JQuery.Deferred<FileGroup> {}
+export interface FileGroupUpload extends JQuery.Deferred<FileGroup> {}
 
-interface FilesUpload {
+export interface FilesUpload {
   promise: () => FileGroupUpload;
   files: () => FileUpload[];
 }
 
-interface WidgetProps extends Settings {
+export interface WidgetProps extends Settings {
   value?: string;
   onChange?: (fileInfo: FileInfo) => void;
   onFileSelect?: (fileInfo: FileUpload | FilesUpload | null) => void;
@@ -416,7 +459,7 @@ interface WidgetProps extends Settings {
   ref?: Ref<WidgetAPI>;
 }
 
-type CustomTabConstructor = (
+export type CustomTabConstructor = (
   container: JQuery,
   button: JQuery,
   dialogApi: DialogApi,
@@ -425,13 +468,13 @@ type CustomTabConstructor = (
   uploadcare: any
 ) => void;
 
-type Validator = (fileInfo: FileInfo) => void;
+export type Validator = (fileInfo: FileInfo) => void;
 
-declare const Widget: ForwardRefRenderFunction<LocaleSettings, WidgetProps>;
+export const Widget: ForwardRefRenderFunction<LocaleSettings, WidgetProps>;
 
-type PanelAPI = DialogApi;
+export type PanelAPI = DialogApi;
 
-interface PanelProps extends Settings {
+export interface PanelProps extends Settings {
   value?: string[];
   onChange?: (files: FileUpload[]) => void;
   onTabChange?: (tabName: string) => void;
@@ -444,31 +487,4 @@ interface PanelProps extends Settings {
   multiple?: boolean;
 }
 
-declare const Panel: ForwardRefRenderFunction<LocaleSettings, PanelProps>;
-
-export {
-  Locale,
-  LocalePluralize,
-  LocaleTranslations,
-  LocaleSettings,
-  GeoLocation,
-  OriginalImageInfo,
-  Uuid,
-  SourceInfo,
-  FileInfo,
-  FileGroup,
-  FileGroupUpload,
-  FileUpload,
-  FilesUpload,
-  DialogApi,
-  OnTabVisibilityCallback,
-  Settings,
-  WidgetAPI,
-  WidgetProps,
-  CustomTabConstructor,
-  Validator,
-  Widget,
-  PanelAPI,
-  PanelProps,
-  Panel
-};
+export const Panel: ForwardRefRenderFunction<LocaleSettings, PanelProps>;
