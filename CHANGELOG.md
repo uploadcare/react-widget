@@ -1,3 +1,12 @@
+## [2.4.1](https://github.com/uploadcare/react-widget/compare/v2.4.0...v2.4.1) (2022-12-26)
+
+
+### Bug Fixes
+
+* add missing types and export all of them ([c25a586](https://github.com/uploadcare/react-widget/commit/c25a5868d5b4bf8b9ec5559a8364a2f508c8029d))
+* don't pass `metadataCallback` to the options if `metadata` present ([7deece8](https://github.com/uploadcare/react-widget/commit/7deece8c1610c175d9cfbd95531cbf04d16bfe1f))
+
+
 # [2.4.0](https://github.com/uploadcare/react-widget/compare/v2.3.0...v2.4.0) (2022-12-07)
 
 
