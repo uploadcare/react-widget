@@ -1,3 +1,9 @@
+## [2.4.2](https://github.com/uploadcare/react-widget/compare/v2.4.1...v2.4.2) (2023-03-13)
+
+### Bug Fixes
+
+* separate typing files for CJS and ESM modules ([#374](https://github.com/uploadcare/react-widget/pull/374))
+
 ## [2.4.1](https://github.com/uploadcare/react-widget/compare/v2.4.0...v2.4.1) (2022-12-26)
 
 
