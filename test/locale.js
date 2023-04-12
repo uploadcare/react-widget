@@ -1,13 +1,13 @@
 /* eslint-env jest */
-import React from 'react'
+import '@testing-library/jest-dom/extend-expect'
 import {
-  render,
+  fireEvent,
   getByText,
   getByTitle,
-  fireEvent,
+  render,
   waitFor
 } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import React from 'react'
 
 import Uploader from '../src/uploader'
 
