@@ -98,7 +98,6 @@
   "dependencies": {
     "@types/jquery": "^3.5.16",
     "@types/jquery-deferred": "^0.3.0",
-    "@uploadcare/client-suspense": "^1.1.0",
     "react-fast-compare": "^3.2.1",
     "uploadcare-widget": "^3.21.0"
   },

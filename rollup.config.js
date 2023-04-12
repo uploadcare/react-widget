@@ -12,12 +12,7 @@ const bundleConfig = ({ format, dir, minify, widgetBundle }) => {
 
   return {
     input: 'src/index.js',
-    external: [
-      'react',
-      'react-fast-compare',
-      'uploadcare-widget',
-      '@uploadcare/client-suspense'
-    ],
+    external: ['react', 'react-fast-compare', 'uploadcare-widget'],
     output: {
       entryFileNames: `[name].${bundleExtension}`,
       chunkFileNames: `[name]-[hash].${bundleExtension}`,
