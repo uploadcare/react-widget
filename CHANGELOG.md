@@ -1,6 +1,7 @@
 ## [2.4.3](https://github.com/uploadcare/react-widget/compare/v2.4.2...v2.4.3) (2023-04-13)
 
-
+* bump dev dependencies
+* get rid of `@uploadcare/client-suspense` in favour of the original react suspense
 
 ## [2.4.2](https://github.com/uploadcare/react-widget/compare/v2.4.1...v2.4.2) (2023-03-13)
 
