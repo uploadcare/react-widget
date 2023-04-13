@@ -1,10 +1,9 @@
-import babel from 'rollup-plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
-import replacement from 'rollup-plugin-module-replacement'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import copy from 'rollup-plugin-copy'
-
+import replacement from 'rollup-plugin-module-replacement'
 import uploadcare from 'uploadcare-widget'
 
 const bundleConfig = ({ format, dir, minify, widgetBundle }) => {
@@ -13,12 +12,7 @@ const bundleConfig = ({ format, dir, minify, widgetBundle }) => {
 
   return {
     input: 'src/index.js',
-    external: [
-      'react',
-      'react-fast-compare',
-      'uploadcare-widget',
-      '@uploadcare/client-suspense'
-    ],
+    external: ['react', 'react-fast-compare', 'uploadcare-widget'],
     output: {
       entryFileNames: `[name].${bundleExtension}`,
       chunkFileNames: `[name]-[hash].${bundleExtension}`,
@@ -42,7 +36,8 @@ const bundleConfig = ({ format, dir, minify, widgetBundle }) => {
       }),
       babel({
         exclude: 'node_modules/**',
-        presets: [['@babel/env', { modules: false }]]
+        presets: [['@babel/env', { modules: false }]],
+        babelHelpers: 'bundled'
       }),
       minify && terser(),
       copy({

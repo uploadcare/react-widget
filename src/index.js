@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react'
-import { lazy, Suspense } from '@uploadcare/client-suspense'
+import React, { forwardRef, lazy, Suspense } from 'react'
 import { useIsomorphicEffect } from './hooks'
 
 const Uploader = lazy(() =>
