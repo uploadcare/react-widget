@@ -1,5 +1,0 @@
-{
-  "extends": ["@parcel/config-default"],
-  "distDir": "./parcel-output",
-  "outputFormat": "esmodule"
-}
