@@ -111,7 +111,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "@babel/plugin-transform-runtime": "^7.21.4",
     "@babel/preset-env": "7.21.4",
-    "@babel/preset-react": "7.18.6",
+    "@babel/preset-react": "^7.18.6",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "24.1.0",
     "@rollup/plugin-replace": "^5.0.2",
@@ -124,7 +124,7 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "^29.5.0",
     "babel-plugin-annotate-pure-calls": "0.4.0",
-    "dtslint": "4.2.1",
+    "dtslint": "^3.4.2",
     "eslint": "8.38.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-config-standard": "17.0.0",
@@ -140,7 +140,7 @@
     "jest-canvas-mock": "2.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-esm-jsx-transform": "1.0.0",
-    "parcel-bundler": "1.12.5",
+    "parcel": "^2.8.3",
     "prettier": "2.8.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -162,5 +162,8 @@
     "testMatch": [
       "**/test/**/*.js"
     ]
+  },
+  "targets": {
+    "types": false
   }
 }
