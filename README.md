@@ -6,13 +6,12 @@
     alt="">
 </a>
 
-This component helps you integrate [Uploadcare Widget][uc-feature-widget]
-into your React app natively; props management and lazy loading
-are bundled.
+This React component helps you integrate [Uploadcare Widget][uc-feature-widget]
+into your React app natively; props management and lazy loading are bundled.
 
-The component allows users to upload files from their devices, social media,
-cloud storage, and more. All that without any backend code that’s usually
-required to handle uploads.
+The component allows users to upload files from any file system and device, social media, 
+cloud storage, and more. Best-in-class for image upload.
+All that without any backend code that’s usually required to handle uploads.
 
 #### [Read Uploadcare + React Integration Guide][react-guide]
 
