@@ -1,3 +1,7 @@
+## [2.4.5](https://github.com/uploadcare/react-widget/compare/v2.4.4...v2.4.5) (2023-07-04)
+
+
+
 ## [2.4.4](https://github.com/uploadcare/react-widget/compare/v2.4.3...v2.4.4) (2023-07-04)
 
 * update readme

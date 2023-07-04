@@ -1,6 +1,6 @@
 {
   "name": "@uploadcare/react-widget",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "React File Uploader. React component with uploading from multiple sources",
   "type": "module",
   "sideEffects": false,
