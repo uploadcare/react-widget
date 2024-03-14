@@ -19,7 +19,8 @@ const useWidget = (
   {
     id,
     name,
-    value,
+    value, // @deprecated
+    defaultValue,
     onFileSelect,
     onChange,
     onDialogOpen,
@@ -167,11 +168,11 @@ const useWidget = (
   }, [widgetOptions])
 
   useEffect(() => {
-    if (cachedValueRef.current !== value) {
-      widget.current.value(value)
+    if (cachedValueRef.current !== defaultValue) {
+      widget.current.value(defaultValue)
     }
-    cachedValueRef.current = value
-  }, [value])
+    cachedValueRef.current = defaultValue
+  }, [])
 
   useEffect(() => {
     if (uploadcare && tabsCss && typeof tabsCss === 'string') {
