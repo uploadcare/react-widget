@@ -123,7 +123,7 @@
     "@types/jquery": "^3.5.16",
     "@types/jquery-deferred": "^0.3.0",
     "react-fast-compare": "^3.2.1",
-    "uploadcare-widget": "^3.21.0"
+    "uploadcare-widget": "^3.23.3"
   },
   "peerDependencies": {
     "react": "^16.10.2 || ^17.0.0 || ^18.0.0",
@@ -174,7 +174,7 @@
     "shipjs": "0.26.3",
     "tsd": "^0.31.1",
     "typescript": "5.5.4",
-    "uploadcare-widget-tab-effects": "1.6.0"
+    "uploadcare-widget-tab-effects": "1.7.2"
   },
   "jest": {
     "testEnvironment": "jsdom",
