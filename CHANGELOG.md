@@ -6,8 +6,7 @@
 
 ### BREAKING CHANGES
 
-* the default value of `cdnCname` has changed from `http://ucarecdn.com` to `https://{{prefix}}.ucarecd.net`. If your integration depends on the previous value, it may break.
-
+* the default value of `cdnCname` has changed from `http://ucarecdn.com` to `https://{{prefix}}.ucarecd.net`. If your integration depends on the previous value, it may break. If you want to set `https://ucarecdn.com`, you need to explicitly set it with `cdnCname` prop
 
 
 ## [2.4.7](https://github.com/uploadcare/react-widget/compare/v2.4.6...v2.4.7) (2024-08-27)
