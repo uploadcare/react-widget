@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/uploadcare/react-widget/compare/v2.4.7...v3.0.0) (2025-07-28)
+
+
+* feat!: update uploadcare-widget to v3.23.3 and uploadcare-widget-tab-effects to v1.7.2 (#407) ([c06e2cd](https://github.com/uploadcare/react-widget/commit/c06e2cd1cbfb94ad34e01b5b012c4eeaea65161f)), closes [#407](https://github.com/uploadcare/react-widget/issues/407)
+
+
+### BREAKING CHANGES
+
+* the default value of `cdnCname` has changed from `http://ucarecdn.com` to `https://{{prefix}}.ucarecd.net`. If your integration depends on the previous value, it may break.
+
+
+
 ## [2.4.7](https://github.com/uploadcare/react-widget/compare/v2.4.6...v2.4.7) (2024-08-27)
 
 
