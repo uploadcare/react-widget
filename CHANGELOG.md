@@ -1,3 +1,7 @@
+## [3.0.1](https://github.com/uploadcare/react-widget/compare/v3.0.0...v3.0.1) (2026-04-06)
+
+* add dropboxchooser tab and map locale key to dropbox
+
 # [3.0.0](https://github.com/uploadcare/react-widget/compare/v2.4.7...v3.0.0) (2025-07-28)
 
 
