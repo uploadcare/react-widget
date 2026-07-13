@@ -1,5 +1,5 @@
 export default {
-  publishCommand: ({ defaultCommand }) => `${defaultCommand} --access public`,
+  publishCommand: ({ tag }) => `npm stage publish --tag ${tag}`,
   mergeStrategy: { toSameBranch: ['master'] },
   pullRequestReviewers: ['nd0ut']
 }
